@@ -1,0 +1,202 @@
+{
+    "appname": "HolyTune",
+    "loadingapp": "tuning in...",
+    "allitems": "All Items",
+    "emptyplaylist": "No Playlists",
+    "notsupported": "Not Supported",
+    "cleanupresources": "Cleaning up resources",
+    "grantstoragepermission":
+        "Please grant accessing storage permission to continue",
+    "sharefiletitle": "Watch or Listen to ",
+    "sharefilebody":
+        "Via AudioBuzz App, Download now at ",
+    "sharetext": "Enjoy unlimited Audio & Video streaming",
+    "sharetexthint":
+        "Download AudioBuzz, the music streaming platform that lets you listen to millions of music files from around the world. Download now at",
+  
+   
+    "home": "Home",
+    "downloads": "Search Downloads",
+    "albums": "Albums",
+    "artists": "Artists",
+    "radio": "Radio Channels",
+    "hotandtrending": "Trending",
+    "device": "Device",
+    "audiotracks": "Tracks",
+    "playlist": "Playlists",
+    "bookmarks": "Bookmarks",
+    "appinfo": "App Info",
+    "genres": "All Genres",
+    "genress": "Genres",
+    "moods": "Moods",
+    "settings": "Settings",
+  
+ 
+    "selectlanguage": "Select Language",
+  "chooseapplanguage": "Choose App Language",
+    "startsubscription": "Unlock Premium Features",
+    "startsubscriptionhint":
+        "Unlock premium features to start your journey to a never-ending media streaming experience",
+    "suggestedforyou": "Suggested for you",
+    "tracks": "Tracks",
+    "livetvchannels": "Live Channels",
+    "trendingvideos": "Trending Videos",
+    "trendingaudios": "Popular",
+    "trendingvideoshint": "Popular Videos On AudioBuzz",
+    "trendingaudioshint": "Popular Audios On AudioBuzz",
+    "newvideoshint": "New Videos from all categories",
+    "newaudioshint": "New Audios from all categories",
+    "bookmarksMedia": "My Bookmarks",
+    "noitemstodisplay": "No Items To Display",
+  
+    "download": "Download",
+    "addplaylist": "Add to playlist",
+    "bookmark": "Bookmark",
+    "unbookmark": "UnBookmark",
+    "share": "Share",
+    "deletemedia": "Delete File",
+    "deletemediahint":
+        "Do you wish to delete this downloaded file? This action cannot be undone.",
+  
+    "searchhint": "Search Audios",
+    "performingsearch": "Searching Audios",
+    "nosearchresult": "No results Found",
+    "nosearchresulthint": "Try input more general keyword",
+  
+    "livetvPlaylists": "Live Media Playlists",
+    "addtoplaylist": "Add to playlist",
+    "newplaylist": "New playlist",
+    "playlistitm": "Playlist",
+    "mediaaddedtoplaylist": "Media added to playlist.",
+    "mediaremovedfromplaylist": "Media removed from playlist",
+    "clearplaylistmedias": "Clear All Media",
+    "deletePlayList": "Delete Playlist",
+    "clearplaylistmediashint":
+        "Go ahead and remove all media from this playlist?",
+    "deletePlayListhint":
+        "Go ahead and delete this playlist and clear all media?",
+  
+    "comments": "Comments",
+    "replies": "Replies",
+    "reply": "Reply",
+    "logintoaddcomment": "Login to add a comment",
+    "logintoreply": "Login to reply",
+    "writeamessage": "Write a message...",
+    "nocomments": "No Comments found \nclick to retry",
+    "errormakingcomments":
+        "Cannot process commenting at the moment..",
+    "errordeletingcomments":
+        "Cannot delete this comment at the moment..",
+    "erroreditingcomments":
+        "Cannot edit this comment at the moment..",
+    "errorloadingmorecomments":
+        "Cannot load more comments at the moment..",
+    "deletingcomment": "Deleting comment",
+    "editingcomment": "Editing comment",
+    "deletecommentalert": "Delete Comment",
+    "editcommentalert": "Edit Comment",
+    "deletecommentalerttext":
+        "Do you wish to delete this comment? This action cannot be undone",
+    "loadmore": "load more",
+  
+    "guestuser": "Guest User",
+    "fullname": "Full Name",
+    "emailaddress": "Email Address",
+    "password": "Password",
+    "repeatpassword": "Repeat Password",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout",
+    "logoutfromapp": "Logout from app?",
+    "logoutfromapphint":
+        "You wont be able to like or comment on articles and videos if you are not logged in.",
+    "gotologin": "Go to Login",
+    "resetpassword": "Reset Password",
+    "logintoaccount": "Already have an account? Login",
+    "emptyfielderrorhint":
+        "You need to fill all the fields",
+    "invalidemailerrorhint":
+        "You need to enter a valid email address",
+    "passwordsdontmatch": "Passwords dont match",
+    "processingpleasewait": "Processing, Please wait...",
+    "createaccount": "Create an account",
+    "forgotpassword": "Forgot Password?",
+    "orloginwith": "Or Login With",
+    "facebook": "Facebook",
+    "google": "Google",
+  
+    "moreoptions": "More Options",
+    "about": "About Us",
+    "privacy": "Privacy Policy",
+    "terms": "App Terms",
+    "rate": "Rate App",
+    "version": "Version",
+  
+    "pulluploadmore": "pull up load",
+    "loadfailedretry": "Load Failed!Click retry!",
+    "releaseloadmore": "release to load more",
+    "nomoredata": "No more Data",
+  
+    "setupprefernces": "Setup Your Preferences",
+    "receievepshnotifications": "Recieve Notifications",
+    "nightmode": "Night Mode",
+    "enablertl": "Enable RTL",
+  
+    "duration": "Duration",
+    "ok": "Ok",
+    "retry": "RETRY",
+    "oops": "Ooops!",
+    "save": "Save",
+    "cancel": "Cancel",
+    "error": "Error",
+    "success": "Success",
+    "skip": "Skip",
+    "skiplogin": "Skip Login",
+    "skipregister": "Skip Registration",
+    "dataloaderror":
+        "Could not load requested data at the moment, check your data connection and click to retry.",
+  
+    "errorReportingComment": "Error Reporting Comment",
+    "reportingComment": "Reporting Comment",
+    "reportcomment": "Report Options",
+     "reportCommentsList": [
+      "Unwanted commercial content or spam",
+      "Pornography or sexual explicit material",
+      "Hate speech or graphic violence",
+      "Harassment or bullying",
+      "Disturbing Content"
+    ],
+  
+    "loginrequired": "Login Required",
+    "loginrequiredhint":
+        "To subscribe on this platform, you need to be logged in. Create a free account now or log in to your existing account.",
+    "subscriptions": "App Subscriptions",
+    "subscribe": "SUBSCRIBE",
+    "subscribehint": "Subscription Required",
+    "playsubscriptionrequiredhint":
+        "You need to subscribe before you can listen to or watch this media.",
+    "previewsubscriptionrequiredhint":
+        "You have reached the allowed preview duration for this media. You need to subscribe to continue listening or watching this media.",
+  
+    "next": "NEXT",
+    "done": "GET STARTED",
+    "onboardertitle": [
+      "AudioBuzz",
+      "Music Discovery",
+      "Albums & Artists",
+      "Unlimited Playlists"
+    ],
+
+    "onboarderhints": [
+      "Music streaming platform that lets you listen to millions of music from around the world.",
+      "With the world’s largest catalog of songs, we let you discover more music you’ll love to love.",
+      "Listen to your collection of albums from your favorite music artists.",
+      "Create playlists of your favorited songs and videos for a wonderful listening experience."
+    ],
+    "quitapp": "Quit App!",
+    "quitappwarning": "Do you wish to close the app?",
+    "quitappaudiowarning":
+        "You are currently playing an audio, quitting the app will stop the audio playback. If you do not wish to stop playback, just minimize the app with the center button or click the Ok button to quit app now."
+  
+  
+}

@@ -1,0 +1,135 @@
+# @format
+
+name: HolyTune
+description: Holy Tune - Islamic Song.
+
+version: 1.0.4+4
+
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  platform: ^3.1.0
+  flutter_localizations:
+    sdk: flutter
+  fast_i18n: ^1.7.0
+  pinput: any
+  sqflite: any
+  dio: any
+  mobx: ^1.1.1
+  flutter_mobx: ^1.1.0
+  email_auth: ^0.0.1+4
+  carousel_slider: ^3.0.0
+  new_version: ^0.2.0
+  url_launcher: ^6.0.3
+  image_picker: ^0.6.3+1
+  firebase_remote_config: any
+  intl_phone_number_input: ^0.7.0+2
+  android_intent: ^2.0.2
+  transparent_image: any
+  toast: any
+  audiofileplayer: any
+  pull_to_refresh: any
+  cached_network_image: any
+  font_awesome_flutter: any
+  line_awesome_flutter: any
+  firebase_analytics: any
+  firebase_core: any
+  firebase_messaging: any
+  flutter_local_notifications: any
+  shared_preferences: any
+  apple_sign_in: any
+  google_sign_in: any
+  email_validator: "^1.0.6"
+  shimmer: any
+  flutter_facebook_login: any
+  network_image_to_byte: any
+  palette_generator: any
+  file_utils: any
+  # permission_handler: any
+  permission_handler: ^9.2.0
+  path_provider: any
+  flutter_downloader: any
+  flutter_share: any
+  package_info: any
+  launch_review: any
+  flutter_web_browser: "^0.11.0"
+  event_bus: any
+  shape_of_view:
+  path: any
+  audio_session: any
+  intl: any
+  admob_flutter: any
+  firebase_auth: any
+  numeric_keyboard: ^1.0.0
+  http_parser: ^4.0.0
+  footer:
+  flutter_switch: ^0.0.2
+  provider: ^6.0.2
+  http: ^0.13.4
+  video_player: ^2.3.0
+  youtube_player_iframe: ^2.2.2
+  youtube_player_flutter: ^8.0.0
+#  facebook_audience_network: ^1.0.1
+#  facebook_audience_network: ^0.9.0
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.0
+  flutter_inappwebview: ^5.3.2
+  loading_overlay: ^0.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: any
+  flutter_launcher_icons: ^0.9.0
+  flutter_lints: ^1.0.4
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/login.png
+    - assets/images/splash01.jpg
+    - assets/images/01.jpg
+    - assets/images/singer01.jpg
+    - assets/images/singer02.jpg
+    - assets/images/singer03.jpg
+    - assets/images/holy_tune_logo_512_blue_bg.png
+    - assets/icon/nav_live_active.svg
+    - assets/icon/icon.png
+    - assets/icon/vid.png
+    - assets/icon/hom.png
+    - assets/icon/homw.png
+    - assets/icon/liv.png
+    - assets/icon/mus.png
+    - assets/icon/serr.png
+    - assets/images/splsh01.png
+    - assets/images/banner.jpg
+    - assets/images/Archive/Poro.jpg
+    - assets/images/logotrns.png
+    - assets/images/Archive/Quran.jpg
+    - assets/images/Archive/Janaza.jpg
+
+fonts:
+  - family: Roboto
+    fonts:
+      - asset: assets/fonts/WorkSans-Regular.ttf
+      - asset: assets/fonts/WorkSans-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/WorkSans-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/WorkSans-Bold.ttf
+        weight: 700

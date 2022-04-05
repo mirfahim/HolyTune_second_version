@@ -1,0 +1,202 @@
+{
+    "appname": "HolyTune",
+    "loadingapp": "ضبط في...",
+    "allitems": "كل الاشياء",
+    "emptyplaylist": "لا توجد قوائم تشغيل",
+    "notsupported": "غير مدعوم",
+    "cleanupresources": "تنظيف الموارد",
+    "grantstoragepermission":
+        "يرجى منح إذن الوصول إلى التخزين للمتابعة",
+    "sharefiletitle": "شاهد أو استمع ",
+    "sharefilebody":
+        "عبر تطبيق AudioBuzz ، قم بالتنزيل الآن على ",
+    "sharetext": "استمتع ببث غير محدود من الصوت والفيديو",
+    "sharetexthint":
+        "قم بتنزيل AudioBuzz ، منصة دفق الموسيقى التي تتيح لك الاستماع إلى ملايين ملفات الموسيقى من جميع أنحاء العالم. قم بالتنزيل الآن من",
+  
+   
+    "home": "الصفحة الرئيسية",
+    "downloads": "البحث في التنزيلات",
+    "albums": "ألبومات",
+    "artists": "الفنانين",
+    "radio": "قنوات الراديو",
+    "hotandtrending": "الشائع",
+    "device": "جهاز",
+    "audiotracks": "المسارات",
+    "playlist": "قوائم التشغيل",
+    "bookmarks": "إشارات مرجعية",
+    "appinfo": "معلومات التطبيق",
+    "genres": "جميع الأنواع",
+    "genress": "الأنواع",
+    "moods": "المزاج",
+    "settings": "إعدادات",
+  
+ 
+    "selectlanguage": "اختار اللغة",
+  "chooseapplanguage": "اختر لغة التطبيق",
+    "startsubscription": "افتح الميزات المميزة",
+    "startsubscriptionhint":
+        "افتح الميزات المتميزة لبدء رحلتك إلى تجربة بث وسائط لا تنتهي أبدًا",
+    "suggestedforyou": "اقترح لك",
+    "tracks": "المسارات",
+    "livetvchannels": "القنوات الحية",
+    "trendingvideos": "مقاطع الفيديو الشائعة",
+    "trendingaudios": "جمع",
+    "trendingvideoshint": "فيديوهات شعبية على AudioBuzz",
+    "trendingaudioshint": "صوتيات شعبية على AudioBuzz",
+    "newvideoshint": "مقاطع فيديو جديدة من جميع الفئات",
+    "newaudioshint": "صوتيات جديدة من جميع الفئات",
+    "bookmarksMedia": "متجر كتبي",
+    "noitemstodisplay": "لا توجد عناصر لعرضها",
+  
+    "download": "تحميل",
+    "addplaylist": "أضف إلى قائمة التشغيل",
+    "bookmark": "المرجعية",
+    "unbookmark": "غير مرجعية",
+    "share": "يشارك",
+    "deletemedia": "حذف ملف",
+    "deletemediahint":
+        "هل ترغب في حذف هذا الملف الذي تم تنزيله؟ لا يمكن التراجع عن هذا الإجراء",
+  
+    "searchhint": "البحث في الصوتيات",
+    "performingsearch": "البحث في الصوتيات",
+    "nosearchresult": "لم يتم العثور على نتائج",
+    "nosearchresulthint": "حاول إدخال كلمة رئيسية أكثر عمومية",
+  
+    "livetvPlaylists": "قوائم تشغيل الوسائط الحية",
+    "addtoplaylist": "أضف إلى قائمة التشغيل",
+    "newplaylist": "قائمة تشغيل جديدة",
+    "playlistitm": "قائمة التشغيل",
+    "mediaaddedtoplaylist": "تمت إضافة الوسائط إلى قائمة التشغيل.",
+    "mediaremovedfromplaylist": "تمت إزالة الوسائط من قائمة التشغيل",
+    "clearplaylistmedias": "مسح كافة الوسائط",
+    "deletePlayList": "حذف قائمة التشغيل",
+    "clearplaylistmediashint":
+        "انطلق وقم بإزالة جميع الوسائط من قائمة التشغيل هذه",
+    "deletePlayListhint":
+        "هل تريد المضي قدمًا وحذف قائمة التشغيل هذه ومسح جميع الوسائط؟",
+  
+    "comments": "تعليقات",
+    "replies": "الردود",
+    "reply": "رد",
+    "logintoaddcomment": "تسجيل الدخول لإضافة تعليق",
+    "logintoreply": "تسجيل الدخول إلى إجابة",
+    "writeamessage": "اكتب رسالة...",
+    "nocomments": "لا توجد تعليقات انقر لإعادة المحاولة",
+    "errormakingcomments":
+        "لا يمكن معالجة التعليق في الوقت الحالي..",
+    "errordeletingcomments":
+        "لا يمكن حذف هذا التعليق في الوقت الحالي..",
+    "erroreditingcomments":
+        "لا يمكن تعديل هذا التعليق في الوقت الحالي..",
+    "errorloadingmorecomments":
+        "لا يمكن تحميل المزيد من التعليقات في الوقت الحالي..",
+    "deletingcomment": "حذف التعليق",
+    "editingcomment": "تحرير التعليق",
+    "deletecommentalert": "حذف تعليق",
+    "editcommentalert": "تعديل التعليق",
+    "deletecommentalerttext":
+        "هل ترغب في حذف هذا التعليق؟ لا يمكن التراجع عن هذا الإجراء",
+    "loadmore": "تحميل المزيد",
+  
+    "guestuser": "حساب زائر",
+    "fullname": "الاسم الكامل",
+    "emailaddress": "عنوان بريد الكتروني",
+    "password": "كلمة المرور",
+    "repeatpassword": "اعد كلمة السر",
+    "register": "يسجل",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل خروج",
+    "logoutfromapp": "هل تريد الخروج من التطبيق؟",
+    "logoutfromapphint":
+        "لن تتمكن من إبداء الإعجاب بالمقالات ومقاطع الفيديو أو التعليق عليها إذا لم تقم بتسجيل الدخول.",
+    "gotologin": "اذهب إلى تسجيل الدخول",
+    "resetpassword": "إعادة تعيين كلمة المرور",
+    "logintoaccount": "هل لديك حساب؟ تسجيل الدخول",
+    "emptyfielderrorhint":
+        "أنت بحاجة لملء جميع الحقول",
+    "invalidemailerrorhint":
+        "تحتاج إلى إدخال عنوان بريد إلكتروني صالح",
+    "passwordsdontmatch": "كلمات السر لا تتطابق",
+    "processingpleasewait": "Processing, Please wait...",
+    "createaccount": "انشئ حساب",
+    "forgotpassword": "هل نسيت كلمة السر؟",
+    "orloginwith": "أو تسجيل الدخول باستخدام",
+    "facebook": "Facebook",
+    "google": "Google",
+  
+    "moreoptions": "المزيد من الخيارات",
+    "about": "معلومات عنا",
+    "privacy": "سياسة خاصة",
+    "terms": "شروط التطبيق",
+    "rate": "قيم التطبيق",
+    "version": "الإصدار",
+  
+    "pulluploadmore": "سحب ما يصل الحمل",
+    "loadfailedretry": "فشل التحميل! انقر فوق إعادة المحاولة!",
+    "releaseloadmore": "الافراج لتحميل المزيد",
+    "nomoredata": "لا مزيد من البيانات",
+  
+    "setupprefernces": "قم بإعداد التفضيلات الخاصة بك",
+    "receievepshnotifications": "تلقي الإخطارات",
+    "nightmode": "الوضع الليلي",
+    "enablertl": "تفعيل RTL",
+  
+    "duration": "مدة",
+    "ok": "موافق",
+    "retry": "أعد المحاولة",
+    "oops": "اوووه!",
+    "save": "يحفظ",
+    "cancel": "يلغي",
+    "error": "خطأ",
+    "success": "نجاح",
+    "skip": "تخطى",
+    "skiplogin": "تخطي تسجيل الدخول",
+    "skipregister": "تخطي تسجيل",
+    "dataloaderror":
+        "تعذر تحميل البيانات المطلوبة في الوقت الحالي ، تحقق من اتصال البيانات وانقر لإعادة المحاولة.",
+  
+    "errorReportingComment": "الإبلاغ عن خطأ التعليق",
+    "reportingComment": "الإبلاغ عن التعليق",
+    "reportcomment": "خيارات التقرير",
+     "reportCommentsList": [
+      "المحتوى التجاري غير المرغوب فيه أو البريد العشوائي",
+      "مواد إباحية أو مواد جنسية صريحة",
+      "كلام يحض على الكراهية أو عنف تصويري",
+      "المضايقة أو التنمر",
+      "محتوى مزعج"
+    ],
+  
+    "loginrequired": "تسجيل الدخول مطلوب",
+    "loginrequiredhint":
+        "للاشتراك في هذه المنصة ، يجب أن تقوم بتسجيل الدخول. قم بإنشاء حساب مجاني الآن أو قم بتسجيل الدخول إلى حسابك الحالي.",
+    "subscriptions": "اشتراكات التطبيق",
+    "subscribe": "الإشتراك",
+    "subscribehint": "الاشتراك المطلوبة",
+    "playsubscriptionrequiredhint":
+        "تحتاج إلى الاشتراك قبل أن تتمكن من الاستماع إلى هذه الوسائط أو مشاهدتها.",
+    "previewsubscriptionrequiredhint":
+        "لقد وصلت إلى مدة المعاينة المسموح بها لهذه الوسائط. تحتاج إلى الاشتراك لمواصلة الاستماع أو مشاهدة هذه الوسائط.",
+  
+    "next": "التالي",
+    "done": "البدء",
+    "onboardertitle": [
+      "AudioBuzz",
+      "Music Discovery",
+      "Albums & Artists",
+      "Unlimited Playlists"
+    ],
+
+    "onboarderhints": [
+      "Music streaming platform that lets you listen to millions of music from around the world.",
+      "With the world’s largest catalog of songs, we let you discover more music you’ll love to love.",
+      "Listen to your collection of albums from your favorite music artists.",
+      "Create playlists of your favorited songs and videos for a wonderful listening experience."
+    ],
+    "quitapp": "قم بإنهاء التطبيق!",
+    "quitappwarning": "هل ترغب في إغلاق التطبيق؟",
+    "quitappaudiowarning":
+        "أنت تقوم حاليًا بتشغيل مقطع صوتي ، وسيؤدي إنهاء التطبيق إلى إيقاف تشغيل الصوت. إذا كنت لا ترغب في إيقاف التشغيل ، فما عليك سوى تصغير التطبيق باستخدام الزر الأوسط أو النقر فوق الزر موافق لإنهاء التطبيق الآن"
+  
+  
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664202831870",
+    "project_id": "holytune-new",
+    "storage_bucket": "holytune-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664202831870:android:714cd96fe54c6c094082af",
+        "android_client_info": {
+          "package_name": "com.holytune.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664202831870-64ah8anj81n523l44ib8acffem9p4ava.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMSuliY3_w3QeyVSL21iY6coG_nG7zy4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664202831870-64ah8anj81n523l44ib8acffem9p4ava.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
