@@ -22,13 +22,29 @@ class LivePage extends StatelessWidget {
               builder: (context, value, child) {
                 Widget player;
                 if (value.ycontroller != null) {
-                  player = SizedBox(
-                    height: 250,
-                    child: YoutubePlayer(
-                      controller: value.ycontroller,
-                      liveUIColor: Colors.amber,
-                      aspectRatio: 16 / 9,
-                    ),
+                  player = Column(
+                    children: [
+                      SizedBox(
+                        height: 250,
+                        child: YoutubePlayer(
+                          controller: value.ycontroller,
+                          liveUIColor: Colors.amber,
+                          aspectRatio: 16 / 9,
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                        child: Text(
+                          value.liveTitle,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xFFBBBBBB),
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 } else {
                   player = SizedBox.shrink();
@@ -55,12 +71,19 @@ class LivePage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: ((context) => ArchivePage())));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ArchivePage(),
+                        ),
+                      );
                     },
                     child: Text(
-                      'archive',
-                      style: TextStyle(color: Colors.red),
+                      'Archive',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                 ],

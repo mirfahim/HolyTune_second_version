@@ -6,7 +6,6 @@ import '../utils/TextStyles.dart';
 import '../utils/TimUtil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/Media.dart';
-import '../widgets/MediaPopupMenu.dart';
 import '../utils/Utility.dart';
 import '../utils/Alerts.dart';
 import '../providers/AudioPlayerModel.dart';
@@ -39,7 +38,7 @@ class _ItemTileState extends State<ItemTile> {
     bool isSubscribed = true;
     return InkWell(
       onTap: () {
-        print("${widget.object.coverPhoto}");
+        // print("${widget.object.coverPhoto}");
         if (Utility.isMediaRequireUserSubscription(
             widget.object, isSubscribed)) {
           Alerts.showPlaySubscribeAlertDialog(context);
@@ -52,33 +51,28 @@ class _ItemTileState extends State<ItemTile> {
         Navigator.of(context).pushNamed(PlayPage.routeName);
       },
       child: Container(
-
         height: 80,
         width: double.infinity,
         padding: EdgeInsets.fromLTRB(15, 0.2, 10, 0),
         child: Column(
-
           children: <Widget>[
             Expanded(
               child: Row(
-
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
-
                         margin: EdgeInsets.all(0.5),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: Container(
-
+                        child: SizedBox(
                           height: 60,
                           width: 60,
                           child: CachedNetworkImage(
-                            imageUrl:widget.object.coverPhoto,
+                            imageUrl: widget.object.coverPhoto,
                             imageBuilder: (context, imageProvider) => Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -89,42 +83,41 @@ class _ItemTileState extends State<ItemTile> {
                               ),
                             ),
                             placeholder: (context, url) =>
-
                                 Center(child: CupertinoActivityIndicator()),
                             errorWidget: (context, url, error) => Image(
                                 fit: BoxFit.cover,
-                                image: AssetImage("assets/images/holy_tune_logo_512_blue_bg.png")),
+                                image: AssetImage(
+                                    "assets/images/holy_tune_logo_512_blue_bg.png")),
                           ),
-                        )
-                    ),
+                        )),
                   ),
-                  Container(width: 10),
-
+                  SizedBox(width: 5),
                   Expanded(
                     child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                       SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 4, 0, 0),
                           child: Row(
                             children: <Widget>[
-                              Text(widget.object.artist,
-                                  style: TextStyles.caption(context)
-
-                                  .copyWith(fontSize: 14),
-                                  ),
+                              Text(
+                                widget.object.artist,
+                                style: TextStyles.caption(context).copyWith(
+                                  fontSize: 16,
+                                ),
+                              ),
                               Spacer(),
                               Text(
-                                  TimUtil.timeFormatter(widget.object.duration),
-                                  style: TextStyles.caption(context)
-
-                                  .copyWith(color: appState.isDarkModeOn == false ?
-                                  Colors.black54 : Colors.white54, ),
-                                  ),
+                                TimUtil.timeFormatter(widget.object.duration),
+                                style: TextStyles.caption(context).copyWith(
+                                  color: Colors.white54,
+                                ),
+                              ),
                             ],
                           ),
-
                         ),
 
                         Padding(
@@ -141,37 +134,32 @@ class _ItemTileState extends State<ItemTile> {
                           ),
                         ),
 
-
-                            widget.object.viewsCount == 0
-                                ? Container()
-                                : Padding(
-                              padding: EdgeInsets.only(left: 05),
-                                  child: Text(
-                                      widget.object.viewsCount.toString() +
-                                          " plays",
-                                      style: appState.isDarkModeOn == false ?
-                                      TextStyle(color: Colors.black54, fontSize: 12)
-                                          : TextStyle(color: Colors.white54, fontSize: 12)
-
-
+                        widget.object.viewsCount == 0
+                            ? Container()
+                            : Padding(
+                                padding: EdgeInsets.only(left: 05),
+                                child: Text(
+                                    widget.object.viewsCount.toString() +
+                                        " plays",
+                                    style: TextStyle(
+                                      color: Colors.white54,
+                                      fontSize: 12,
+                                    )
 
                                     //.copyWith(color: MyColors.grey_60),
-                                      ),
-                                ),
+                                    ),
+                              ),
 
-                            // Align(
-                            //   alignment: Alignment.centerRight,
-                            //   child: MediaPopupMenu(widget.object),
-                            // ),
-
+                        // Align(
+                        //   alignment: Alignment.centerRight,
+                        //   child: MediaPopupMenu(widget.object),
+                        // ),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-
-
           ],
         ),
       ),

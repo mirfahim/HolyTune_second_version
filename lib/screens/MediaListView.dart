@@ -1,8 +1,6 @@
-import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/AudioListPage.dart';
@@ -10,7 +8,6 @@ import '../screens/TrendingListPage.dart';
 import '../providers/AudioPlayerModel.dart';
 import '../utils/TextStyles.dart';
 import '../models/Media.dart';
-import '../widgets/MediaPopupMenu.dart';
 import '../i18n/strings.g.dart';
 import '../audio_player/player_page.dart';
 import '../utils/Utility.dart';
@@ -32,15 +29,14 @@ class _MediaListViewState extends State<MediaListView> {
     appState = Provider.of<AppStateNotifier>(context);
     var media = widget.mediaList[index];
 
-    print("HEY________BRO___________${widget.mediaList[index].coverPhoto}");
-    print("HEY________BRO____COVER_______${media.coverPhoto}");
+    // print("HEY________BRO___________${widget.mediaList[index].coverPhoto}");
+    // print("HEY________BRO____COVER_______${media.coverPhoto}");
     bool isSubscribed = true;
 
     return Padding(
-      padding: const EdgeInsets.only(right: 10.0),
+      padding: EdgeInsets.only(right: 10.0),
       child: InkWell(
-        child: Container(
-
+        child: SizedBox(
           height: 180.0,
           width: 100.0,
           child: Column(
@@ -51,43 +47,42 @@ class _MediaListViewState extends State<MediaListView> {
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: media.coverPhoto == null ?
-                  Image(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/01.jpg"),)
-                      :CachedNetworkImage(
-                    imageUrl:  media.coverPhoto, // https://adminapplication.com/uploads/thumbnails/media/1623414931.jpg
-                    imageBuilder: (context, imageProvider) {
-
-                    //  print("__________AUDIO_____IMAGE______${SharedPref.imageURL + media.coverPhoto}");
-
-                      //To Do:
-
-                      print("__________AUDO_____IMAGE______${media.coverPhoto}");
-
-                      return Container(
-                      decoration: BoxDecoration(
-
-                        image: DecorationImage(
-                          image: imageProvider,
+                  child: media.coverPhoto == null
+                      ? Image(
                           fit: BoxFit.cover,
-                        ),
-                      ),
-                    );
-                    },
-                    placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
-                    errorWidget: (context, url, error) =>
+                          image: AssetImage("assets/images/01.jpg"),
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: media
+                              .coverPhoto, // https://adminapplication.com/uploads/thumbnails/media/1623414931.jpg
+                          imageBuilder: (context, imageProvider) {
+                            //  print("__________AUDIO_____IMAGE______${SharedPref.imageURL + media.coverPhoto}");
 
-                        Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/01.jpg"),),
-                  ),
+                            //To Do:
+
+                            print(
+                                "__________AUDO_____IMAGE______${media.coverPhoto}");
+
+                            return Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          },
+                          placeholder: (context, url) =>
+                              Center(child: CupertinoActivityIndicator()),
+                          errorWidget: (context, url, error) => Image(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/images/01.jpg"),
+                          ),
+                        ),
                 ),
               ),
               SizedBox(height: 8.0),
               Row(
-
                 children: <Widget>[
                   Expanded(
                     child: Column(
@@ -122,7 +117,7 @@ class _MediaListViewState extends State<MediaListView> {
                       ],
                     ),
                   ),
-                //  MediaPopupMenu(media),
+                  //  MediaPopupMenu(media),
                 ],
               ),
             ],
@@ -134,7 +129,8 @@ class _MediaListViewState extends State<MediaListView> {
             return;
           }
           Provider.of<AudioPlayerModel>(context, listen: false).preparePlaylist(
-              Utility.extractMediaByType(widget.mediaList, media.mediaType), media);
+              Utility.extractMediaByType(widget.mediaList, media.mediaType),
+              media);
           Navigator.of(context).pushNamed(PlayPage.routeName);
         },
       ),
@@ -154,7 +150,7 @@ class _MediaListViewState extends State<MediaListView> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 0, 0, 2),
+                    padding: EdgeInsets.fromLTRB(15, 0, 0, 2),
                     child: Text(
                       widget.header,
                       //textAlign: TextAlign.start,
@@ -162,6 +158,7 @@ class _MediaListViewState extends State<MediaListView> {
                       style: TextStyles.headline(context).copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
+                        color: Colors.white70,
                       ),
                     ),
                   ),
@@ -210,11 +207,11 @@ class _MediaListViewState extends State<MediaListView> {
                 : Container(),
           ],
         ),
-        widget.mediaList.length == 0
-            ? Container(
+        widget.mediaList.isEmpty
+            ? SizedBox(
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Text(t.noitemstodisplay,
                       textAlign: TextAlign.center,
                       style: TextStyles.medium(context)),

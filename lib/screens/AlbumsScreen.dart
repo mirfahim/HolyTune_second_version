@@ -21,12 +21,14 @@ class AlbumsScreen extends StatelessWidget {
       create: (context) => AlbumsModel(),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFF111111),
           title: Text(
             t.albums,
             maxLines: 1,
           ),
         ),
         body: Container(
+            padding: EdgeInsets.all(10),
             height: double.infinity,
             width: double.infinity,
             child: MediaScreen()),

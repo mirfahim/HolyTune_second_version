@@ -31,7 +31,7 @@ class _MoodsScreenState extends State<MoodsScreen> {
       create: (context) => MoodsModel(),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: appState.isDarkModeOn== false ?MyColors.softBlueColor : Colors.black54,
+          backgroundColor: Color(0xFF111111),
           title: Text(
             t.moods,
             maxLines: 1,
@@ -40,6 +40,7 @@ class _MoodsScreenState extends State<MoodsScreen> {
         body: Container(
             height: double.infinity,
             width: double.infinity,
+            padding: EdgeInsets.all(10),
             child: MediaScreen()),
       ),
     );

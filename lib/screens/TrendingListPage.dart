@@ -1,4 +1,3 @@
-import 'package:HolyTune/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +14,7 @@ class TrendingListPage extends StatefulWidget {
   TrendingListPage();
 
   @override
-  TrendingListPageRouteState createState() => new TrendingListPageRouteState();
+  TrendingListPageRouteState createState() => TrendingListPageRouteState();
 }
 
 class TrendingListPageRouteState extends State<TrendingListPage> {
@@ -23,11 +22,11 @@ class TrendingListPageRouteState extends State<TrendingListPage> {
   Widget build(BuildContext context) {
     AppStateNotifier appState = Provider.of<AppStateNotifier>(context);
     Userdata userdata = appState.userdata;
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: appState.isDarkModeOn== false ?MyColors.softBlueColor : Colors.black54,
-        title: new Text(t.hotandtrending),
+        backgroundColor: Color(0xFF111111),
+        title: Text(t.hotandtrending),
       ),
       body: ChangeNotifierProvider(
         create: (context) => MediaScreensModel(userdata),
@@ -42,7 +41,7 @@ class MediaScreen extends StatefulWidget {
   final String title;
 
   @override
-  MediaScreenRouteState createState() => new MediaScreenRouteState();
+  MediaScreenRouteState createState() => MediaScreenRouteState();
 }
 
 class MediaScreenRouteState extends State<MediaScreen> {
@@ -88,7 +87,7 @@ class MediaScreenRouteState extends State<MediaScreen> {
           } else {
             body = Text(t.nomoredata);
           }
-          return Container(
+          return SizedBox(
             height: 55.0,
             child: Center(child: body),
           );
@@ -97,7 +96,7 @@ class MediaScreenRouteState extends State<MediaScreen> {
       controller: mediaScreensModel.refreshController,
       onRefresh: _onRefresh,
       onLoading: _onLoading,
-      child: (mediaScreensModel.isError == true && items.length == 0)
+      child: (mediaScreensModel.isError == true && items.isEmpty)
           ? NoitemScreen(
               title: t.oops, message: t.dataloaderror, onClick: _onRefresh)
           : ListView.builder(

@@ -21,12 +21,12 @@ class MoodsListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
       child: InkWell(
-        child: Container(
+        child: SizedBox(
           height: 200.0,
           width: 100.0,
           child: Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: 100,
                 width: 100,
                 //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),

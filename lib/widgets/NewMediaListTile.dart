@@ -52,7 +52,7 @@ class _ItemTileState extends State<NewItemTile> {
         Navigator.of(context).pushNamed(PlayPage.routeName);
       },
       child: Container(
-        height: 80,
+        height: 70,
         width: double.infinity,
         padding: EdgeInsets.fromLTRB(15, 0.2, 10, 0),
         child: Column(
@@ -92,7 +92,7 @@ class _ItemTileState extends State<NewItemTile> {
                           ),
                         )),
                   ),
-                  Container(width: 10),
+                  SizedBox(width: 5),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

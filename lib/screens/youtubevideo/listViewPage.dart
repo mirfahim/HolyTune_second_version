@@ -12,7 +12,7 @@ class ListViewPage extends StatefulWidget {
 class _ListViewPageState extends State<ListViewPage> {
 // late
   YoutubePlayerController _controller;
-  String videoTitle = "Olama Tolaba";
+  String videoTitle = "Olama Tolaba | ওলামা তলাবা";
   String videoArtist = 'Kalarab Sommilito Gojol';
   String videoUrl = "https://www.youtube.com/embed/f5c1UhQdmPU";
 
@@ -27,7 +27,7 @@ class _ListViewPageState extends State<ListViewPage> {
         disableDragSeek: false,
         loop: false,
         isLive: false,
-        forceHD: false,
+        forceHD: true,
       ),
     );
   }
@@ -44,78 +44,79 @@ class _ListViewPageState extends State<ListViewPage> {
     return ChangeNotifierProvider<GetData>(
       create: (context) => GetData(),
       child: Scaffold(
-          body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min, //test
-          children: [
-            YoutubePlayer(
-              controller: _controller,
-              liveUIColor: Colors.amber,
-              aspectRatio: 16 / 9,
-            ),
-            Container(
-                height: 70,
-                width: 500,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Column(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          videoTitle,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
+          body: Column(
+        mainAxisSize: MainAxisSize.min, //test
+        children: [
+          YoutubePlayer(
+            controller: _controller,
+            liveUIColor: Colors.amber,
+            aspectRatio: 16 / 9,
+          ),
+          Container(
+              height: 70,
+              width: 500,
+              child: Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Column(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        videoTitle,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFBBBBBB),
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      Flexible(
-                        child: Text(
-                          videoArtist,
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xFF6E6E6E),
-                          ),
-                          overflow: TextOverflow.ellipsis,
+                    ),
+                    Flexible(
+                      child: Text(
+                        videoArtist,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFF6E6E6E),
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      // Text("$artist")
-                    ],
+                    ),
+                    // Text("$artist")
+                  ],
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFF1F1F1F),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                ),
+              )),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    "Popular Islamic Videos",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                decoration: BoxDecoration(
-                  color: Color(0xFF1F1F1F),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
-                  ),
-                )),
-            SizedBox(
-              height: 10,
+                // Icon(Icons.widgets_outlined),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Text(
-                      "Popular Islamic Videos",
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  // Icon(Icons.widgets_outlined),
-                ],
-              ),
-            ),
-            Divider(),
-            Consumer<GetData>(
+          ),
+          Divider(),
+          Expanded(
+            child: Consumer<GetData>(
               builder: (context, yGetData, child) {
                 // print(yGetData.data.length);
                 // return Text("dgfgfd");
@@ -123,7 +124,7 @@ class _ListViewPageState extends State<ListViewPage> {
                     ? Center(child: CircularProgressIndicator())
                     : ListView.builder(
                         shrinkWrap: true,
-                        physics: ScrollPhysics(),
+                        // physics: BouncingScrollPhysics(),
                         itemCount: yGetData.data.length,
                         itemBuilder: (BuildContext context, index) {
                           return ListTile(
@@ -134,7 +135,7 @@ class _ListViewPageState extends State<ListViewPage> {
                               yGetData.data[index].title,
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Color(0xFFD1D1D1),
+                                color: Color(0xFFBBBBBB),
                               ),
                             ),
                             subtitle: Text(
@@ -149,23 +150,21 @@ class _ListViewPageState extends State<ListViewPage> {
                               _controller.load(YoutubePlayer.convertUrlToId(
                                       yGetData.data[index].url)
                                   .toString());
-                              setState(
-                                () {
-                                  videoUrl =
-                                      yGetData.data[index].url.toString();
-                                  videoTitle =
-                                      yGetData.data[index].title.toString();
-                                  videoArtist = yGetData.data[index].artist;
-                                },
-                              );
+                              setState(() {
+                                videoUrl = yGetData.data[index].url.toString();
+                                videoTitle =
+                                    yGetData.data[index].title.toString();
+                                videoArtist = yGetData.data[index].artist;
+                              });
+                              print(videoUrl);
                             },
                           );
                         },
                       );
               },
             ),
-          ],
-        ),
+          ),
+        ],
       )),
     );
   }

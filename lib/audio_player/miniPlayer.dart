@@ -1,6 +1,7 @@
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/utils/TimUtil.dart';
 import 'package:HolyTune/widgets/Banneradmob.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,20 +29,21 @@ class _AudioPlayout extends State<MiniPlayer> {
     return Consumer<AudioPlayerModel>(
       builder: (context, audioPlayerModel, child) {
         Media mediaItem = audioPlayerModel.currentMedia;
+        // print("------------------------------------");
+        // print(mediaItem.coverPhoto);
+        // print("------------------------------------");
         return mediaItem == null
             ? Container()
-            : Column(
-              children:[
+            : Column(children: [
                 Banneradmob(),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(PlayPage.routeName);
                   },
-                  child: Container(
-                    height:70,
-                    //color: Colors.grey[900],
+                  child: SizedBox(
+                    height: 70,
                     child: Card(
-                        color:Colors.blueAccent,
+                        color: Color(0xFF17a5e5),
                         //color: audioPlayerModel.backgroundColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(0)),
@@ -49,78 +51,90 @@ class _AudioPlayout extends State<MiniPlayer> {
                         elevation: 10,
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xFF17a5e5),
+                                Color(0xFFB36500),
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            ),
+                          ),
                           child: Row(
                             children: <Widget>[
-                              mediaItem == null
-                                  ? Container()
-                                  : (mediaItem.coverPhoto == ""
-                                  ? Icon(Icons.audiotrack, color: Colors.white,)
-                                  : Container(
-                                height: 65,
-                                width: 65,
-                                decoration: BoxDecoration(
-
-                                  color: Colors.white,
-                                  //shape: BoxShape.circle,
-                                  border: Border.all(color:Colors.blue),
-                                  boxShadow:  [
-                                    BoxShadow(
-                                      color: Colors.blue,
-                                      blurRadius: 25.0, // soften the shadow
-                                      spreadRadius: 5.0, //extend the shadow
-                                      offset: Offset(
-                                        15.0, // Move to right 10  horizontally
-                                        02.0, // Move to bottom 10 Vertically
-                                      ),
-                                    )
-                                  ],
-                                  // borderRadius: BorderRadius.circular(1),
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit:  BoxFit.cover,
-                                    image: NetworkImage(
-                                     mediaItem.coverPhoto.contains("https://adminapplication.com/uploads/") ? mediaItem.coverPhoto : SharedPref.imageURL + mediaItem.coverPhoto ),
+                              CachedNetworkImage(
+                                imageUrl:
+                                    audioPlayerModel.currentMedia.coverPhoto,
+                                imageBuilder: (context, imageProvider) =>
+                                    CircleAvatar(
+                                  backgroundColor: Color(0xFF015E68),
+                                  radius: 30,
+                                  child: CircleAvatar(
+                                    radius: 27,
+                                    backgroundImage: imageProvider,
                                   ),
-
                                 ),
-
-
-                              )
+                                placeholder: (context, url) =>
+                                    Center(child: CupertinoActivityIndicator()),
+                                errorWidget: (context, url, error) => Center(
+                                    child: Icon(
+                                  Icons.error,
+                                  color: Color(0xFFF78383),
+                                )),
                               ),
-                              Container(
-                                width: 12,
-                              ),
+                              SizedBox(width: 12),
                               Expanded(
                                 child: MarqueeWidget(
                                   direction: Axis.horizontal,
-                                  child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children:[
-                                        Text(
-                                          mediaItem != null ? TimUtil.timeFormatter(mediaItem.duration): "",
-                                          maxLines: 1,
-                                          textAlign: TextAlign.start,
-                                          style: TextStyles.subhead(context)
-                                              .copyWith(fontSize: 9,color: Colors.white),
-
-                                        ),
-                                        Text(
-                                          mediaItem != null ? mediaItem.title : "",
-                                          maxLines: 1,
-                                          style: TextStyles.subhead(context)
-                                              .copyWith(fontSize: 13, color: Colors.white,),
-
-                                        ),
-                                        SizedBox(height:05,),
-                                        Text(
-                                          mediaItem != null ? mediaItem.artist : "",
-                                          maxLines: 1,
-                                          style: TextStyles.subhead(context)
-                                              .copyWith(fontSize: 9,color: Colors.white),
-
-                                        ),
-                                      ]
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            mediaItem != null
+                                                ? TimUtil.timeFormatter(
+                                                    mediaItem.duration)
+                                                : "",
+                                            maxLines: 1,
+                                            textAlign: TextAlign.start,
+                                            style: TextStyles.subhead(context)
+                                                .copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            mediaItem != null
+                                                ? mediaItem.title
+                                                : "",
+                                            maxLines: 1,
+                                            style: TextStyles.subhead(context)
+                                                .copyWith(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          // SizedBox(
+                                          //   height: 05,
+                                          // ),
+                                          Text(
+                                            mediaItem != null
+                                                ? mediaItem.artist
+                                                : "",
+                                            maxLines: 1,
+                                            style: TextStyles.subhead(context)
+                                                .copyWith(
+                                              fontSize: 13,
+                                              color: Colors.white70,
+                                            ),
+                                          ),
+                                        ]),
                                   ),
                                 ),
                               ),
@@ -137,12 +151,14 @@ class _AudioPlayout extends State<MiniPlayer> {
                               //   ),
                               // ),
                               Icon(
-                                Icons.favorite_border,color: Colors.white,
+                                Icons.favorite_border,
+                                color: Colors.white,
                               ),
-                              SizedBox(width: 05,),
+                              SizedBox(
+                                width: 05,
+                              ),
                               IconButton(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 2),
-
                                 onPressed: () {
                                   audioPlayerModel.onPressed();
                                 },
@@ -190,8 +206,7 @@ class _AudioPlayout extends State<MiniPlayer> {
                         )),
                   ),
                 ),
-              ]
-            );
+              ]);
       },
     );
   }

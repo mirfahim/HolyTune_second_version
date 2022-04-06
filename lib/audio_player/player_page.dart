@@ -193,19 +193,30 @@ class BuildPlayerBody extends StatelessWidget {
                         // ),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.45,
-                          color: Colors.white10,
+                          color: Color(0xFF2B2B2B),
                           child: CachedNetworkImage(
                             imageUrl: audioPlayerModel.currentMedia.coverPhoto,
                             imageBuilder: (context, imageProvider) => Container(
-                              margin: EdgeInsets.all(50),
+                              margin: EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 20,
+                              ),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
                                   image: imageProvider,
                                   fit: BoxFit.cover,
                                   //colorFilter:
                                   //   ColorFilter.mode(Colors.black87, BlendMode.darken),
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFA8A8A8),
+                                    blurRadius: 15,
+                                    spreadRadius: 3,
+                                    offset: Offset(0, 0),
+                                  )
+                                ],
                               ),
                             ),
                             placeholder: (context, url) =>

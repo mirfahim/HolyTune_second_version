@@ -6,9 +6,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LiveEventController extends ChangeNotifier {
   YoutubePlayerController ycontroller;
-  String videoTitle = "Olama Tolaba";
-  String videoArtist = 'Kalarab Sommilito Gojol';
-  String videoUrl = "https://www.youtube.com/embed/f5c1UhQdmPU";
+  String liveTitle = "Olama Tolaba";
 
   List liveList = [];
 
@@ -17,12 +15,13 @@ class LiveEventController extends ChangeNotifier {
     playVideo(null);
   }
 
-  playVideo(String vUrl) async {
+  playVideo(Map vUrl) async {
     String url = "https://adminapplication.com/fetch_live";
     Uri uri = Uri.parse(url);
     var res = await h.get(uri);
     if (vUrl == null && res.statusCode == 200) {
       var frs = jsonDecode(res.body);
+      liveTitle = frs['lives'][0]['title'];
       ycontroller = YoutubePlayerController(
         initialVideoId:
             YoutubePlayer.convertUrlToId(frs['lives'][0]['url']).toString(),
@@ -32,23 +31,24 @@ class LiveEventController extends ChangeNotifier {
           disableDragSeek: false,
           loop: false,
           isLive: true,
-          forceHD: false,
+          forceHD: true,
         ),
       );
-      notifyListeners();
     } else {
+      liveTitle = vUrl['title'];
       ycontroller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(vUrl).toString(),
+        initialVideoId: YoutubePlayer.convertUrlToId(vUrl['url']).toString(),
         flags: const YoutubePlayerFlags(
           autoPlay: true,
           mute: false,
           disableDragSeek: false,
           loop: false,
           isLive: false,
-          forceHD: false,
+          forceHD: true,
         ),
       );
     }
+    notifyListeners();
   }
 
   void getLivedata() async {

@@ -17,7 +17,7 @@ class AudioListPage extends StatefulWidget {
   AudioListPage();
 
   @override
-  TrendingListPageRouteState createState() => new TrendingListPageRouteState();
+  TrendingListPageRouteState createState() => TrendingListPageRouteState();
 }
 
 class TrendingListPageRouteState extends State<AudioListPage> {
@@ -25,15 +25,13 @@ class TrendingListPageRouteState extends State<AudioListPage> {
 
   @override
   Widget build(BuildContext context) {
-
     AppStateNotifier appState = Provider.of<AppStateNotifier>(context);
     Userdata userdata = appState.userdata;
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: appState.isDarkModeOn != true ? MyColors.softBlueColor : Colors.black54,
-
-        title: new Text(t.audiotracks),
+        backgroundColor: Color(0xFF111111),
+        title: Text(t.audiotracks),
       ),
       body: ChangeNotifierProvider(
         create: (context) => AudioScreensModel(userdata),
@@ -106,33 +104,28 @@ class MediaScreenRouteState extends State<AudioScreen> {
       child: (mediaScreensModel.isError == true && items.length == 0)
           ? NoitemScreen(
               title: t.oops, message: t.dataloaderror, onClick: _onRefresh)
-          :
-              ListView(
-                children:[
-                  ListView.builder(
-                    physics: ScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: items.length + 1,
-                    scrollDirection: Axis.vertical,
-                    padding: EdgeInsets.all(3),
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == 0) {
-                        return Container();
-                      } else {
-                        int _indx = index - 1;
-                        return ItemTile(
-                          mediaList: items,
-                          index: _indx,
-                          object: items[_indx],
-                        );
-                      }
-                    },
-                  ),
-
-                       Banneradmob(),
-                ]
+          : ListView(children: [
+              ListView.builder(
+                physics: ScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: items.length + 1,
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.all(3),
+                itemBuilder: (BuildContext context, int index) {
+                  if (index == 0) {
+                    return Container();
+                  } else {
+                    int _indx = index - 1;
+                    return ItemTile(
+                      mediaList: items,
+                      index: _indx,
+                      object: items[_indx],
+                    );
+                  }
+                },
               ),
-
+              Banneradmob(),
+            ]),
     );
   }
 }

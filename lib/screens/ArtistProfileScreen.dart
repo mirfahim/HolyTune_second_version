@@ -54,7 +54,7 @@ class ArtistProfileScreen extends StatelessWidget {
                   //   ),
                   // ),
                   SizedBox(
-                    height: 60,
+                    height: 50,
                   ),
                   CachedNetworkImage(
                     imageUrl: artists.thumbnail,
@@ -62,7 +62,7 @@ class ArtistProfileScreen extends StatelessWidget {
                       height: 150,
                       width: 150,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                         image: DecorationImage(
                           image: imageProvider,
                           fit: BoxFit.cover,
@@ -80,7 +80,7 @@ class ArtistProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 16, top: 0.0),
@@ -115,7 +115,7 @@ class ArtistProfileScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Container(
                     height: 40,
@@ -128,34 +128,31 @@ class ArtistProfileScreen extends StatelessWidget {
                       child: Text(
                         "Follow",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Color(0xFFE0E0E0),
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 2,
-                  ),
+                  SizedBox(height: 1),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Biography",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 250, 250, 250),
+                              color: Color(0xFFFAFAFA),
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 5,
                         ),
                         Text(
                           artists.biography,
-                          style: TextStyle(
-                              color: Color.fromARGB(137, 246, 243, 243)),
+                          style: TextStyle(color: Color(0x88F6F3F3)),
                         ),
                       ],
                     ),
