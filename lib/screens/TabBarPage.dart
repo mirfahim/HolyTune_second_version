@@ -1,7 +1,7 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/screens/HomePage.dart';
 import 'package:HolyTune/screens/SearchScreen.dart';
-import 'package:HolyTune/screens/UpcomingLiveEvents.dart';
+import 'package:HolyTune/screens/liveEvents.dart';
 
 import 'package:HolyTune/screens/musicPageTab.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyTabHomePage> {
           children: [
             HomePage(),
             MusicTabPage(),
-            UpcomingPage(),
+            LivePage(),
             ListViewPage(),
             SearchScreen(),
             // apiintre(),

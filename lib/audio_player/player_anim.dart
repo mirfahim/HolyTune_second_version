@@ -15,10 +15,11 @@ class RotatePlayer extends AnimatedWidget {
     AudioPlayerModel audioPlayerModel = Provider.of(context);
     return GestureDetector(
       onTap: () {
-        print("PLAYER_PAGE____IMAGE___${audioPlayerModel.currentMedia.coverPhoto}");
+        print(
+            "PLAYER_PAGE____IMAGE___${audioPlayerModel.currentMedia.coverPhoto}");
       },
       child: Container(
-       // color: Colors.red,
+        // color: Colors.red,
         margin: EdgeInsets.all(4),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.45,
@@ -44,12 +45,11 @@ class RotatePlayer extends AnimatedWidget {
                   ),
                 ),
                 placeholder: (context, url) =>
-
                     Center(child: CupertinoActivityIndicator()),
                 errorWidget: (context, url, error) => Center(
                     child: Icon(
                   Icons.error,
-                  color: Colors.grey,
+                  color: Color(0xFFF78383),
                 )),
               ),
             ],

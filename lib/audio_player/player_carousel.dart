@@ -14,7 +14,7 @@ class Player extends StatelessWidget {
   }
 
   Widget _timer(BuildContext context, AudioPlayerModel audioPlayerModel) {
-    var style = new TextStyle(
+    var style = TextStyle(
       color: Colors.white54,
       fontSize: 13,
     );
@@ -32,10 +32,10 @@ class Player extends StatelessWidget {
           if (seekSliderValue > 1) {
             seekSliderValue = 1;
           }
-          print("snapshot.data = " + snapshot.data.toString());
-          print("backgroundAudioDurationSeconds = " +
-              audioPlayerModel.backgroundAudioDurationSeconds.toString());
-          print("seekSliderValue = " + seekSliderValue.toString());
+          // print("snapshot.data = " + snapshot.data.toString());
+          // print("backgroundAudioDurationSeconds = " +
+          //     audioPlayerModel.backgroundAudioDurationSeconds.toString());
+          // print("seekSliderValue = " + seekSliderValue.toString());
         }
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,11 +51,10 @@ class Player extends StatelessWidget {
             Expanded(
               child: SliderTheme(
                 data: SliderThemeData(
-        thumbShape: RoundSliderThumbShape(
-            enabledThumbRadius: 07)),
-
+                  trackHeight: 2,
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 07),
+                ),
                 child: Slider(
-
                     activeColor: Colors.blue,
                     value: seekSliderValue,
                     onChangeEnd: (v) {
@@ -68,7 +67,7 @@ class Player extends StatelessWidget {
                     }),
               ),
             ),
-            new Text(
+            Text(
               TimUtil.stringForSeconds(
                   audioPlayerModel.backgroundAudioDurationSeconds),
               style: style,
@@ -84,7 +83,7 @@ class Player extends StatelessWidget {
     return [
       Visibility(
         visible: !audioPlayerModel.showList,
-        child: new Padding(
+        child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
           ),
@@ -93,13 +92,11 @@ class Player extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-        child: new Row(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-
-
             IconButton(
               onPressed: () {
                 audioPlayerModel.skipPrevious();
@@ -110,22 +107,23 @@ class Player extends StatelessWidget {
                 //Icons.skip_previous,
                 Icons.fast_rewind,
                 size: 25.0,
-                color: Colors.white,
+                color: Colors.white54,
               ),
             ),
             ClipOval(
-                child: Container(
-              color: Theme.of(context).accentColor.withAlpha(30),
-              width: 50.0,
-              height: 50.0,
-              child: IconButton(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                onPressed: () {
-                  audioPlayerModel.onPressed();
-                },
-                icon: audioPlayerModel.icon(false),
+              child: Container(
+                color: Colors.blue,
+                width: 50.0,
+                height: 50.0,
+                child: IconButton(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  onPressed: () {
+                    audioPlayerModel.onPressed();
+                  },
+                  icon: audioPlayerModel.icon(false),
+                ),
               ),
-            )),
+            ),
             IconButton(
               onPressed: () {
                 audioPlayerModel.skipNext();
@@ -136,7 +134,7 @@ class Player extends StatelessWidget {
                 //Icons.skip_next,
                 Icons.fast_forward,
                 size: 25.0,
-                color: Colors.white,
+                color: Colors.white54,
               ),
             ),
           ],

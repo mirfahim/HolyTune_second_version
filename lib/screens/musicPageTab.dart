@@ -703,7 +703,7 @@ class _HomePageItemState extends State<HomePageItem> {
         //physics: BouncingScrollPhysics(),
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -730,14 +730,13 @@ class _HomePageItemState extends State<HomePageItem> {
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.white10,
                         //color: Theme.of(context).scaffoldBackgroundColor,
-                        child: Container(
+                        child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -759,13 +758,11 @@ class _HomePageItemState extends State<HomePageItem> {
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
-                        child: Container(
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white10,
+                        child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -783,13 +780,11 @@ class _HomePageItemState extends State<HomePageItem> {
                       onTap: () {},
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
-                        child: Container(
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white10,
+                        child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -805,7 +800,7 @@ class _HomePageItemState extends State<HomePageItem> {
                     ),
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -819,13 +814,11 @@ class _HomePageItemState extends State<HomePageItem> {
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white10,
                         child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -847,13 +840,11 @@ class _HomePageItemState extends State<HomePageItem> {
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white10,
                         child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -871,13 +862,11 @@ class _HomePageItemState extends State<HomePageItem> {
                       onTap: () {},
                       child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                        color: appState.isDarkModeOn != true
-                            ? Colors.black54
-                            : Colors.black54,
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Colors.white10,
                         child: SizedBox(
                           height: 90,
-                          width: 90,
+                          width: 100,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -895,7 +884,7 @@ class _HomePageItemState extends State<HomePageItem> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16.0),
+            padding: EdgeInsets.only(left: 16.0),
             child: SizedBox(
               height: 230,
               child: ListView.builder(
@@ -941,7 +930,7 @@ class _HomePageItemState extends State<HomePageItem> {
                   }),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 16.0, right: 16.0),
             child: ListTile(
               title: Text(
@@ -959,7 +948,7 @@ class _HomePageItemState extends State<HomePageItem> {
               ),
             ),
           ),
-          _packages.length > 0
+          _packages.isNotEmpty
               ? ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -969,72 +958,77 @@ class _HomePageItemState extends State<HomePageItem> {
                       left: 16.0,
                       right: 16.0,
                     ),
-                    child: Card(
-                      color: appState.isDarkModeOn != true
-                          ? Colors.black54
-                          : Colors.black54,
-                      child: SizedBox(
-                        height: 90,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ListTile(
-                              contentPadding:
-                                  EdgeInsets.only(left: 15, right: 15),
-                              title: Text(
-                                _packages[index].amount.toString() + " BDT",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white10,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ListTile(
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 35),
+                            title: Text(
+                              _packages[index].packageName,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                              subtitle: Text(_packages[index].packageName),
-                              trailing: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isLoading = true;
-                                  });
-                                  // if (SharedPref.loginState == false) {
-                                  // Route route = MaterialPageRoute(
-                                  //     builder: (c) => SplashScreenHome());
-                                  callPayment(
-                                      _packages[index].amount.toString(),
-                                      const Uuid().v1(),
-                                      "Testing User",
-                                      "Tasnuva Address",
-                                      "01645772748");
-                                  // } else {
-                                  //   Navigator.pushNamed(context, LoginScreen.routeName);
-                                  // }
-                                },
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(
-                                          color: Color.fromARGB(
-                                              255, 120, 193, 253)),
+                            ),
+                            subtitle: Text(
+                              _packages[index].amount.toString() + " BDT",
+                              style: TextStyle(
+                                color: Colors.white38,
+                              ),
+                            ),
+                            trailing: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  _isLoading = true;
+                                });
+                                // if (SharedPref.loginState == false) {
+                                // Route route = MaterialPageRoute(
+                                //     builder: (c) => SplashScreenHome());
+                                callPayment(
+                                    _packages[index].amount.toString(),
+                                    const Uuid().v1(),
+                                    "Testing User",
+                                    "Tasnuva Address",
+                                    "01645772748");
+                                // } else {
+                                //   Navigator.pushNamed(context, LoginScreen.routeName);
+                                // }
+                              },
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(
+                                      color: Color(0xFF78C1FD),
                                     ),
-                                  ),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                    Color(0xFF0470C9),
                                   ),
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "get  plan".toUpperCase(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                    ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  Color(0xFF0470C9),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "get  plan".toUpperCase(),
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

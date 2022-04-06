@@ -232,24 +232,24 @@ class AudioPlayerModel with ChangeNotifier {
       if (isMiniPlayer) {
         return const Icon(
           Icons.pause,
-          size: 40,
+          size: 30,
         );
       }
       return const Icon(
         Icons.pause,
-        size: 40,
+        size: 30,
         color: Colors.white,
       );
     }
     if (isMiniPlayer) {
       return const Icon(
         Icons.play_arrow,
-        size: 40,
+        size: 30,
       );
     }
     return const Icon(
       Icons.play_arrow,
-      size: 40,
+      size: 30,
       color: Colors.white,
     );
   }

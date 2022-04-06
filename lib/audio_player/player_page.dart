@@ -1,6 +1,7 @@
 import 'package:HolyTune/utils/my_colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'player_anim.dart';
 import '../i18n/strings.g.dart';
 import '../models/Userdata.dart';
@@ -28,17 +29,17 @@ class PlayPage extends StatefulWidget {
 class _PlayPageState extends State<PlayPage> with TickerProviderStateMixin {
   AnimationController controllerPlayer;
   Animation<double> animationPlayer;
-  final _commonTween = new Tween<double>(begin: 0.0, end: 1.0);
+  final _commonTween = Tween<double>(begin: 0.0, end: 1.0);
   Userdata userdata;
 
   @override
   initState() {
     super.initState();
     userdata = Provider.of<AppStateNotifier>(context, listen: false).userdata;
-    controllerPlayer = new AnimationController(
+    controllerPlayer = AnimationController(
         duration: const Duration(milliseconds: 15000), vsync: this);
     animationPlayer =
-        new CurvedAnimation(parent: controllerPlayer, curve: Curves.linear);
+        CurvedAnimation(parent: controllerPlayer, curve: Curves.linear);
     animationPlayer.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         controllerPlayer.repeat();
@@ -101,7 +102,7 @@ class _PlayPageState extends State<PlayPage> with TickerProviderStateMixin {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      color:Colors.black, //audioPlayerModel.backgroundColor.withAlpha(250),
+      color: Colors.black, //audioPlayerModel.backgroundColor.withAlpha(250),
     );
     /*Container(
       width: double.infinity,
@@ -147,110 +148,140 @@ class BuildPlayerBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
+      color: Color(0xFF2B2B2B),
       child: ListView(
         children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        size: 25.0,
-                        color: Colors.white,
-                      ),
-                      onPressed: () => {
-                        Navigator.pop(context),
-                      },
+          Column(
+            children: <Widget>[
+              Container(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 25.0,
+                      color: Colors.white,
                     ),
-                    SizedBox(width: 20,),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                        child: MarqueeWidget(
-                          direction: Axis.horizontal,
-                          child: Text(
-                           audioPlayerModel.currentMedia.album,
-                            maxLines: 1,
-                            style: TextStyles.subhead(context)
-                                .copyWith(fontSize: 18, color: Colors.white),
-                          ),
-                        ),
+                    onPressed: () => {
+                      Navigator.pop(context),
+                    },
+                  ),
+                  SizedBox(width: 20),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                    child: MarqueeWidget(
+                      direction: Axis.horizontal,
+                      child: Text(
+                        audioPlayerModel.currentMedia.album,
+                        maxLines: 1,
+                        style: TextStyles.subhead(context)
+                            .copyWith(fontSize: 18, color: Colors.white),
                       ),
-                    )
-                  ],
-                ),
-                !audioPlayerModel.showList
-                    ? Column(
-                        children: <Widget>[
-                          SizedBox(height: 0),
-                          RotatePlayer(
-                              animation:
-                                  _commonTween.animate(controllerPlayer)),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.03),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
-                            child: MarqueeWidget(
-                              direction: Axis.horizontal,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-
-
-                              Icon(Icons.favorite_border, color:Colors.white,),
-                                  SizedBox(width: 50,),
-                                  Text(
-                                    audioPlayerModel.currentMedia.title,
-                                    maxLines: 1,
-                                    style: TextStyles.subhead(context).copyWith(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  SizedBox(width: 50,),
-                                  Icon (Icons.file_download, color: Colors.white,) ,
-
-                                ],
+                    ),
+                  )
+                ],
+              ),
+              !audioPlayerModel.showList
+                  ? Column(
+                      children: <Widget>[
+                        SizedBox(height: 0),
+                        // RotatePlayer(
+                        //   animation: _commonTween.animate(controllerPlayer),
+                        // ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.45,
+                          color: Colors.white10,
+                          child: CachedNetworkImage(
+                            imageUrl: audioPlayerModel.currentMedia.coverPhoto,
+                            imageBuilder: (context, imageProvider) => Container(
+                              margin: EdgeInsets.all(50),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                  //colorFilter:
+                                  //   ColorFilter.mode(Colors.black87, BlendMode.darken),
+                                ),
                               ),
                             ),
+                            placeholder: (context, url) =>
+                                Center(child: CupertinoActivityIndicator()),
+                            errorWidget: (context, url, error) => Center(
+                                child: Icon(
+                              Icons.error,
+                              color: Color(0xFFF78383),
+                            )),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                            child: Text(
-                              audioPlayerModel.currentMedia.artist,
-                              textAlign: TextAlign.center,
-                              maxLines: 3,
-                              style: TextStyles.subhead(context)
-                                  .copyWith(fontSize: 15, color: Colors.white),
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+                          child: MarqueeWidget(
+                            direction: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                Text(
+                                  audioPlayerModel.currentMedia.title,
+                                  maxLines: 1,
+                                  style: TextStyles.subhead(context).copyWith(
+                                      fontSize: 18, color: Colors.white),
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                Icon(
+                                  Icons.file_download,
+                                  color: Colors.white,
+                                ),
+                              ],
                             ),
                           ),
-                          Player(),
-                          MediaCommentsLikesContainer(
-                              key: UniqueKey(),
-                              context: context,
-                              audioPlayerModel: audioPlayerModel,
-                              currentMedia: audioPlayerModel.currentMedia),
-                          Banneradmob(),
-
-                        ],
-                      )
-                    : SongListCarousel(),
-              ],
-            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                          child: Text(
+                            audioPlayerModel.currentMedia.artist,
+                            textAlign: TextAlign.center,
+                            maxLines: 3,
+                            style: TextStyles.subhead(context).copyWith(
+                              fontSize: 15,
+                              color: Colors.white54,
+                            ),
+                          ),
+                        ),
+                        Player(),
+                        MediaCommentsLikesContainer(
+                          key: UniqueKey(),
+                          context: context,
+                          audioPlayerModel: audioPlayerModel,
+                          currentMedia: audioPlayerModel.currentMedia,
+                        ),
+                        Banneradmob(),
+                      ],
+                    )
+                  : SongListCarousel(),
+            ],
           ),
 
-         // Player(),
-         //  MediaCommentsLikesContainer(
-         //      key: UniqueKey(),
-         //      context: context,
-         //      audioPlayerModel: audioPlayerModel,
-         //      currentMedia: audioPlayerModel.currentMedia),
+          // Player(),
+          //  MediaCommentsLikesContainer(
+          //      key: UniqueKey(),
+          //      context: context,
+          //      audioPlayerModel: audioPlayerModel,
+          //      currentMedia: audioPlayerModel.currentMedia),
 
           // Banneradmob(),
         ],
@@ -283,13 +314,15 @@ class _MediaCommentsLikesContainerState
     return Consumer<MediaPlayerModel>(
       builder: (context, mediaPlayerModel, child) {
         return Container(
-         // color:Colors.red,
+          // color:Colors.red,
           height: 50,
           margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              SizedBox(width: 02,),
+              SizedBox(
+                width: 02,
+              ),
               InkWell(
                 onTap: () {
                   mediaPlayerModel
@@ -314,7 +347,9 @@ class _MediaCommentsLikesContainerState
                           )),
                 ]),
               ),
-              SizedBox(width: 02,),
+              SizedBox(
+                width: 02,
+              ),
               InkWell(
                 onTap: () {
                   mediaPlayerModel.navigatetoCommentsScreen(context);
@@ -333,7 +368,9 @@ class _MediaCommentsLikesContainerState
                   ],
                 ),
               ),
-              SizedBox(width: 02,),
+              SizedBox(
+                width: 02,
+              ),
               IconButton(
                 onPressed: () {
                   widget.audioPlayerModel.shufflePlaylist();
@@ -347,17 +384,21 @@ class _MediaCommentsLikesContainerState
                   color: Colors.white,
                 ),
               ),
-              SizedBox(width: 02,),
+              SizedBox(
+                width: 02,
+              ),
               IconButton(
-                onPressed: () => null,//widget.audioPlayerModel
-                  //  .setShowList(!widget.audioPlayerModel.showList),
+                onPressed: () => null, //widget.audioPlayerModel
+                //  .setShowList(!widget.audioPlayerModel.showList),
                 icon: Icon(
                   Icons.playlist_play,
                   size: 27.0,
                   color: Colors.white,
                 ),
               ),
-              SizedBox(width: 02,),
+              SizedBox(
+                width: 02,
+              ),
               IconButton(
                 onPressed: () => widget.audioPlayerModel.changeRepeat(),
                 icon: widget.audioPlayerModel.isRepeat == true

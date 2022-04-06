@@ -20,7 +20,7 @@ class ArtistsListView extends StatelessWidget {
     appState = Provider.of<AppStateNotifier>(context);
     // print("object");
     return Padding(
-      padding: const EdgeInsets.only(right: 8),
+      padding: EdgeInsets.only(right: 8),
       child: InkWell(
         child: SizedBox(
           height: 100.0,

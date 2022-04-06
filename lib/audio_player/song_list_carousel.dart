@@ -22,12 +22,12 @@ class _ForYouCarouselState extends State<SongListCarousel> {
               borderRadius: BorderRadius.circular(20.0),
               child: Container(
                 padding: EdgeInsets.all(10),
-                color: Theme.of(context).accentColor.withAlpha(90),
+                color: Theme.of(context).colorScheme.secondary.withAlpha(90),
                 child: Row(
                   children: <Widget>[
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
-                      child: Container(
+                      child: SizedBox(
                           width: 50,
                           height: 50,
                           child: Image.network(data.coverPhoto)),

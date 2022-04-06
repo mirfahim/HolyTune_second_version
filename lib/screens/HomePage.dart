@@ -154,11 +154,11 @@ class _HomePageItemState extends State<HomePageItem> {
     );
     final status = await newVersion.getVersionStatus();
     if (status.localVersion == serverVersion) {
-      print("deviceVersion " + status.localVersion);
+      // print("deviceVersion " + status.localVersion);
     } else {
-      print("deviceVersion " + status.localVersion);
-      print("storeVersion " + status.storeVersion);
-      print("serverVersion " + serverVersion);
+      // print("deviceVersion " + status.localVersion);
+      // print("storeVersion " + status.storeVersion);
+      // print("serverVersion " + serverVersion);
       newVersion.showUpdateDialog(
           context: context,
           dialogText:

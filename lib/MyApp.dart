@@ -92,8 +92,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return RefreshConfiguration(
       footerTriggerDistance: 15,
       dragSpeedRatio: 0.91,
-      headerBuilder: () =>  MaterialClassicHeader(),
-      footerBuilder: () =>  ClassicFooter(),
+      headerBuilder: () => MaterialClassicHeader(),
+      footerBuilder: () => ClassicFooter(),
       enableLoadingWhenNoData: false,
       shouldFooterFollowWhenNotFull: (state) {
         // If you want load more with noMoreData state ,may be you should return false
@@ -121,30 +121,28 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           title: 'App',
 
           home: appState.isLoadingTheme
-              ? Container(
-                  child: Center(
-                    child: Container(
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Container(height: 10),
-                          Text(t.appname,
-                              style: TextStyles.medium(context).copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30)),
-                          Container(height: 12),
-                          Text(t.loadingapp,
-                              style: TextStyles.body1(context)
-                                  .copyWith(color: Colors.grey[500])),
-                          Container(height: 50),
-                          CupertinoActivityIndicator(
-                            radius: 20,
-                          )
-                        ],
-                      ),
+              ? Center(
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(height: 10),
+                        Text(t.appname,
+                            style: TextStyles.medium(context).copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30)),
+                        Container(height: 12),
+                        Text(t.loadingapp,
+                            style: TextStyles.body1(context)
+                                .copyWith(color: Colors.grey[500])),
+                        Container(height: 50),
+                        CupertinoActivityIndicator(
+                          radius: 20,
+                        )
+                      ],
                     ),
                   ),
                 )

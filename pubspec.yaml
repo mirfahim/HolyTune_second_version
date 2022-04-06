@@ -3,7 +3,7 @@
 name: HolyTune
 description: Holy Tune - Islamic Song.
 
-version: 1.0.4+4
+version: 1.0.5+5
 
 environment:
   sdk: ">=2.10.0 <3.0.0"

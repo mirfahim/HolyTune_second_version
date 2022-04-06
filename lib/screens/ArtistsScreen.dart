@@ -154,7 +154,7 @@ class ItemTile extends StatelessWidget {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: 130,
+                height: 120,
                 width: 150,
                 //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 // child: ClipRRect(
