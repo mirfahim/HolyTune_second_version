@@ -2,21 +2,9 @@ import 'dart:async';
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/screens/TabBarPage.dart';
-import 'package:flutter/services.dart';
-
-import 'package:HolyTune/screens/HomePage.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:http/http.dart' as http;
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'OnboardingPage.dart';
 
 class SplashScreenHome extends StatefulWidget {
   @override

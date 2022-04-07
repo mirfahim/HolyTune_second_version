@@ -1,6 +1,3 @@
-import 'package:HolyTune/utils/my_colors.dart';
-import 'package:HolyTune/widgets/Banneradmob.dart';
-
 import '../models/Userdata.dart';
 import '../providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +121,7 @@ class MediaScreenRouteState extends State<AudioScreen> {
                   }
                 },
               ),
-              Banneradmob(),
+              // Banneradmob(),
             ]),
     );
   }

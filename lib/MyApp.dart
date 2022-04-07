@@ -1,6 +1,7 @@
 import 'package:HolyTune/screens/TabBarPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import './providers/AppStateNotifier.dart';
 import './screens/MoodsMediaScreen.dart';
@@ -33,6 +34,7 @@ import './models/Media.dart';
 import './i18n/strings.g.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 // import 'package:firebase_analytics/observer.dart';
 
 class MyApp extends StatefulWidget {
@@ -81,8 +83,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   void didChangeAppLifeCycleState(AppLifecycleState appLifecycleState) {
     state = appLifecycleState;
-    print(appLifecycleState);
-    print(":::::::");
+    // print(appLifecycleState);
+    // print(":::::::");
   }
 
   @override

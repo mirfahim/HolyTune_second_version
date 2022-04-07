@@ -96,14 +96,9 @@
         </activity>
 
 
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/Admob_app_id"/>
-
-
-
-
+            android:value="ca-app-pub-2662237367678556~1920206279"/>
 
         <service android:name="com.google.flutter.plugins.audiofileplayer.AudiofileplayerService"
             android:foregroundServiceType="mediaPlayback">
@@ -165,6 +160,7 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        
 
 
     </application>

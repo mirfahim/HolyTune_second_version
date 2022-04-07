@@ -1,14 +1,10 @@
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
-import 'package:HolyTune/screens/BookMarkWidgetDash.dart';
 import 'package:HolyTune/utils/my_colors.dart';
-import 'package:HolyTune/widgets/Banneradmob.dart';
-import 'package:HolyTune/widgets/sliderImage.dart';
 import 'package:HolyTune/widgets/sliderWidget.dart';
-import 'package:admob_flutter/admob_flutter.dart';
+// import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../screens/MoodsListView.dart';
 import '../screens/ArtistsListView.dart';
@@ -26,7 +22,6 @@ import '../models/Media.dart';
 import '../models/Playlists.dart';
 //import 'package:flutter_switch/flutter_switch.dart';
 import 'package:shimmer/shimmer.dart';
-//import 'package:facebook_audience_network/facebook_audience_network.dart';
 
 class DashboardScreen extends StatefulWidget {
   DashboardScreen();
@@ -44,10 +39,10 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
     dashboardModel.loadItems();
   }
 
-  Widget _currentAd = SizedBox(
-    height: 0,
-    width: 0,
-  );
+  // Widget _currentAd = SizedBox(
+  //   height: 0,
+  //   width: 0,
+  // );
 
   // @override
   // void initState() {
@@ -282,7 +277,7 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
               child: MoodsListView(dashboardModel.moods),
             ),
 
-            Banneradmob(),
+            // Banneradmob(),
             SizedBox(
               height: 20,
             ),

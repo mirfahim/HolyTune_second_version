@@ -14,6 +14,7 @@ import '../i18n/strings.g.dart';
 
 class MediaPopupMenu extends StatelessWidget {
   MediaPopupMenu(this.media, {this.isDownloads});
+
   final Media media;
   final isDownloads;
 
@@ -71,13 +72,16 @@ class MediaPopupMenu extends StatelessWidget {
         }
         if (value == t.bookmark) {
           bookmarksModel.bookmarkMedia(media);
-        //  var bookMark = bookmarksModel.bookmarksList;
-         // print("HLWWWWWWWWWWW_________${Media["coverPhoto"]}");
+          //  var bookMark = bookmarksModel.bookmarksList;
+          // print("HLWWWWWWWWWWW_________${Media["coverPhoto"]}");
         }
         if (value == t.unbookmark) {
           bookmarksModel.unBookmarkMedia(media);
         }
         if (value == t.unbookmark) {
+          Share.shareFile(media);
+        }
+        if (value == t.share) {
           Share.shareFile(media);
         }
       },
@@ -108,14 +112,14 @@ class Share {
           text: t.sharefiletitle +
               media.title +
               "\n" +
-              t.sharefilebody +
+              media.artist +
               " http://play.google.com/store/apps/details?id=" +
               packageName,
           linkUrl: "");
     } else {
       await FlutterShare.shareFile(
         title: t.sharefiletitle + media.title,
-        text: t.sharefilebody +
+        text: t.tracks +
             " http://play.google.com/store/apps/details?id=" +
             packageName,
         filePath: media.streamUrl,

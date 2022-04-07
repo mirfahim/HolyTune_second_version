@@ -2,8 +2,6 @@ import 'package:HolyTune/screens/VideosScreenDashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:new_version/new_version.dart';
 import 'package:provider/provider.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../utils/img.dart';
 import '../providers/MoodsModel.dart';
 import '../screens/MoodsDrawerScreen.dart';
 import '../screens/Settings.dart';
@@ -18,22 +16,14 @@ import '../providers/MediaScreensModel.dart';
 import '../providers/AudioScreensModel.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 import '../auth/LoginScreen.dart';
-import '../utils/TextStyles.dart';
 import '../i18n/strings.g.dart';
 import '../utils/my_colors.dart';
 import '../models/Userdata.dart';
-import 'package:flutter/cupertino.dart';
 import '../providers/AppStateNotifier.dart';
-import '../screens/Dashboard.dart';
 import '../screens/MediaScreen.dart';
 import '../screens/AudioScreen.dart';
-import '../screens/Downloader.dart';
-import '../models/ScreenArguements.dart';
 import '../screens/BookmarksScreen.dart';
 import '../screens/PlaylistsScreen.dart';
-import '../screens/SearchScreen.dart';
-import '../widgets/Banneradmob.dart';
-import 'Search/SearchDashboard.dart';
 
 class VidiosOptionalPage extends StatefulWidget {
   VidiosOptionalPage({Key key}) : super(key: key);
@@ -44,8 +34,6 @@ class VidiosOptionalPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<VidiosOptionalPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return HomePageItem();
@@ -62,10 +50,6 @@ class HomePageItem extends StatefulWidget {
 }
 
 class _HomePageItemState extends State<HomePageItem> {
-
-
-
-
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   int currentIndex = 0;
@@ -89,8 +73,6 @@ class _HomePageItemState extends State<HomePageItem> {
     }
   }
 
-
-
   openBrowserTab(String url) async {
     await FlutterWebBrowser.openWebPage(
         url: url, androidToolbarColor: MyColors.primary);
@@ -107,13 +89,10 @@ class _HomePageItemState extends State<HomePageItem> {
       androidId: "com.aapbd.holytune",
     );
     final status = await newVersion.getVersionStatus();
-    newVersion.showUpdateDialog(
-        context: context,
-        versionStatus: status);
+    newVersion.showUpdateDialog(context: context, versionStatus: status);
 
     print("deviceVersion " + status.localVersion);
     print("deviceVersion " + status.storeVersion);
-
   }
 
   @override
@@ -124,50 +103,50 @@ class _HomePageItemState extends State<HomePageItem> {
     return WillPopScope(
       onWillPop: () async {
         if (Provider.of<AudioPlayerModel>(context, listen: false)
-            .currentMedia !=
+                .currentMedia !=
             null) {
           return (await showDialog(
-            context: context,
-            builder: (context) => new AlertDialog(
-              title: new Text(t.quitapp),
-              content: new Text(t.quitappaudiowarning),
-              actions: <Widget>[
-                new TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: new Text(t.cancel),
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(t.quitapp),
+                  content: Text(t.quitappaudiowarning),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: Text(t.cancel),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Provider.of<AudioPlayerModel>(context, listen: false)
+                            .cleanUpResources();
+                        Navigator.of(context).pop(true);
+                      },
+                      child: Text(t.ok),
+                    ),
+                  ],
                 ),
-                new TextButton(
-                  onPressed: () {
-                    Provider.of<AudioPlayerModel>(context, listen: false)
-                        .cleanUpResources();
-                    Navigator.of(context).pop(true);
-                  },
-                  child: new Text(t.ok),
-                ),
-              ],
-            ),
-          )) ??
+              )) ??
               false;
         } else {
           return (await showDialog(
-            context: context,
-            builder: (context) => new AlertDialog(
-              title: new Text(t.quitapp),
-              content: new Text(t.quitappwarning),
-              actions: <Widget>[
-                new TextButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: new Text(t.cancel),
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(t.quitapp),
+                  content: Text(t.quitappwarning),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: Text(t.cancel),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(true);
+                      },
+                      child: Text(t.ok),
+                    ),
+                  ],
                 ),
-                new TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                  },
-                  child: new Text(t.ok),
-                ),
-              ],
-            ),
-          )) ??
+              )) ??
               false;
         }
       },
@@ -180,7 +159,6 @@ class _HomePageItemState extends State<HomePageItem> {
             // Banneradmob(),
           ],
         ),
-
       ),
     );
   }
@@ -209,21 +187,21 @@ class _HomePageItemState extends State<HomePageItem> {
 
     if (currentIndex == 4) {
       return ChangeNotifierProvider(
-        create: (context) => new MediaScreensModel(userdata),
+        create: (context) => MediaScreensModel(userdata),
         child: MediaScreen(t.hotandtrending),
       );
     }
 
     if (currentIndex == 3) {
       return ChangeNotifierProvider(
-        create: (context) => new AudioScreensModel(userdata),
+        create: (context) => AudioScreensModel(userdata),
         child: AudioScreen(t.audiotracks),
       );
     }
 
     if (currentIndex == 5) {
       return ChangeNotifierProvider(
-        create: (context) => new MoodsModel(),
+        create: (context) => MoodsModel(),
         child: MoodsDrawerScreen(),
       );
     }
@@ -281,7 +259,7 @@ class _HomePageItemState extends State<HomePageItem> {
                 color: Colors.transparent,
                 child: InkWell(
                   borderRadius:
-                  BorderRadius.circular(AppBar().preferredSize.height),
+                      BorderRadius.circular(AppBar().preferredSize.height),
                   child: Icon(
                     Icons.dashboard,
                     color: MyColors.grey_95,

@@ -1,10 +1,10 @@
-import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/utils/TimUtil.dart';
-import 'package:HolyTune/widgets/Banneradmob.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
+import '../widgets/ads_admob.dart';
 import 'player_page.dart';
 import '../providers/AudioPlayerModel.dart';
 import '../models/Media.dart';
@@ -22,6 +22,14 @@ class MiniPlayer extends StatefulWidget {
 class _AudioPlayout extends State<MiniPlayer> {
   @override
   Widget build(BuildContext context) {
+    // ads Implimentetion Start
+    final BannerAd myBanner = BannerAd(
+      adUnitId: 'ca-app-pub-2662237367678556/9607124603',
+      size: AdSize(width: 468, height: 60),
+      request: AdRequest(),
+      listener: BannerAdListener(),
+    );
+    // ads Implimentetion End
     bool isSubscribed = true;
     Provider.of<AudioPlayerModel>(context, listen: false)
         .setUserSubscribed(isSubscribed);
@@ -35,7 +43,8 @@ class _AudioPlayout extends State<MiniPlayer> {
         return mediaItem == null
             ? Container()
             : Column(children: [
-                Banneradmob(),
+                // Banneradmob(),
+                BannerAdmob(bannerAd: myBanner),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(PlayPage.routeName);
@@ -79,11 +88,16 @@ class _AudioPlayout extends State<MiniPlayer> {
                                 ),
                                 placeholder: (context, url) =>
                                     Center(child: CupertinoActivityIndicator()),
-                                errorWidget: (context, url, error) => Center(
-                                    child: Icon(
-                                  Icons.error,
-                                  color: Color(0xFFF78383),
-                                )),
+                                errorWidget: (context, url, error) =>
+                                    CircleAvatar(
+                                  backgroundColor: Color(0xFF015E68),
+                                  radius: 30,
+                                  child: CircleAvatar(
+                                    radius: 27,
+                                    backgroundImage:
+                                        AssetImage('assets/images/01.jpg'),
+                                  ),
+                                ),
                               ),
                               SizedBox(width: 12),
                               Expanded(
@@ -94,6 +108,7 @@ class _AudioPlayout extends State<MiniPlayer> {
                                     child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Text(
                                             mediaItem != null
@@ -116,7 +131,7 @@ class _AudioPlayout extends State<MiniPlayer> {
                                             maxLines: 1,
                                             style: TextStyles.subhead(context)
                                                 .copyWith(
-                                              fontSize: 16,
+                                              fontSize: 15,
                                               color: Colors.white,
                                             ),
                                           ),
@@ -130,7 +145,7 @@ class _AudioPlayout extends State<MiniPlayer> {
                                             maxLines: 1,
                                             style: TextStyles.subhead(context)
                                                 .copyWith(
-                                              fontSize: 13,
+                                              fontSize: 12,
                                               color: Colors.white70,
                                             ),
                                           ),

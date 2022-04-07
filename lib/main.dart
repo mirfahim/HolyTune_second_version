@@ -1,7 +1,6 @@
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
 import 'package:HolyTune/screens/spalshScreenforHome.dart';
-import 'package:flutter/material.dart';
 import 'MyApp.dart';
 import './providers/AppStateNotifier.dart';
 import 'package:provider/provider.dart';
@@ -12,24 +11,23 @@ import './providers/DownloadsModel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:firebase_core/firebase_core.dart';
-import './screens/HomePage.dart';
-import './screens/OnboardingPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:admob_flutter/admob_flutter.dart';
-import 'dart:io';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:package_info/package_info.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter/services.dart';
+// import 'package:admob_flutter/admob_flutter.dart';
 import 'auth/OTP_MOBILE/OTPFunc/stores/login_store.dart';
 import 'screens/SplashScreen.dart';
-import 'screens/youtubevideo/listViewPage.dart';
 import 'screens/youtubevideo/getData.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+List<String> testDeviceIds = ['51FE05FBA475ED038D296BD721BCCA1D'];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Admob.initialize();
+  MobileAds.instance.initialize();
+  RequestConfiguration configuration =
+      RequestConfiguration(testDeviceIds: testDeviceIds);
+  MobileAds.instance.updateRequestConfiguration(configuration);
+  // Admob.initialize();
   //await Admob.requestTrackingAuthorization(); #uncomment out for IOS
   await Firebase.initializeApp();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,

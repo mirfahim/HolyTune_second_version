@@ -70,6 +70,8 @@ class _SplashScreenState extends State<SplashScreen> {
     // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     print("bbbb");
     return Image(
-        fit: BoxFit.cover, image: AssetImage('assets/images/image-05.jpg'));
+      fit: BoxFit.cover,
+      image: AssetImage('assets/images/Image-05.jpg'),
+    );
   }
 }
