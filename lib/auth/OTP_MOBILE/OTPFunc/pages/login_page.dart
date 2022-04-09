@@ -2,13 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:HolyTune/auth/OTP_MOBILE/OTPFunc/stores/login_store.dart';
 import 'package:HolyTune/auth/OTP_MOBILE/OTPFunc/widgets/loader_hud.dart';
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/utils/TextStyles.dart';
-import 'package:HolyTune/utils/img.dart';
 
 import '../theme.dart';
 

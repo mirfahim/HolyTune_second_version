@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:HolyTune/auth/OTPForEmailAndPhn.dart';
 import 'package:HolyTune/database/SharedPreference.dart';
-import 'package:HolyTune/utils/TextStyles.dart';
 import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -24,7 +23,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import '../models/Userdata.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:apple_sign_in/apple_sign_in.dart';
-//import 'package:sms_receiver/sms_receiver.dart';
+
 
 GoogleSignIn googleSignIn = GoogleSignIn(
   scopes: [

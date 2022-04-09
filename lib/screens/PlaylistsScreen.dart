@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../utils/TextStyles.dart';
 import '../models/Playlists.dart';
@@ -12,6 +11,7 @@ import 'dart:math';
 
 class PlaylistsScreen extends StatefulWidget {
   PlaylistsScreen(this.title);
+
   final String title;
 
   @override
@@ -168,7 +168,7 @@ class MediaScreenRouteState extends State<PlaylistsScreen> {
                                   ),
                                 ),
                                 placeholder: (context, url) =>
-                                    Center(child: CupertinoActivityIndicator()),
+                                    Center(child: CircularProgressIndicator()),
                                 errorWidget: (context, url, error) => Center(
                                     child: Icon(
                                   Icons.error,

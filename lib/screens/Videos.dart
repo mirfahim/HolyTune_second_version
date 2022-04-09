@@ -1,14 +1,6 @@
-
 import 'package:HolyTune/providers/DashboardModel.dart';
-import 'package:HolyTune/screens/Dashboard.dart';
-import 'package:HolyTune/screens/HomePage.dart';
-import 'package:HolyTune/screens/MediaListView.dart';
-import 'package:HolyTune/screens/SearchOptionalPage.dart';
 import 'package:HolyTune/screens/VideosScreen.dart';
-import 'package:HolyTune/utils/my_colors.dart';
-import 'package:HolyTune/widgets/CustomBottomBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../utils/TextStyles.dart';
 import '../i18n/strings.g.dart';
@@ -75,36 +67,36 @@ class SearchScreenRouteState extends State<SearchScreenBody> {
     return new Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       //bottomNavigationBar: CustomBottomNavBar(),
-      body: clicked == false ?VidiosOptionalPage()
-          :
-      SmartRefresher(
-          enablePullDown: false,
-          enablePullUp: searchModel.items.length > 20 ? true : false,
-          header: WaterDropHeader(),
-          footer: CustomFooter(
-            builder: (BuildContext context, LoadStatus mode) {
-              Widget body;
-              if (mode == LoadStatus.idle) {
-                body = Text(t.pulluploadmore);
-              } else if (mode == LoadStatus.loading) {
-                body = CupertinoActivityIndicator();
-              } else if (mode == LoadStatus.failed) {
-                body = Text(t.loadfailedretry);
-              } else if (mode == LoadStatus.canLoading) {
-                body = Text(t.releaseloadmore);
-              } else {
-                body = Text(t.nomoredata);
-              }
-              return Container(
-                height: 55.0,
-                child: Center(child: body),
-              );
-            },
-          ),
-          controller: searchModel.refreshController,
-          onLoading: _onLoading,
-          child:
-          buildContent(context, searchModel, appState, items, onItemClick)),
+      body: clicked == false
+          ? VidiosOptionalPage()
+          : SmartRefresher(
+              enablePullDown: false,
+              enablePullUp: searchModel.items.length > 20 ? true : false,
+              header: WaterDropHeader(),
+              footer: CustomFooter(
+                builder: (BuildContext context, LoadStatus mode) {
+                  Widget body;
+                  if (mode == LoadStatus.idle) {
+                    body = Text(t.pulluploadmore);
+                  } else if (mode == LoadStatus.loading) {
+                    body = CircularProgressIndicator();
+                  } else if (mode == LoadStatus.failed) {
+                    body = Text(t.loadfailedretry);
+                  } else if (mode == LoadStatus.canLoading) {
+                    body = Text(t.releaseloadmore);
+                  } else {
+                    body = Text(t.nomoredata);
+                  }
+                  return Container(
+                    height: 55.0,
+                    child: Center(child: body),
+                  );
+                },
+              ),
+              controller: searchModel.refreshController,
+              onLoading: _onLoading,
+              child: buildContent(
+                  context, searchModel, appState, items, onItemClick)),
     );
   }
 
@@ -118,9 +110,7 @@ class SearchScreenRouteState extends State<SearchScreenBody> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              CupertinoActivityIndicator(
-                radius: 30,
-              ),
+              CircularProgressIndicator(),
               Container(height: 5),
               Text(
                 t.performingsearch,

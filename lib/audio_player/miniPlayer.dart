@@ -37,9 +37,6 @@ class _AudioPlayout extends State<MiniPlayer> {
     return Consumer<AudioPlayerModel>(
       builder: (context, audioPlayerModel, child) {
         Media mediaItem = audioPlayerModel.currentMedia;
-        // print("------------------------------------");
-        // print(mediaItem.coverPhoto);
-        // print("------------------------------------");
         return mediaItem == null
             ? Container()
             : Column(children: [
@@ -87,7 +84,7 @@ class _AudioPlayout extends State<MiniPlayer> {
                                   ),
                                 ),
                                 placeholder: (context, url) =>
-                                    Center(child: CupertinoActivityIndicator()),
+                                    Center(child: CircularProgressIndicator()),
                                 errorWidget: (context, url, error) =>
                                     CircleAvatar(
                                   backgroundColor: Color(0xFF015E68),
@@ -153,18 +150,6 @@ class _AudioPlayout extends State<MiniPlayer> {
                                   ),
                                 ),
                               ),
-                              // IconButton(
-                              //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              //   onPressed: () {
-                              //     audioPlayerModel.skipPrevious();
-                              //   },
-                              //   icon: const Icon(
-                              //
-                              //     Icons.skip_previous,
-                              //     size: 20,
-                              //     color: Colors.white,
-                              //   ),
-                              // ),
                               Icon(
                                 Icons.favorite_border,
                                 color: Colors.white,
@@ -180,33 +165,6 @@ class _AudioPlayout extends State<MiniPlayer> {
                                 icon: audioPlayerModel.icon(true),
                                 color: Colors.white,
                               ),
-
-                              // ClipOval(
-                              //     child: Container(
-                              //   color:
-                              //       Theme.of(context).accentColor.withAlpha(30),
-                              //   width:30, //50.0,
-                              //   height:30, //50.0,
-                              //   child: IconButton(
-                              //     padding: EdgeInsets.fromLTRB(0, 0, 15, 15),
-                              //     onPressed: () {
-                              //       audioPlayerModel.onPressed();
-                              //     },
-                              //     icon: audioPlayerModel.icon(true),
-                              //     color: Colors.white,
-                              //   ),
-                              // )),
-                              // IconButton(
-                              //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              //   onPressed: () {
-                              //     audioPlayerModel.skipNext();
-                              //   },
-                              //   icon: const Icon(
-                              //     Icons.skip_next,
-                              //     size: 30,
-                              //     color: Colors.white,
-                              //   ),
-                              // ),
                               Container(
                                 color: MyColors.primary,
                                 //width: 100,

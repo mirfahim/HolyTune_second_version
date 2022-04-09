@@ -7,12 +7,12 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Albums.dart';
 import '../providers/AlbumsModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/NoitemScreen.dart';
 
 class AlbumsScreen extends StatelessWidget {
   static const routeName = "/AlbumsScreen";
+
   AlbumsScreen();
 
   @override
@@ -79,7 +79,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -158,7 +158,7 @@ class ItemTile extends StatelessWidget {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                         child: Icon(
                       Icons.error,

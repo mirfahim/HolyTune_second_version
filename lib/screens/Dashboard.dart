@@ -3,7 +3,7 @@ import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
 import 'package:HolyTune/utils/my_colors.dart';
 import 'package:HolyTune/widgets/sliderWidget.dart';
-// import 'package:admob_flutter/admob_flutter.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/MoodsListView.dart';
@@ -20,11 +20,12 @@ import '../i18n/strings.g.dart';
 import '../screens/NoitemScreen.dart';
 import '../models/Media.dart';
 import '../models/Playlists.dart';
-//import 'package:flutter_switch/flutter_switch.dart';
-import 'package:shimmer/shimmer.dart';
+
+
 
 class DashboardScreen extends StatefulWidget {
   DashboardScreen();
+
   @override
   DashboardScreenRouteState createState() => new DashboardScreenRouteState();
 }
@@ -35,44 +36,10 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
   DashboardModel dashboardModel;
   bool isSubscribed = false;
   bool isToggled = false;
+
   onRetryClick() {
     dashboardModel.loadItems();
   }
-
-  // Widget _currentAd = SizedBox(
-  //   height: 0,
-  //   width: 0,
-  // );
-
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   _currentAd = FacebookBannerAd(
-  //     placementId:'IMG_16_9_APP_INSTALL#2312433698835503_2650502525028617',
-  //     bannerSize: BannerSize.STANDARD,
-  //     listener: (result, value) {
-  //       switch (result) {
-  //         case BannerAdResult.ERROR:
-  //           print('Error: $value');
-  //           break;
-  //         case BannerAdResult.LOADED:
-  //           print('Load: $value');
-  //           break;
-  //         case BannerAdResult.CLICKED:
-  //           print('Clicked: $value');
-  //           break;
-  //         case BannerAdResult.LOGGING_IMPRESSION:
-  //           print('Loging inm: $value');
-  //           break;
-  //       }
-  //     },
-  //   );
-  //   FacebookAudienceNetwork.init(
-  //       testingId: "37b1da9d-b48c-4103-a393-2e095e734bd6", //optional
-  //      // iOSAdvertiserTrackingEnabled: false //default false
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +56,10 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
+            CircularProgressIndicator()
+            /* Expanded(
               child: Shimmer.fromColors(
                 baseColor: Colors.black26,
                 highlightColor: Colors.black38,
@@ -143,7 +112,7 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
                   itemCount: 12,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       );

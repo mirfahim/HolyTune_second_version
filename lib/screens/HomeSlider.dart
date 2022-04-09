@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../models/Media.dart';
 import '../providers/AudioPlayerModel.dart';
@@ -10,6 +9,7 @@ import '../utils/TextStyles.dart';
 
 class HomeSlider extends StatelessWidget {
   final List<Media> items;
+
   HomeSlider(this.items);
 
   @override
@@ -52,10 +52,12 @@ class HomeSlider extends StatelessWidget {
                                 ),
                               ),
                               placeholder: (context, url) =>
-                                  Center(child: CupertinoActivityIndicator()),
+                                  Center(child: CircularProgressIndicator()),
                               errorWidget: (context, url, error) => Image(
-                                fit: BoxFit.cover,
-                                  image:AssetImage("assets/images/holy_tune_logo_512_blue_bg.png")),),
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      "assets/images/holy_tune_logo_512_blue_bg.png")),
+                            ),
                           ),
                         ),
                         SizedBox(height: 7.0),

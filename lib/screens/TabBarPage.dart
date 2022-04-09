@@ -11,6 +11,7 @@ import 'youtubevideo/listViewPage.dart';
 
 class MyTabHomePage extends StatefulWidget {
   static const routeName = "/home";
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -18,13 +19,13 @@ class MyTabHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyTabHomePage> {
   int selectedIndex = 0;
   AppStateNotifier appManager;
+
   @override
   Widget build(BuildContext context) {
     appManager = Provider.of<AppStateNotifier>(context);
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-        // backgroundColor: Colors.transparent,
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(

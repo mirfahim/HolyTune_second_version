@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:HolyTune/service/videolist.dart';
 import '../models/chanelinfo.dart';
 import '../service/videolist.dart';
-import '../service/videoplayer.dart';
 import '../widgets/service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({this.videoItem});
+
   final VideoItem videoItem;
 
   @override
@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   YoutubePlayerController _controller;
   bool _isPlayerReady;
+
   // final VideoItem videoItem;
 
   @override

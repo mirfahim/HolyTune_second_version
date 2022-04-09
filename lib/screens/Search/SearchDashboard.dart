@@ -46,8 +46,10 @@ class DashboardScreenRouteState extends State<SearchDashboardScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
+            CircularProgressIndicator()
+           /* Expanded(
               child: Shimmer.fromColors(
                 baseColor: Colors.black26,
                 highlightColor: Colors.black38,
@@ -100,7 +102,7 @@ class DashboardScreenRouteState extends State<SearchDashboardScreen> {
                   itemCount: 12,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       );

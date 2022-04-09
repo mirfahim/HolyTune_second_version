@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import '../utils/Utility.dart';
 import '../models/Comments.dart';
 import '../models/CommentsArguement.dart';
 import '../providers/CommentsModel.dart';
@@ -96,8 +94,7 @@ class _CommentsItemState extends State<CommentsItem> {
                   Container(height: 8),
                   Container(
                     width: double.infinity,
-                    child: Text(
-                        widget.object.content,
+                    child: Text(widget.object.content,
                         //Utility.getBase64DecodedString(widget.object.content),
                         maxLines: 10,
                         textAlign: TextAlign.left,
@@ -214,6 +211,7 @@ class _CommentsItemState extends State<CommentsItem> {
 class ReportCommentDialog extends StatefulWidget {
   final id, index;
   final Function function;
+
   ReportCommentDialog({Key key, this.id, this.index, this.function})
       : super(key: key);
 

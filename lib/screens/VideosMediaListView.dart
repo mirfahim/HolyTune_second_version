@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/AudioListPage.dart';
@@ -16,6 +14,7 @@ import '../utils/Alerts.dart';
 
 class VideosMediaListView extends StatelessWidget {
   VideosMediaListView(this.mediaList, this.header, this.subHeader);
+
   final List<Media> mediaList;
   final String header;
   final String subHeader;
@@ -35,25 +34,28 @@ class VideosMediaListView extends StatelessWidget {
               Container(
                 width: 250,
                 height: 120,
-                //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: media.coverPhoto == null ? Text("Hlw") :CachedNetworkImage(
-                    imageUrl:media.coverPhoto,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
+                  child: media.coverPhoto == null
+                      ? Text("Hlw")
+                      : CachedNetworkImage(
+                          imageUrl: media.coverPhoto,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) => Image(
+                            fit: BoxFit.fitWidth,
+                            image: AssetImage(
+                                "assets/images/holy_tune_logo_512_blue_bg.png"),
+                          ),
                         ),
-                      ),
-                    ),
-                    placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
-                    errorWidget: (context, url, error) => Image(
-                      fit: BoxFit.fitWidth,
-                      image: AssetImage("assets/images/holy_tune_logo_512_blue_bg.png"),),
-                  ),
                 ),
               ),
               SizedBox(height: 7.0),
@@ -139,68 +141,68 @@ class VideosMediaListView extends StatelessWidget {
                 subHeader == ""
                     ? Container()
                     : Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Text(subHeader,
-                      maxLines: 1,
-                      style: TextStyles.subhead(context).copyWith(
-                        fontSize: 13,
-                        // color: Colors.grey[600],
-                      )),
-                ),
+                        padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        child: Text(subHeader,
+                            maxLines: 1,
+                            style: TextStyles.subhead(context).copyWith(
+                              fontSize: 13,
+                              // color: Colors.grey[600],
+                            )),
+                      ),
               ],
             ),
             Spacer(),
             header != t.bookmarksMedia
                 ? InkWell(
-              onTap: () {
-                if (header == t.trendingvideos ||
-                    header == t.trendingaudios) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => TrendingListPage()),
-                  );
-                }
-                if (header == t.audiotracks) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AudioListPage()),
-                  );
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(15, 0, 10, 10),
-                child: Icon(
-                  Icons.navigate_next,
-                  size: 25,
-                ),
-              ),
-            )
+                    onTap: () {
+                      if (header == t.trendingvideos ||
+                          header == t.trendingaudios) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TrendingListPage()),
+                        );
+                      }
+                      if (header == t.audiotracks) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AudioListPage()),
+                        );
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 10, 10),
+                      child: Icon(
+                        Icons.navigate_next,
+                        size: 25,
+                      ),
+                    ),
+                  )
                 : Container(),
           ],
         ),
         mediaList.length == 0
             ? Container(
-          width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(t.noitemstodisplay,
-                textAlign: TextAlign.center,
-                style: TextStyles.medium(context)),
-          ),
-        )
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(t.noitemstodisplay,
+                      textAlign: TextAlign.center,
+                      style: TextStyles.medium(context)),
+                ),
+              )
             : Container(
-          padding: EdgeInsets.only(top: 15.0, left: 20.0),
-          height: 200.0,
-          width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            primary: false,
-            itemCount: mediaList.length,
-            itemBuilder: _buildItems,
-          ),
-        ),
+                padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                height: 200.0,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  primary: false,
+                  itemCount: mediaList.length,
+                  itemBuilder: _buildItems,
+                ),
+              ),
       ],
     );
   }

@@ -12,6 +12,7 @@ import 'package:email_validator/email_validator.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   static const routeName = "/forgotpassword";
+
   ForgotPasswordScreen();
 
   @override
@@ -74,7 +75,6 @@ class ForgotPasswordScreenRouteState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomInset: true,
-      //backgroundColor: MyColors.primary,
       appBar:
           PreferredSize(child: Container(), preferredSize: Size.fromHeight(0)),
       body: Stack(

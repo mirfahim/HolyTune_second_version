@@ -1,5 +1,4 @@
 import 'StringsConst.dart';
-import 'StringsConst.dart';
 
 class ApiUrl {
   //DO NOT EDIT THE LINES BELOW, ELSE THE APPLICATION WILL MISBEHAVE

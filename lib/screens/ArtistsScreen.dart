@@ -8,7 +8,6 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Artists.dart';
 import '../providers/ArtistsModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/NoitemScreen.dart';
 
@@ -88,7 +87,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -156,29 +155,6 @@ class ItemTile extends StatelessWidget {
               SizedBox(
                 height: 120,
                 width: 150,
-                //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                // child: ClipRRect(
-                //   borderRadius: BorderRadius.circular(100),
-                //   child: CachedNetworkImage(
-                //     // height: 180,
-                //     imageUrl: artists.thumbnail,
-                //     imageBuilder: (context, imageProvider) => Container(
-                //       decoration: BoxDecoration(
-                //         image: DecorationImage(
-                //           image: imageProvider,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //     ),
-                //     placeholder: (context, url) =>
-                //         Center(child: CupertinoActivityIndicator()),
-                //     errorWidget: (context, url, error) => Center(
-                //         child: Icon(
-                //       Icons.error,
-                //       color: Colors.grey,
-                //     )),
-                //   ),
-                // ),
                 child: CachedNetworkImage(
                   // height: 180,
                   imageUrl: artists.thumbnail,
@@ -186,7 +162,7 @@ class ItemTile extends StatelessWidget {
                     backgroundImage: imageProvider,
                   ),
                   placeholder: (context, url) =>
-                      Center(child: CupertinoActivityIndicator()),
+                      Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => Center(
                       child: Icon(
                     Icons.error,

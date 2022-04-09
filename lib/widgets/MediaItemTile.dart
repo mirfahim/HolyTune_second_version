@@ -1,6 +1,5 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../utils/TextStyles.dart';
 import '../utils/TimUtil.dart';
@@ -32,6 +31,7 @@ class ItemTile extends StatefulWidget {
 
 class _ItemTileState extends State<ItemTile> {
   AppStateNotifier appState;
+
   @override
   Widget build(BuildContext context) {
     appState = Provider.of<AppStateNotifier>(context);
@@ -83,7 +83,7 @@ class _ItemTileState extends State<ItemTile> {
                               ),
                             ),
                             placeholder: (context, url) =>
-                                Center(child: CupertinoActivityIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Image(
                                 fit: BoxFit.cover,
                                 image: AssetImage(

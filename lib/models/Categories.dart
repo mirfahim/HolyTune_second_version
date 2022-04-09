@@ -10,7 +10,6 @@ class Categories {
   Categories({this.id, this.title, this.thumbnailUrl, this.mediaCount});
 
   factory Categories.fromJson(Map<String, dynamic> json) {
-    //print(json);
     int id = int.parse(json['id'].toString());
     int count = int.parse(json['media_count'].toString());
     return Categories(

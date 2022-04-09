@@ -1,5 +1,4 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
-import 'package:HolyTune/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/MoodsMediaScreen.dart';
@@ -9,12 +8,12 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Moods.dart';
 import '../providers/MoodsModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/NoitemScreen.dart';
 
 class MoodsScreen extends StatefulWidget {
   static const routeName = "/MoodsScreen";
+
   MoodsScreen();
 
   @override
@@ -23,6 +22,7 @@ class MoodsScreen extends StatefulWidget {
 
 class _MoodsScreenState extends State<MoodsScreen> {
   AppStateNotifier appState;
+
   @override
   Widget build(BuildContext context) {
     AppStateNotifier appState = Provider.of<AppStateNotifier>(context);
@@ -89,7 +89,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -168,7 +168,7 @@ class ItemTile extends StatelessWidget {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                         child: Icon(
                       Icons.error,

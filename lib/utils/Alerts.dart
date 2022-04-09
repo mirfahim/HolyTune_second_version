@@ -2,7 +2,6 @@
 
 import 'package:HolyTune/auth/AuthOtherFields.dart';
 import 'package:flutter/material.dart';
-import 'package:platform/platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:url_launcher/url_launcher.dart';

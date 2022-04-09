@@ -141,20 +141,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                             style: TextStyles.body1(context)
                                 .copyWith(color: Colors.grey[500])),
                         Container(height: 50),
-                        CupertinoActivityIndicator(
-                          radius: 20,
-                        )
+                        CircularProgressIndicator()
                       ],
                     ),
                   ),
                 )
               : widget._defaultHome,
           debugShowCheckedModeBanner: false,
-          theme: appState.isDarkModeOn
-              ? AppTheme.lightTheme
-              : AppTheme.darkTheme, // ThemeData(primarySwatch: Colors.blue),
-          darkTheme:
-              AppTheme.darkTheme, // ThemeData(primarySwatch: Colors.blue),
+          theme:
+              appState.isDarkModeOn ? AppTheme.lightTheme : AppTheme.darkTheme,
+          // ThemeData(primarySwatch: Colors.blue),
+          darkTheme: AppTheme.darkTheme,
+          // ThemeData(primarySwatch: Colors.blue),
           themeMode: appState.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
           onGenerateRoute: (settings) {
             if (settings.name == MyTabHomePage.routeName) {

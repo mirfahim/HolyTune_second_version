@@ -6,7 +6,6 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Artists.dart';
 import '../providers/ArtistsModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/NoitemScreen.dart';
 import '../utils/TextStyles.dart';
@@ -55,7 +54,7 @@ class _CategoriesMediaScreenState extends State<ArtistsDrawerScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -132,7 +131,6 @@ class ItemTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: InkWell(
-
         child: Container(
           // height: 200.0,
           width: 120.0,
@@ -145,21 +143,23 @@ class ItemTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   child: CachedNetworkImage(
                     // height: 180,
-                    imageUrl:artists.thumbnail,
+                    imageUrl: artists.thumbnail,
                     imageBuilder: (context, imageProvider) {
-                      print("________ARTIST______THUMBNAIL____${artists.thumbnail}");
+                      print(
+                          "________ARTIST______THUMBNAIL____${artists.thumbnail}");
                       return Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    );
+                      );
                     },
                     placeholder: (context, url) {
-                      print("________ARTIST______THUMBNAIL____${artists.thumbnail}");
-                      return Center(child: CupertinoActivityIndicator());
+                      print(
+                          "________ARTIST______THUMBNAIL____${artists.thumbnail}");
+                      return Center(child: CircularProgressIndicator());
                     },
                     errorWidget: (context, url, error) => Center(
                         child: Icon(

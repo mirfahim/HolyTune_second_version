@@ -7,7 +7,6 @@ import 'package:HolyTune/utils/Utility.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/cupertino.dart';
 import '../utils/TextStyles.dart';
 import '../models/Media.dart';
 import '../i18n/strings.g.dart';
@@ -15,8 +14,6 @@ import '../providers/BookmarksModel.dart';
 import '../widgets/MediaItemTile.dart';
 
 class BookmarksScreenDash extends StatefulWidget {
-
-
   @override
   MediaScreenRouteState createState() => new MediaScreenRouteState();
 }
@@ -36,48 +33,45 @@ class MediaScreenRouteState extends State<BookmarksScreenDash> {
     items = mediaScreensModel.bookmarksList;
     return (items.length == 0)
         ? Center(
-      child: Container(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Text(t.noitemstodisplay,
-              textAlign: TextAlign.center,
-              style: TextStyles.medium(context)),
-        ),
-      ),
-    )
-        : ListView.builder(
-      itemCount: items.length + 1,
-      scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.all(3),
-      itemBuilder: (BuildContext context, int index) {
-        if (index == 0) {
-          return Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 10, 15),
-              child: Text("mir",
-                  style: TextStyles.headline(context).copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  )),
+            child: Container(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(t.noitemstodisplay,
+                    textAlign: TextAlign.center,
+                    style: TextStyles.medium(context)),
+              ),
             ),
+          )
+        : ListView.builder(
+            itemCount: items.length + 1,
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.all(3),
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 15, 10, 15),
+                    child: Text("mir",
+                        style: TextStyles.headline(context).copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        )),
+                  ),
+                );
+              } else {
+                int _indx = index - 1;
+                return ItemTile(
+                  mediaList: items,
+                  index: _indx,
+                  object: items[_indx],
+                );
+              }
+            },
           );
-        } else {
-          int _indx = index - 1;
-          return ItemTile(
-            mediaList: items,
-            index: _indx,
-            object: items[_indx],
-          );
-        }
-      },
-    );
   }
 }
-
-
-
 
 class ItemTile extends StatefulWidget {
   final Media object;
@@ -100,6 +94,7 @@ class ItemTile extends StatefulWidget {
 
 class _ItemTileState extends State<ItemTile> {
   AppStateNotifier appState;
+
   @override
   Widget build(BuildContext context) {
     appState = Provider.of<AppStateNotifier>(context);
@@ -118,21 +113,17 @@ class _ItemTileState extends State<ItemTile> {
         Navigator.of(context).pushNamed(PlayPage.routeName);
       },
       child: Container(
-
         height: 110,
         width: double.infinity,
         padding: EdgeInsets.fromLTRB(15, 0.2, 10, 0),
         child: Column(
-
           children: <Widget>[
             Expanded(
               child: Row(
-
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
-
                         margin: EdgeInsets.all(0.5),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -140,11 +131,11 @@ class _ItemTileState extends State<ItemTile> {
                         ),
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         child: Container(
-
                           height: 60,
                           width: 60,
                           child: CachedNetworkImage(
-                            imageUrl:"https://adminapplication.com/uploads/thumbnails/media/${widget.object.coverPhoto}",
+                            imageUrl:
+                                "https://adminapplication.com/uploads/thumbnails/media/${widget.object.coverPhoto}",
                             imageBuilder: (context, imageProvider) => Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -155,29 +146,30 @@ class _ItemTileState extends State<ItemTile> {
                               ),
                             ),
                             placeholder: (context, url) =>
-                                Center(child: CupertinoActivityIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Image(
                                 fit: BoxFit.cover,
-                                image: AssetImage("assets/images/holy_tune_logo_512_blue_bg.png")),
+                                image: AssetImage(
+                                    "assets/images/holy_tune_logo_512_blue_bg.png")),
                           ),
-                        )
-                    ),
+                        )),
                   ),
                   Container(width: 10),
-
                   Expanded(
                     child: Column(
                       //  crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        SizedBox(height: 19,),
+                        SizedBox(
+                          height: 19,
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 4, 0, 0),
                           child: Row(
                             children: <Widget>[
                               Text(widget.object.artist,
                                   style: TextStyles.caption(context)
-                                //.copyWith(color: MyColors.grey_60),
-                              ),
+                                  //.copyWith(color: MyColors.grey_60),
+                                  ),
                               Spacer(),
                               Text(
                                 TimUtil.timeFormatter(widget.object.duration),
@@ -187,7 +179,6 @@ class _ItemTileState extends State<ItemTile> {
                             ],
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                           child: Align(
@@ -196,31 +187,33 @@ class _ItemTileState extends State<ItemTile> {
                                 maxLines: 2,
                                 style: TextStyles.subhead(context).copyWith(
 
-                                  //color: MyColors.grey_80,
+                                    //color: MyColors.grey_80,
                                     fontSize: 10,
                                     fontWeight: FontWeight.normal)),
                           ),
                         ),
-
                         Row(
                           children: <Widget>[
-
                             widget.object.viewsCount == 0
                                 ? Container()
                                 : Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text(
-                                  "0" + widget.object.viewsCount.toString() +
-                                      " plays",
-                                  style: appState.isDarkModeOn == false ?
-                                  TextStyle(color: Colors.black54, fontSize: 12)
-                                      : TextStyle(color: Colors.white54, fontSize: 12)
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(
+                                        "0" +
+                                            widget.object.viewsCount
+                                                .toString() +
+                                            " plays",
+                                        style: appState.isDarkModeOn == false
+                                            ? TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 12)
+                                            : TextStyle(
+                                                color: Colors.white54,
+                                                fontSize: 12)
 
-
-
-                                //.copyWith(color: MyColors.grey_60),
-                              ),
-                            ),
+                                        //.copyWith(color: MyColors.grey_60),
+                                        ),
+                                  ),
                             Spacer(),
                             // Align(
                             //   alignment: Alignment.centerRight,
@@ -234,12 +227,9 @@ class _ItemTileState extends State<ItemTile> {
                 ],
               ),
             ),
-
-
           ],
         ),
       ),
     );
   }
 }
-

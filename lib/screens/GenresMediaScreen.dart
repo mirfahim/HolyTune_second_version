@@ -6,14 +6,15 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Media.dart';
 import '../providers/GenreMediaScreensModel.dart';
-import 'package:flutter/cupertino.dart';
 import '../widgets/MediaItemTile.dart';
 import '../screens/NoitemScreen.dart';
 import '../screens/genresNavHeader.dart';
 
 class GenresMediaScreen extends StatelessWidget {
   static const routeName = "/GenresMediaScreen";
+
   GenresMediaScreen({this.genreList});
+
   final List<Genres> genreList;
 
   @override
@@ -87,7 +88,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {

@@ -1,6 +1,5 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../screens/AlbumsScreen.dart';
@@ -12,6 +11,7 @@ import '../screens/AlbumsMediaScreen.dart';
 
 class AlbumsListView extends StatefulWidget {
   AlbumsListView(this.albums);
+
   final List<Albums> albums;
 
   @override
@@ -20,6 +20,7 @@ class AlbumsListView extends StatefulWidget {
 
 class _AlbumsListViewState extends State<AlbumsListView> {
   AppStateNotifier appState;
+
   Widget _buildItems(BuildContext context, int index) {
     appState = Provider.of<AppStateNotifier>(context);
     var cats = widget.albums[index];
@@ -34,7 +35,6 @@ class _AlbumsListViewState extends State<AlbumsListView> {
             children: <Widget>[
               SizedBox(
                 height: 100,
-                //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: CachedNetworkImage(
@@ -48,16 +48,12 @@ class _AlbumsListViewState extends State<AlbumsListView> {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                         child: Image(
                             fit: BoxFit.cover,
                             image:
                                 AssetImage("assets/images/launcher_icon.png"))),
-                    //     child: Icon(
-                    //   Icons.error,
-                    //   color: Colors.grey,
-                    // )),
                   ),
                 ),
               ),
@@ -81,7 +77,6 @@ class _AlbumsListViewState extends State<AlbumsListView> {
                   cats.mediaCount.toString() + " " + t.tracks,
                   style: appState.isDarkModeOn == false
                       ? TextStyles.headline(context).copyWith(
-                          //fontWeight: FontWeight.bold,
                           fontSize: 11.0,
                         )
                       : TextStyles.headline(context).copyWith(

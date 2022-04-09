@@ -1,15 +1,8 @@
-import 'package:HolyTune/utils/my_colors.dart';
-import 'package:HolyTune/widgets/sliderImage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import '../screens/MoodsListView.dart';
-import '../screens/ArtistsListView.dart';
-import '../screens/AlbumsListView.dart';
 import '../providers/DashboardModel.dart';
 import '../providers/BookmarksModel.dart';
 import '../providers/PlaylistsModel.dart';
-import '../screens/HomeSlider.dart';
 import '../utils/TextStyles.dart';
 import '../screens/MediaListView.dart';
 import '../screens/PlaylistsListView.dart';
@@ -17,8 +10,6 @@ import '../i18n/strings.g.dart';
 import '../screens/NoitemScreen.dart';
 import '../models/Media.dart';
 import '../models/Playlists.dart';
-import 'package:flutter_switch/flutter_switch.dart';
-import 'package:shimmer/shimmer.dart';
 
 class DashboardMusicTabScreen extends StatefulWidget {
   DashboardMusicTabScreen();
@@ -52,9 +43,11 @@ class DashboardScreenRouteState extends State<DashboardMusicTabScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            CircularProgressIndicator()
 
-            Expanded(
+            /*Expanded(
               child: Shimmer.fromColors(
                 baseColor: Colors.black26,
                 highlightColor: Colors.black38,
@@ -111,21 +104,19 @@ class DashboardScreenRouteState extends State<DashboardMusicTabScreen> {
                   itemCount: 12,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       );
     } else if (dashboardModel.isError) {
       return NoitemScreen(
           title: t.oops, message: t.dataloaderror, onClick: onRetryClick);
-    } else
+    } else {
       return Container(
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-
-
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
@@ -142,9 +133,6 @@ class DashboardScreenRouteState extends State<DashboardMusicTabScreen> {
                   ),
                 ),
               ),
-
-
-
               Container(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
@@ -187,5 +175,6 @@ class DashboardScreenRouteState extends State<DashboardMusicTabScreen> {
           ),
         ),
       );
+    }
   }
 }

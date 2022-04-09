@@ -5,7 +5,6 @@ import '../i18n/strings.g.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Media.dart';
 import '../providers/MoodsMediaScreensModel.dart';
-import 'package:flutter/cupertino.dart';
 import '../widgets/MediaItemTile.dart';
 import '../screens/NoitemScreen.dart';
 import 'package:shape_of_view/shape_of_view.dart';
@@ -13,7 +12,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class MoodsMediaScreen extends StatelessWidget {
   static const routeName = "/MoodsMediaScreen";
+
   MoodsMediaScreen({this.moods});
+
   final Moods moods;
 
   @override
@@ -50,7 +51,7 @@ class MoodsMediaScreen extends StatelessWidget {
                               ),
                             ),
                             placeholder: (context, url) =>
-                                Center(child: CupertinoActivityIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Center(
                                 child: Icon(
                               Icons.error,
@@ -155,7 +156,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {

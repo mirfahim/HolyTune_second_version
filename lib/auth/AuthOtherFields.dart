@@ -1,5 +1,4 @@
 import 'package:HolyTune/database/SharedPreference.dart';
-import 'package:HolyTune/screens/HomePage.dart';
 import 'package:HolyTune/screens/TabBarPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -7,16 +6,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:HolyTune/auth/RegisterScreen.dart';
 import 'package:HolyTune/i18n/strings.g.dart';
 import 'package:HolyTune/utils/Alerts.dart';
 import 'package:HolyTune/utils/ApiUrl.dart';
-import 'package:HolyTune/utils/img.dart';
-import 'package:HolyTune/utils/my_colors.dart';
 import 'package:HolyTune/widgets/AlertDialogue/alertDialogue.dart';
 import 'package:HolyTune/widgets/AlertDialogue/loadingAlertDialogue.dart';
-import 'package:HolyTune/widgets/DefaultTextFieldWidget.dart';
-import 'package:HolyTune/widgets/customTextField.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import 'OTP_MOBILE/OTPFunc/pages/otp_page.dart';
@@ -26,6 +20,7 @@ class Register extends StatefulWidget {
   final String pass;
   final String phnNo;
   bool phnPage;
+
   Register({this.email, this.pass, this.phnNo, this.phnPage});
 
   @override
@@ -174,27 +169,6 @@ class _RegisterState extends State<Register> {
               Container(
                 height: 20,
               ),
-              // Container(
-              //   //height: double.infinity,
-              //   //width: double.infinity,
-              //   alignment: Alignment.topCenter,
-              //   child: Container(
-              //     height: 100,
-              //     child: Image.asset(
-              //       Img.get("logotrns.png"),
-              //       fit: BoxFit.contain,
-              //     ),
-              //   ),
-              // ),
-              // Container(
-              //   child: Center(
-              //       child: Text(
-              //         t.appname,
-              //         style: TextStyle(fontSize: 26),
-              //       )),
-              //   width: double.infinity,
-              //   height: 100,
-              // ),
               SizedBox(
                 height: 20,
               ),
@@ -251,7 +225,8 @@ class _RegisterState extends State<Register> {
                               controller: nameController,
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                isDense: true, // Added this
+                                isDense: true,
+                                // Added this
                                 contentPadding: EdgeInsets.all(12),
                                 hintText: t.fullname,
                                 hintStyle: TextStyle(
@@ -347,7 +322,8 @@ class _RegisterState extends State<Register> {
                                         TextInputType.numberWithOptions(
                                             signed: true, decimal: true),
                                     inputDecoration: InputDecoration(
-                                      isDense: true, // Added this
+                                      isDense: true,
+                                      // Added this
                                       contentPadding: EdgeInsets.all(12),
                                       labelText: "1********",
 
@@ -380,7 +356,8 @@ class _RegisterState extends State<Register> {
                                     controller: emailController,
                                     textAlign: TextAlign.center,
                                     decoration: InputDecoration(
-                                      isDense: true, // Added this
+                                      isDense: true,
+                                      // Added this
                                       contentPadding: EdgeInsets.all(12),
                                       hintText: "Type Your Email",
                                       hintStyle: TextStyle(

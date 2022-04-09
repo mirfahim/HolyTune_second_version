@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'dart:math';
 import 'package:HolyTune/utils/TextStyles.dart';
 import '../models/Playlists.dart';
 import '../providers/PlaylistsModel.dart';
@@ -13,6 +11,7 @@ import '../utils/TextStyles.dart';
 
 class PlaylistsListView extends StatelessWidget {
   PlaylistsListView(this.playlists);
+
   final List<Playlists> playlists;
 
   Widget _buildItems(BuildContext context, int index) {
@@ -39,11 +38,12 @@ class PlaylistsListView extends StatelessWidget {
                           (BuildContext context, AsyncSnapshot<String> value) {
                         if (value.data == null || value.data == "")
                           return Container(
-
                             color: Colors.grey[300],
                             child: Image(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/images/holy_tune_logo_512_blue_bg.png"),),
+                              image: AssetImage(
+                                  "assets/images/holy_tune_logo_512_blue_bg.png"),
+                            ),
                           );
                         else
                           return CachedNetworkImage(
@@ -57,7 +57,7 @@ class PlaylistsListView extends StatelessWidget {
                               ),
                             ),
                             placeholder: (context, url) =>
-                                Center(child: CupertinoActivityIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Center(
                                 child: Icon(
                               Icons.error,

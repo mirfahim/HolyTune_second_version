@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import '../utils/Utility.dart';
 import '../models/Replies.dart';
 import '../providers/RepliesModel.dart';
@@ -144,6 +143,7 @@ class RepliesItem extends StatelessWidget {
 class ReportCommentDialog extends StatefulWidget {
   final id, index;
   final Function function;
+
   ReportCommentDialog({Key key, this.id, this.index, this.function})
       : super(key: key);
 

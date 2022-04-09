@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:HolyTune/auth/AuthOtherFields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../i18n/strings.g.dart';
 import '../utils/Alerts.dart';
@@ -10,10 +9,7 @@ import 'package:http/http.dart' as http;
 import 'LoginScreen.dart';
 import '../utils/img.dart';
 import '../utils/my_colors.dart';
-import 'package:email_validator/email_validator.dart';
-import 'package:email_auth/email_auth.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class MobileAuthScreen extends StatefulWidget {

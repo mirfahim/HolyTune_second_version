@@ -1,8 +1,6 @@
 import 'package:HolyTune/providers/DashboardModel.dart';
 import 'package:HolyTune/screens/SearchOptionalPage.dart';
-import 'package:HolyTune/utils/my_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../utils/TextStyles.dart';
 import '../i18n/strings.g.dart';
@@ -127,7 +125,7 @@ class SearchScreenRouteState extends State<SearchScreenBody> {
                   if (mode == LoadStatus.idle) {
                     body = Text(t.pulluploadmore);
                   } else if (mode == LoadStatus.loading) {
-                    body = CupertinoActivityIndicator();
+                    body = CircularProgressIndicator();
                   } else if (mode == LoadStatus.failed) {
                     body = Text(t.loadfailedretry);
                   } else if (mode == LoadStatus.canLoading) {
@@ -158,9 +156,7 @@ class SearchScreenRouteState extends State<SearchScreenBody> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              CupertinoActivityIndicator(
-                radius: 30,
-              ),
+              CircularProgressIndicator(),
               Container(height: 5),
               Text(
                 t.performingsearch,

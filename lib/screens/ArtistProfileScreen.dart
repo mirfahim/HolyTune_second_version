@@ -14,13 +14,14 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../models/Media.dart';
 import '../providers/ArtistsMediaModel.dart';
 import '../providers/ArtistsAlbumsModel.dart';
-import 'package:flutter/cupertino.dart';
 import '../screens/NoitemScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ArtistProfileScreen extends StatelessWidget {
   static const routeName = "/ArtistProfileScreen";
+
   ArtistProfileScreen({this.artists});
+
   final Artists artists;
 
   @override
@@ -38,21 +39,6 @@ class ArtistProfileScreen extends StatelessWidget {
             children: [
               Column(
                 children: <Widget>[
-                  // ShapeOfView(
-                  //   elevation: 4,
-                  //   height: 200,
-                  //   shape: DiagonalShape(
-                  //     position: DiagonalPosition.Bottom,
-                  //     direction: DiagonalDirection.Left,
-                  //     angle: DiagonalAngle.deg(angle: 10),
-                  //   ),
-                  //   child: Container(
-                  //     height: 130,
-                  //     foregroundDecoration: BoxDecoration(
-                  //         // image: DecorationImage(image: image),
-                  //         color: Color.fromARGB(255, 123, 133, 134)),
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 50,
                   ),
@@ -70,7 +56,7 @@ class ArtistProfileScreen extends StatelessWidget {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                       child: Image(
                         fit: BoxFit.cover,
@@ -283,7 +269,7 @@ class _CategoriesMediaScreenState extends State<MediaScreen>
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -366,7 +352,7 @@ class _AlbumsScreenState extends State<ArtistAlbumsScreen>
           if (mode == LoadStatus.idle) {
             body = Text(t.pulluploadmore);
           } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
+            body = CircularProgressIndicator();
           } else if (mode == LoadStatus.failed) {
             body = Text(t.loadfailedretry);
           } else if (mode == LoadStatus.canLoading) {
@@ -445,7 +431,7 @@ class AlbumTile extends StatelessWidget {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                         child: Icon(
                       Icons.error,

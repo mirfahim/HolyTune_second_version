@@ -1,6 +1,5 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../screens/ArtistsScreen.dart';
@@ -12,7 +11,9 @@ import '../screens/ArtistProfileScreen.dart';
 
 class ArtistsListView extends StatelessWidget {
   AppStateNotifier appState;
+
   ArtistsListView(this.artists);
+
   final List<Artists> artists;
 
   Widget _buildItems(BuildContext context, int index) {
@@ -48,7 +49,7 @@ class ArtistsListView extends StatelessWidget {
                       );
                     },
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                       child: Image(
                         fit: BoxFit.cover,

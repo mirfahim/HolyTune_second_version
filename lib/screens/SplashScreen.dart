@@ -18,9 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   String profileName;
   PackageInfo packageInfo;
   AppStateNotifier appState;
+
   getPackageInfo() async {
     packageInfo = await PackageInfo.fromPlatform();
-    // print("VERSION__FROM___SPLASH___${packageInfo.version}");
     setState(() {});
   }
 
@@ -31,8 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
     bool loginState = SharedPref.to.prefss.getBool("loggedin");
     SharedPref.loginState = loginState;
 
-    // print("___LOGIN___STATE___BRO___$loginState");
-    // print(SharedPref.loginState);
     String profileName = SharedPref.to.prefss.getString("profileName");
     String profilePhn = SharedPref.to.prefss.getString("profilePhn");
     String profileImage = SharedPref.to.prefss.getString("imageKey");

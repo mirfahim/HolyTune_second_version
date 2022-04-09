@@ -1,6 +1,5 @@
 import 'package:HolyTune/utils/my_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../i18n/strings.g.dart';
@@ -20,6 +19,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PlayPage extends StatefulWidget {
   static const routeName = "/playerpage";
+
   PlayPage();
 
   @override
@@ -105,29 +105,6 @@ class _PlayPageState extends State<PlayPage> with TickerProviderStateMixin {
       width: double.infinity,
       color: Colors.black, //audioPlayerModel.backgroundColor.withAlpha(250),
     );
-    /*Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.black,
-        shape: BoxShape.rectangle,
-        image: DecorationImage(
-          image: NetworkImage(audioPlayerModel.currentMedia.coverPhoto),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: 10.0,
-          sigmaY: 10.0,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.0),
-          ),
-        ),
-      ),
-    );*/
   }
 }
 
@@ -229,7 +206,7 @@ class BuildPlayerBody extends StatelessWidget {
                               ),
                             ),
                             placeholder: (context, url) =>
-                                Center(child: CupertinoActivityIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Container(
                               margin: EdgeInsets.symmetric(
                                 horizontal: 40,
@@ -240,8 +217,6 @@ class BuildPlayerBody extends StatelessWidget {
                                 image: DecorationImage(
                                   image: AssetImage('assets/images/01.jpg'),
                                   fit: BoxFit.cover,
-                                  //colorFilter:
-                                  //   ColorFilter.mode(Colors.black87, BlendMode.darken),
                                 ),
                                 boxShadow: [
                                   BoxShadow(
@@ -314,14 +289,6 @@ class BuildPlayerBody extends StatelessWidget {
               // adContainer,
             ],
           ),
-
-          // Player(),
-          //  MediaCommentsLikesContainer(
-          //      key: UniqueKey(),
-          //      context: context,
-          //      audioPlayerModel: audioPlayerModel,
-          //      currentMedia: audioPlayerModel.currentMedia),
-
           BannerAdmob(bannerAd: myBanner),
         ],
       ),
@@ -353,7 +320,6 @@ class _MediaCommentsLikesContainerState
     return Consumer<MediaPlayerModel>(
       builder: (context, mediaPlayerModel, child) {
         return Container(
-          // color:Colors.red,
           height: 50,
           margin: EdgeInsets.fromLTRB(0, 10, 0, 20),
           child: Row(

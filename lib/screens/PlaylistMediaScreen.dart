@@ -1,7 +1,6 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:HolyTune/utils/my_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../providers/PlaylistsModel.dart';
 import '../models/Playlists.dart';
@@ -13,6 +12,7 @@ import '../widgets/MediaItemTile.dart';
 class PlaylistMediaScreen extends StatefulWidget {
   static const routeName = "/playlistsmedia";
   final Playlists playlists;
+
   PlaylistMediaScreen({this.playlists});
 
   @override
@@ -21,6 +21,7 @@ class PlaylistMediaScreen extends StatefulWidget {
 
 class _PlaylistMediaScreenState extends State<PlaylistMediaScreen> {
   AppStateNotifier appState;
+
   @override
   Widget build(BuildContext context) {
     appState = Provider.of<AppStateNotifier>(context);
@@ -28,8 +29,9 @@ class _PlaylistMediaScreenState extends State<PlaylistMediaScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: appState.isDarkModeOn != true ? MyColors.softBlueColor : Colors.black54,
-
+        backgroundColor: appState.isDarkModeOn != true
+            ? MyColors.softBlueColor
+            : Colors.black54,
         title: Text(
           widget.playlists.title + " " + t.playlistitm,
           maxLines: 1,
@@ -38,8 +40,8 @@ class _PlaylistMediaScreenState extends State<PlaylistMediaScreen> {
       body: Container(
         // decoration: BoxDecoration(color: Colors.white),
         child: FutureBuilder<List<Media>>(
-            future:
-                playlistsModel.getPlaylistsMedia(widget.playlists.id), //returns bool
+            future: playlistsModel.getPlaylistsMedia(widget.playlists.id),
+            //returns bool
             builder: (BuildContext context, AsyncSnapshot<List<Media>> value) {
               if (value.data == null) {
                 return Center();

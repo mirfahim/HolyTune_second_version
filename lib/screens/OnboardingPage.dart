@@ -1,9 +1,7 @@
 import 'package:HolyTune/screens/TabBarPage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/AppStateNotifier.dart';
-import '../screens/HomePage.dart';
 import '../utils/my_colors.dart';
 import '../utils/TextStyles.dart';
 import '../models/Onboarder.dart';
@@ -12,6 +10,7 @@ import '../utils/img.dart';
 
 class OnboardingPage extends StatefulWidget {
   static const routeName = "/onboarding";
+
   OnboardingPage();
 
   @override
@@ -92,7 +91,8 @@ class OnboarderPageState extends State<OnboardingPage> {
                 if (isLast) {
                   Provider.of<AppStateNotifier>(context, listen: false)
                       .setUserSeenOnboardingPage(true);
-                  Navigator.pushReplacementNamed(context, MyTabHomePage.routeName);
+                  Navigator.pushReplacementNamed(
+                      context, MyTabHomePage.routeName);
                   return;
                 }
                 pageController.nextPage(

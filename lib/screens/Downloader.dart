@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/DownloadsModel.dart';
 import '../i18n/strings.g.dart';
 import '../models/Downloads.dart';
-import 'dart:ui';
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:flutter/cupertino.dart';
 import '../utils/TextStyles.dart';
 import '../utils/TimUtil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -262,7 +260,7 @@ class _ItemTileState extends State<ItemTile> {
                             ),
                           ),
                           placeholder: (context, url) =>
-                              Center(child: CupertinoActivityIndicator()),
+                              Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => Center(
                               child: Icon(
                             Icons.error,

@@ -1,6 +1,5 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/AudioListPage.dart';
@@ -15,6 +14,7 @@ import '../utils/Alerts.dart';
 
 class MediaListView extends StatefulWidget {
   MediaListView(this.mediaList, this.header, this.subHeader);
+
   final List<Media> mediaList;
   final String header;
   final String subHeader;
@@ -25,12 +25,11 @@ class MediaListView extends StatefulWidget {
 
 class _MediaListViewState extends State<MediaListView> {
   AppStateNotifier appState;
+
   Widget _buildItems(BuildContext context, int index) {
     appState = Provider.of<AppStateNotifier>(context);
     var media = widget.mediaList[index];
 
-    // print("HEY________BRO___________${widget.mediaList[index].coverPhoto}");
-    // print("HEY________BRO____COVER_______${media.coverPhoto}");
     bool isSubscribed = true;
 
     return Padding(
@@ -53,8 +52,8 @@ class _MediaListViewState extends State<MediaListView> {
                           image: AssetImage("assets/images/01.jpg"),
                         )
                       : CachedNetworkImage(
-                          imageUrl: media
-                              .coverPhoto, // https://adminapplication.com/uploads/thumbnails/media/1623414931.jpg
+                          imageUrl: media.coverPhoto,
+                          // https://adminapplication.com/uploads/thumbnails/media/1623414931.jpg
                           imageBuilder: (context, imageProvider) {
                             //  print("__________AUDIO_____IMAGE______${SharedPref.imageURL + media.coverPhoto}");
 
@@ -73,7 +72,7 @@ class _MediaListViewState extends State<MediaListView> {
                             );
                           },
                           placeholder: (context, url) =>
-                              Center(child: CupertinoActivityIndicator()),
+                              Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => Image(
                             fit: BoxFit.cover,
                             image: AssetImage("assets/images/01.jpg"),
@@ -101,19 +100,6 @@ class _MediaListViewState extends State<MediaListView> {
                           ),
                         ),
                         SizedBox(height: 3.0),
-                        // Container(
-                        //   alignment: Alignment.centerLeft,
-                        //   child: Text(
-                        //     media.artist,
-                        //     style: TextStyles.subhead(context).copyWith(
-                        //       //fontWeight: FontWeight.bold,
-                        //       fontSize: 13.0,
-                        //       //color: Colors.blueGrey[300],
-                        //     ),
-                        //     maxLines: 1,
-                        //     textAlign: TextAlign.left,
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),

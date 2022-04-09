@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import '../models/Media.dart';
 import '../utils/TextStyles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -49,7 +48,7 @@ class CommentsMediaHeader extends StatelessWidget {
                             ),
                           ),
                           placeholder: (context, url) =>
-                              Center(child: CupertinoActivityIndicator()),
+                              Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => Center(
                               child: Icon(
                             Icons.error,

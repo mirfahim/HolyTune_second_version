@@ -1,7 +1,5 @@
 import 'package:HolyTune/database/SharedPreference.dart';
-import 'package:HolyTune/utils/ApiUrl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../providers/AppStateNotifier.dart';
 import '../auth/LoginScreen.dart';
@@ -14,17 +12,6 @@ import '../utils/my_colors.dart';
 import '../providers/CommentsModel.dart';
 import '../widgets/CommentsMediaHeader.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import '../utils/Utility.dart';
-import '../utils/Alerts.dart';
-import '../i18n/strings.g.dart';
-import 'dart:convert';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-import '../utils/ApiUrl.dart';
-import '../models/Comments.dart';
-import '../models/Userdata.dart';
 
 class CommentsScreen extends StatefulWidget {
   static String routeName = "/comments";
@@ -38,7 +25,6 @@ class CommentsScreen extends StatefulWidget {
 }
 
 class _CommentsScreenState extends State<CommentsScreen> {
-
   @override
   Widget build(BuildContext context) {
     print(widget.item.toString());
@@ -91,7 +77,7 @@ class CommentsSection extends StatelessWidget {
             ),
             Divider(height: 0, thickness: 1),
             SharedPref.loginState == true
-            //userdata == null
+                //userdata == null
                 ? Container(
                     height: 50,
                     child: Center(
@@ -129,7 +115,7 @@ class CommentsSection extends StatelessWidget {
                                 padding: const EdgeInsets.all(10.0),
                                 child: Container(
                                     width: 30,
-                                    child: CupertinoActivityIndicator()),
+                                    child: CircularProgressIndicator()),
                               )
                             : Padding(
                                 padding: EdgeInsets.all(10),
@@ -156,7 +142,6 @@ class CommentsSection extends StatelessWidget {
 }
 
 class CommentsLists extends StatelessWidget {
-
   bool isError = false;
   int media = 0;
   int totalPostComments = 0;
@@ -172,14 +157,14 @@ class CommentsLists extends StatelessWidget {
     var commentsModel = Provider.of<CommentsModel>(context);
     List<Comments> commentsList = commentsModel.items;
     if (commentsModel.isLoading) {
-      return Center(child: CupertinoActivityIndicator());
+      return Center(child: CircularProgressIndicator());
     } else if (commentsList.length == 0) {
       return Center(
           child: Container(
         height: 200,
         child: GestureDetector(
           onTap: () {
-           // fetchComments();
+            // fetchComments();
             commentsModel.loadComments();
           },
           child: ListView(children: <Widget>[
@@ -207,7 +192,7 @@ class CommentsLists extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index == 0 && commentsModel.isLoadingMore) {
             return Container(
-                width: 30, child: Center(child: CupertinoActivityIndicator()));
+                width: 30, child: Center(child: CircularProgressIndicator()));
           } else if (index == 0 && commentsModel.hasMoreComments) {
             return Container(
               height: 30,
@@ -239,6 +224,4 @@ class CommentsLists extends StatelessWidget {
       );
     }
   }
-
-
 }

@@ -32,10 +32,6 @@ class Player extends StatelessWidget {
           if (seekSliderValue > 1) {
             seekSliderValue = 1;
           }
-          // print("snapshot.data = " + snapshot.data.toString());
-          // print("backgroundAudioDurationSeconds = " +
-          //     audioPlayerModel.backgroundAudioDurationSeconds.toString());
-          // print("seekSliderValue = " + seekSliderValue.toString());
         }
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +100,6 @@ class Player extends StatelessWidget {
                     .setMediaLikesCommentsCount(audioPlayerModel.currentMedia);
               },
               icon: Icon(
-                //Icons.skip_previous,
                 Icons.fast_rewind,
                 size: 25.0,
                 color: Colors.white54,
@@ -131,7 +126,6 @@ class Player extends StatelessWidget {
                     .setMediaLikesCommentsCount(audioPlayerModel.currentMedia);
               },
               icon: Icon(
-                //Icons.skip_next,
                 Icons.fast_forward,
                 size: 25.0,
                 color: Colors.white54,
@@ -140,15 +134,6 @@ class Player extends StatelessWidget {
           ],
         ),
       ),
-      // Visibility(
-      //   visible: !audioPlayerModel.showList,
-      //   child: new Padding(
-      //     padding: const EdgeInsets.symmetric(
-      //       horizontal: 16.0,
-      //     ),
-      //     child: _timer(context, audioPlayerModel),
-      //   ),
-      // ),
     ];
   }
 }

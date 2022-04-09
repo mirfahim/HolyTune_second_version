@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../providers/AppStateNotifier.dart';
 import '../auth/LoginScreen.dart';
@@ -110,7 +109,7 @@ class RepliesSection extends StatelessWidget {
                             ? Container(
                                 padding: const EdgeInsets.all(10.0),
                                 width: 30,
-                                child: CupertinoActivityIndicator())
+                                child: CircularProgressIndicator())
                             : Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: IconButton(
@@ -144,7 +143,7 @@ class RepliesLists extends StatelessWidget {
     var repliesModel = Provider.of<RepliesModel>(context);
     List<Replies> repliesList = repliesModel.items;
     if (repliesModel.isLoading) {
-      return Center(child: CupertinoActivityIndicator());
+      return Center(child: CircularProgressIndicator());
     } else if (repliesList.length == 0) {
       return Center(
           child: Container(
@@ -178,7 +177,7 @@ class RepliesLists extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index == 0 && repliesModel.isLoadingMore) {
             return Container(
-                width: 30, child: Center(child: CupertinoActivityIndicator()));
+                width: 30, child: Center(child: CircularProgressIndicator()));
           } else if (index == 0 && repliesModel.hasMoreComments) {
             return Container(
               height: 30,

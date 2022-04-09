@@ -1,6 +1,5 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../screens/MoodsMediaScreen.dart';
@@ -12,8 +11,10 @@ import '../models/ScreenArguements.dart';
 
 class MoodsListView extends StatelessWidget {
   MoodsListView(this.moods);
+
   final List<Moods> moods;
   AppStateNotifier appState;
+
   Widget _buildItems(BuildContext context, int index) {
     appState = Provider.of<AppStateNotifier>(context);
     var cats = moods[index];
@@ -43,7 +44,7 @@ class MoodsListView extends StatelessWidget {
                       ),
                     ),
                     placeholder: (context, url) =>
-                        Center(child: CupertinoActivityIndicator()),
+                        Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Center(
                         child: Icon(
                       Icons.error,

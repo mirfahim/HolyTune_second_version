@@ -1,10 +1,7 @@
-import 'package:HolyTune/auth/LoginScreen.dart';
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/models/ScreenArguements.dart';
 import 'package:HolyTune/screens/TabBarPage.dart';
 import 'package:HolyTune/utils/Alerts.dart';
-import 'package:HolyTune/utils/img.dart';
-import 'package:HolyTune/widgets/CustomBottomBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:HolyTune/utils/StringsConst.dart';
@@ -15,7 +12,6 @@ import '../utils/my_colors.dart';
 import '../utils/TextStyles.dart';
 import 'package:package_info/package_info.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
-import 'package:launch_review/launch_review.dart';
 
 import 'Downloader.dart';
 

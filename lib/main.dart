@@ -1,6 +1,7 @@
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
 import 'package:HolyTune/screens/spalshScreenforHome.dart';
+import 'package:flutter/material.dart';
 import 'MyApp.dart';
 import './providers/AppStateNotifier.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +67,7 @@ void main() async {
             if (snapshot.connectionState == ConnectionState.done) {
               return MyApp(defaultHome: snapshot.data);
             } else {
-              return const Center(child: CupertinoActivityIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           }),
     ),

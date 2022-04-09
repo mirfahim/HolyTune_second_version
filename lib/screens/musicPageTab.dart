@@ -7,7 +7,6 @@ import 'package:HolyTune/models/package/packageModel.dart';
 import 'package:HolyTune/screens/TabBarPage.dart';
 import 'package:HolyTune/screens/spalshScreenforHome.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:new_version/new_version.dart';
@@ -362,7 +361,7 @@ class _HomePageItemState extends State<HomePageItem> {
                                         placeholder: (context, url) =>
                                             const Center(
                                                 child:
-                                                    CupertinoActivityIndicator()),
+                                                    CircularProgressIndicator()),
                                         errorWidget: (context, url, error) =>
                                             Center(
                                           child: Container(

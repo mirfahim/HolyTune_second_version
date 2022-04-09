@@ -1,16 +1,9 @@
 import 'package:HolyTune/i18n/strings.g.dart';
-import 'package:HolyTune/models/Media.dart';
-import 'package:HolyTune/providers/BookmarksModel.dart';
 import 'package:HolyTune/providers/DashboardModel.dart';
 import 'package:HolyTune/screens/VideosMediaListView.dart';
-import 'package:HolyTune/utils/TextStyles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shimmer/shimmer.dart';
-
-import 'MediaListView.dart';
 import 'NoitemScreen.dart';
 
 class VideoDashboardScreen extends StatefulWidget {
@@ -45,8 +38,10 @@ class DashboardScreenRouteState extends State<VideoDashboardScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
+            CircularProgressIndicator()
+            /*Expanded(
               child: Shimmer.fromColors(
                 baseColor: Colors.black26,
                 highlightColor: Colors.black38,
@@ -99,7 +94,7 @@ class DashboardScreenRouteState extends State<VideoDashboardScreen> {
                   itemCount: 12,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       );
@@ -112,11 +107,6 @@ class DashboardScreenRouteState extends State<VideoDashboardScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-
-
-
-
-
               Container(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
@@ -124,7 +114,6 @@ class DashboardScreenRouteState extends State<VideoDashboardScreen> {
                     t.popularMusic, t.trendingaudioshint),
               ),
               Container(
-
                 color: Theme.of(context).scaffoldBackgroundColor,
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                 child: VideosMediaListView(dashboardModel.trendingAudios,
@@ -134,9 +123,7 @@ class DashboardScreenRouteState extends State<VideoDashboardScreen> {
                 height: 200,
                 color: Theme.of(context).scaffoldBackgroundColor,
                 padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
-
               ),
-
             ],
           ),
         ),

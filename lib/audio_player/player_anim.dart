@@ -19,7 +19,6 @@ class RotatePlayer extends AnimatedWidget {
             "PLAYER_PAGE____IMAGE___${audioPlayerModel.currentMedia.coverPhoto}");
       },
       child: Container(
-        // color: Colors.red,
         margin: EdgeInsets.all(4),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.45,
@@ -39,13 +38,11 @@ class RotatePlayer extends AnimatedWidget {
                     image: DecorationImage(
                       image: imageProvider,
                       fit: BoxFit.cover,
-                      //colorFilter:
-                      //   ColorFilter.mode(Colors.black87, BlendMode.darken),
                     ),
                   ),
                 ),
                 placeholder: (context, url) =>
-                    Center(child: CupertinoActivityIndicator()),
+                    Center(child: CircularProgressIndicator()),
                 errorWidget: (context, url, error) => Center(
                     child: Icon(
                   Icons.error,

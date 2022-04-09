@@ -9,11 +9,11 @@ import '../models/Playlists.dart';
 import '../utils/TextStyles.dart';
 import 'dart:math';
 import '../utils/my_colors.dart';
-import 'package:flutter/cupertino.dart';
 
 class AddPlaylistScreen extends StatelessWidget {
   static const routeName = "/addplaylists";
   final Media media;
+
   AddPlaylistScreen({this.media});
 
   void newPlaylistDialog(BuildContext context, PlaylistsModel playlistsModel) {
@@ -199,7 +199,7 @@ class Items extends StatelessWidget {
                             ),
                           ),
                           placeholder: (context, url) =>
-                              Center(child: CupertinoActivityIndicator()),
+                              Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => Center(
                               child: Icon(
                             Icons.error,
