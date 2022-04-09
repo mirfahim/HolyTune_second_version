@@ -113,10 +113,12 @@ class _CategoriesMediaScreenState extends State<MediaScreen> {
                 scrollDirection: Axis.vertical,
                 padding: EdgeInsets.all(3),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 2.0,
-                    mainAxisSpacing: 10,
-                    childAspectRatio: 1.1),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 2),
+                ),
                 itemCount: items.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ItemTile(
@@ -144,70 +146,65 @@ class ItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20.0),
-      child: InkWell(
-        child: SizedBox(
-          // height: 200.0,
-          width: 100.0,
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 120,
-                width: 150,
-                child: CachedNetworkImage(
-                  // height: 180,
-                  imageUrl: artists.thumbnail,
-                  imageBuilder: (context, imageProvider) => CircleAvatar(
-                    backgroundImage: imageProvider,
-                  ),
-                  placeholder: (context, url) =>
-                      Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => Center(
-                      child: Icon(
-                    Icons.error,
-                    color: Colors.grey,
-                  )),
-                ),
+    return InkWell(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+            height: 120,
+            width: 150,
+            child: CachedNetworkImage(
+              // height: 180,
+              imageUrl: artists.thumbnail,
+              imageBuilder: (context, imageProvider) => CircleAvatar(
+                backgroundImage: imageProvider,
               ),
-              SizedBox(height: 7.0),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  artists.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13.0,
-                  ),
-                  maxLines: 1,
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              SizedBox(height: 3.0),
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  Utility.formatNumber(artists.mediaCount) + " " + t.tracks,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                    color: Colors.blueGrey[300],
-                  ),
-                  maxLines: 1,
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
+              placeholder: (context, url) =>
+                  Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Center(
+                  child: Icon(
+                Icons.error,
+                color: Colors.grey,
+              )),
+            ),
           ),
-        ),
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            ArtistProfileScreen.routeName,
-            arguments: ScreenArguements(position: 0, items: artists),
-          );
-        },
+          SizedBox(height: 7.0),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              artists.title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13.0,
+              ),
+              maxLines: 1,
+              textAlign: TextAlign.left,
+            ),
+          ),
+          SizedBox(height: 2),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              Utility.formatNumber(artists.mediaCount) + " " + t.tracks,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 12.0,
+                color: Colors.blueGrey[300],
+              ),
+              maxLines: 1,
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ],
       ),
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ArtistProfileScreen.routeName,
+          arguments: ScreenArguements(position: 0, items: artists),
+        );
+      },
     );
   }
 }
