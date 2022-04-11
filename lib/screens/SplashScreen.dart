@@ -54,12 +54,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
     SharedPref.profileName = "there";
     Timer(
-        Duration(seconds: 4),
-        () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OnboardingPage(),
-            )));
+      Duration(seconds: 4),
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OnboardingPage(),
+        ),
+      ),
+    );
   }
 
   @override

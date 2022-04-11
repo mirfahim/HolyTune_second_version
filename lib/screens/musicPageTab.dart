@@ -43,6 +43,7 @@ import '../screens/PlaylistsScreen.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
+import '../widgets/ads_admob.dart';
 import 'checkout/checkout.dart';
 
 class MusicTabPage extends StatefulWidget {
@@ -129,6 +130,11 @@ class _HomePageItemState extends State<HomePageItem> {
 
   @override
   void initState() {
+    print(
+        "------------------------------Music Page Ad Section------------------------------");
+    interstitialingAd();
+    print(
+        "------------------------------Music Page Ad Section------------------------------");
     getPackages();
     // _checkVersion();
     super.initState();

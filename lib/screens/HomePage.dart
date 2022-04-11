@@ -29,8 +29,7 @@ import '../screens/MediaScreen.dart';
 import '../screens/AudioScreen.dart';
 import '../screens/BookmarksScreen.dart';
 import '../screens/PlaylistsScreen.dart';
-import 'ad_action/appLifecycleReactor.dart';
-import 'ad_action/app_open_ad_manager.dart';
+import '../widgets/ads_admob.dart';
 
 class HomePage extends StatefulWidget {
   bool login;
@@ -114,16 +113,14 @@ class _HomePageItemState extends State<HomePageItem> {
         url: url, androidToolbarColor: MyColors.primary);
   }
 
-  AppLifecycleReactor appLifecycleReactor;
-
   @override
   void initState() {
     // _checkVersion();
-    print("------------------------------------------------------------------");
-    AppOpenAdManager appOpenAdManager = AppOpenAdManager()..loadAd();
-    appLifecycleReactor =
-        AppLifecycleReactor(appOpenAdManager: appOpenAdManager);
-    print("------------------------------------------------------------------");
+    print(
+        "------------------------------Home Page Ad Section------------------------------");
+    interstitialingAd();
+    print(
+        "------------------------------Home Page Ad Section------------------------------");
 
     super.initState();
 

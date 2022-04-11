@@ -9,6 +9,7 @@ import '../providers/AppStateNotifier.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../providers/SearchModel.dart';
 import '../widgets/MediaItemTile.dart';
+import '../widgets/ads_admob.dart';
 
 class SearchScreen extends StatelessWidget {
   static String routeName = "/search";
@@ -28,7 +29,7 @@ class SearchScreenBody extends StatefulWidget {
   SearchScreenBody();
 
   @override
-  SearchScreenRouteState createState() => new SearchScreenRouteState();
+  SearchScreenRouteState createState() => SearchScreenRouteState();
 }
 
 class SearchScreenRouteState extends State<SearchScreenBody> {
@@ -37,10 +38,15 @@ class SearchScreenRouteState extends State<SearchScreenBody> {
   bool clicked = false;
   bool finishLoading = true;
   bool showClear = false;
-  final TextEditingController inputController = new TextEditingController();
+  final TextEditingController inputController = TextEditingController();
 
   @override
   void initState() {
+    print(
+        "------------------------------List View Page Ad Section------------------------------");
+    interstitialingAd();
+    print(
+        "------------------------------List View Page Ad Section------------------------------");
     super.initState();
   }
 

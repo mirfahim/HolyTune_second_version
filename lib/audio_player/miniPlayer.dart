@@ -22,14 +22,6 @@ class MiniPlayer extends StatefulWidget {
 class _AudioPlayout extends State<MiniPlayer> {
   @override
   Widget build(BuildContext context) {
-    // ads Implimentetion Start
-    final BannerAd myBanner = BannerAd(
-      adUnitId: 'ca-app-pub-2662237367678556/9607124603',
-      size: AdSize(width: 468, height: 60),
-      request: AdRequest(),
-      listener: BannerAdListener(),
-    );
-    // ads Implimentetion End
     bool isSubscribed = true;
     Provider.of<AudioPlayerModel>(context, listen: false)
         .setUserSubscribed(isSubscribed);
@@ -41,7 +33,7 @@ class _AudioPlayout extends State<MiniPlayer> {
             ? Container()
             : Column(children: [
                 // Banneradmob(),
-                BannerAdmob(bannerAd: myBanner),
+                BannerAdmob(),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(PlayPage.routeName);

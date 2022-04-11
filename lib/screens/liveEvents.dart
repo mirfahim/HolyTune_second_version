@@ -3,11 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../providers/live_events.dart';
+import '../widgets/ads_admob.dart';
 import 'archieveEvents.dart';
 
 class LivePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print(
+        "------------------------------Live Page Ad Section------------------------------");
+    interstitialingAd();
+    print(
+        "------------------------------Live Page Ad Section------------------------------");
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
     return ChangeNotifierProvider<LiveEventController>(

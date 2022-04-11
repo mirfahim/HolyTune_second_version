@@ -226,7 +226,9 @@ class AudioPlayerModel with ChangeNotifier {
           data: ThemeData(
               cupertinoOverrideTheme:
                   CupertinoThemeData(brightness: Brightness.dark)),
-          child: CircularProgressIndicator());
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ));
     }
     if (remoteAudioPlaying) {
       if (isMiniPlayer) {

@@ -13,12 +13,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/cupertino.dart';
 // import 'package:admob_flutter/admob_flutter.dart';
 import 'auth/OTP_MOBILE/OTPFunc/stores/login_store.dart';
 import 'screens/SplashScreen.dart';
 import 'screens/youtubevideo/getData.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import 'widgets/ads_admob.dart';
 
 List<String> testDeviceIds = ['51FE05FBA475ED038D296BD721BCCA1D'];
 
@@ -46,6 +47,8 @@ void main() async {
       return SplashScreenHome();
     }
   }
+
+  openingAd();
 
   runApp(
     MultiProvider(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../../widgets/ads_admob.dart';
 import 'getData.dart';
 
 class ListViewPage extends StatefulWidget {
@@ -18,6 +19,11 @@ class _ListViewPageState extends State<ListViewPage> {
 
   @override
   void initState() {
+    print(
+        "------------------------------List View Page Ad Section------------------------------");
+    interstitialingAd();
+    print(
+        "------------------------------List View Page Ad Section------------------------------");
     super.initState();
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(videoUrl).toString(),
