@@ -1,6 +1,7 @@
 # Holytune_made_with_flutter 
 
 A new Flutter project.
+Flutter v2.10.4
 
 ## Getting Started
 
