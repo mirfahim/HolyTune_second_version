@@ -3,7 +3,7 @@
 name: HolyTune
 description: Holy Tune - Islamic Song.
 
-version: 1.0.7+7
+version: 1.0.8+8
 
 environment:
   sdk: ">=2.10.0 <3.0.0"
@@ -22,7 +22,7 @@ dependencies:
   flutter_mobx: ^1.1.0
   email_auth: ^0.0.1+4
   carousel_slider: ^3.0.0
-  new_version: ^0.2.0
+  new_version: ^0.3.0
   url_launcher: ^6.0.3
   image_picker: ^0.6.3+1
   firebase_remote_config: any
@@ -81,6 +81,7 @@ dependencies:
   flutter_inappwebview: ^5.3.2
   loading_overlay: ^0.3.0
   google_mobile_ads: ^1.2.0
+  flutter_animated_dialog: ^2.0.1
 
 dev_dependencies:
   flutter_test:

@@ -440,6 +440,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animated_dialog:
+    dependency: "direct main"
+    description:
+      name: flutter_animated_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   flutter_blurhash:
     dependency: transitive
     description:
@@ -818,7 +825,7 @@ packages:
       name: new_version
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.3"
+    version: "0.3.0"
   node_interop:
     dependency: transitive
     description:

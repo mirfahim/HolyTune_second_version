@@ -1,5 +1,6 @@
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
+import 'package:HolyTune/providers/app_version.dart';
 import 'package:HolyTune/screens/spalshScreenforHome.dart';
 import 'package:flutter/material.dart';
 import 'MyApp.dart';
@@ -16,21 +17,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:admob_flutter/admob_flutter.dart';
 import 'auth/OTP_MOBILE/OTPFunc/stores/login_store.dart';
 import 'screens/SplashScreen.dart';
+import 'screens/virsion_screen.dart';
 import 'screens/youtubevideo/getData.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'widgets/ads_admob.dart';
 
-List<String> testDeviceIds = ['51FE05FBA475ED038D296BD721BCCA1D'];
-
+// List<String> testDeviceIds = ['51FE05FBA475ED038D296BD721BCCA1D'];
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // RequestConfiguration config = RequestConfiguration(
+  //     testDeviceIds: <String>['51FE05FBA475ED038D296BD721BCCA1D']);
+  // MobileAds.instance.updateRequestConfiguration(config);
   MobileAds.instance.initialize();
-  RequestConfiguration configuration =
-      RequestConfiguration(testDeviceIds: testDeviceIds);
-  MobileAds.instance.updateRequestConfiguration(configuration);
-  // Admob.initialize();
-  //await Admob.requestTrackingAuthorization(); #uncomment out for IOS
+
   await Firebase.initializeApp();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom]);
@@ -53,6 +54,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AppVersion()),
         ChangeNotifierProvider(create: (_) => AppStateNotifier()),
         ChangeNotifierProvider(create: (_) => BookmarksModel()),
         ChangeNotifierProvider(create: (_) => PlaylistsModel()),
@@ -70,7 +72,7 @@ void main() async {
             if (snapshot.connectionState == ConnectionState.done) {
               return MyApp(defaultHome: snapshot.data);
             } else {
-              return const Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             }
           }),
     ),

@@ -33,6 +33,9 @@ import './i18n/strings.g.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'providers/app_version.dart';
+import 'screens/virsion_screen.dart';
+
 // import 'package:firebase_analytics/observer.dart';
 
 class MyApp extends StatefulWidget {
@@ -144,6 +147,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                     ),
                   ),
                 )
+              // ignore: unrelated_type_equality_checks
               : widget._defaultHome,
           debugShowCheckedModeBanner: false,
           theme:

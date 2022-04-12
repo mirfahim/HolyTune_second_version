@@ -6,6 +6,7 @@ import 'package:new_version/new_version.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../providers/MoodsModel.dart';
+import '../providers/app_version.dart';
 import '../screens/MoodsDrawerScreen.dart';
 import '../screens/Settings.dart';
 import '../providers/ArtistsModel.dart';
@@ -115,7 +116,13 @@ class _HomePageItemState extends State<HomePageItem> {
 
   @override
   void initState() {
-    // _checkVersion();
+    AppVersion().checkVersion().then((verResult) async {
+      final status = await AppVersion().newVersion.getVersionStatus();
+      if (verResult != true) {
+        AppVersion().customDialog(
+            context, "Update Now", () => launch(status.appStoreLink), null);
+      }
+    });
     print(
         "------------------------------Home Page Ad Section------------------------------");
     interstitialingAd();
@@ -136,7 +143,7 @@ class _HomePageItemState extends State<HomePageItem> {
         .then((HttpClientRequest request) {
       return request.close();
     }).then((HttpClientResponse response) {
-      response.transform(new Utf8Decoder()).listen((s) {
+      response.transform(Utf8Decoder()).listen((s) {
         serverVersion = s;
         print("__________NEW____SERVER_____VERSION____$serverVersion");
       });
@@ -551,21 +558,21 @@ class _HomePageItemState extends State<HomePageItem> {
 
     if (currentIndex == 4) {
       return ChangeNotifierProvider(
-        create: (context) => new MediaScreensModel(userdata),
+        create: (context) => MediaScreensModel(userdata),
         child: MediaScreen(t.hotandtrending),
       );
     }
 
     if (currentIndex == 3) {
       return ChangeNotifierProvider(
-        create: (context) => new AudioScreensModel(userdata),
+        create: (context) => AudioScreensModel(userdata),
         child: AudioScreen(t.audiotracks),
       );
     }
 
     if (currentIndex == 5) {
       return ChangeNotifierProvider(
-        create: (context) => new MoodsModel(),
+        create: (context) => MoodsModel(),
         child: MoodsDrawerScreen(),
       );
     }
