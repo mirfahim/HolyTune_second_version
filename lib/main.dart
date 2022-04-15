@@ -17,7 +17,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:admob_flutter/admob_flutter.dart';
 import 'auth/OTP_MOBILE/OTPFunc/stores/login_store.dart';
 import 'screens/SplashScreen.dart';
-import 'screens/virsion_screen.dart';
 import 'screens/youtubevideo/getData.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 

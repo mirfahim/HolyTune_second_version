@@ -52,7 +52,7 @@ dependencies:
   permission_handler: ^9.2.0
   path_provider: any
   flutter_downloader: any
-  flutter_share: any
+  flutter_share: ^2.0.0
   package_info: any
   launch_review: any
   flutter_web_browser: "^0.11.0"
@@ -82,6 +82,8 @@ dependencies:
   loading_overlay: ^0.3.0
   google_mobile_ads: ^1.2.0
   flutter_animated_dialog: ^2.0.1
+  # social_share: ^2.2.1
+  # share_plus: ^4.0.4
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,6 @@
 import 'package:HolyTune/utils/my_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../i18n/strings.g.dart';
 import '../models/Userdata.dart';
 import '../providers/AppStateNotifier.dart';

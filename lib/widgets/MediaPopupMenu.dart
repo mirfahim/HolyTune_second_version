@@ -106,24 +106,29 @@ class Share {
   static shareFile(Media media) async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String packageName = packageInfo.packageName;
-    if (media.http) {
-      await FlutterShare.share(
-          title: t.sharefiletitle + media.title,
-          text: t.sharefiletitle +
-              media.title +
-              "\n" +
-              media.artist +
-              " http://play.google.com/store/apps/details?id=" +
-              packageName,
-          linkUrl: "");
-    } else {
-      await FlutterShare.shareFile(
-        title: t.sharefiletitle + media.title,
-        text: t.tracks +
-            " http://play.google.com/store/apps/details?id=" +
-            packageName,
-        filePath: media.streamUrl,
-      );
-    }
+    // print(media.coverPhoto);
+    // // if (media.http) {
+    // //   await FlutterShare.share(
+    // //       title: t.sharefiletitle + media.title,
+    // //       text: t.sharefiletitle +
+    // //           media.title +
+    // //           "\n" +
+    // //           media.artist +
+    // //           "http://play.google.com/store/apps/details?id=$packageName",
+    // //       linkUrl: "");
+    // // } else {
+    // //   await FlutterShare.shareFile(
+    // //     title: t.sharefiletitle + media.title,
+    // //     text: t.tracks +
+    // //         "http://play.google.com/store/apps/details?id=$packageName",
+    // //     filePath: media.streamUrl,
+    // //   );
+    // // }
+
+    await FlutterShare.share(
+      linkUrl: media.coverPhoto,
+      title: media.artist,
+      text: media.title,
+    );
   }
 }
