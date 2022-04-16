@@ -6,7 +6,7 @@ import 'package:new_version/new_version.dart';
 import 'package:http/http.dart' as http;
 
 class AppVersion extends ChangeNotifier {
-  final int versionCode = 8; //Version code from web
+  final int versionCode = 9; //Version code from web
   final newVersion =
       NewVersion(iOSId: 'com.holytune.app', androidId: 'com.holytune.app');
 

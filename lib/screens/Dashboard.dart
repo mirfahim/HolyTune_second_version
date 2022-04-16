@@ -25,7 +25,7 @@ class DashboardScreen extends StatefulWidget {
   DashboardScreen();
 
   @override
-  DashboardScreenRouteState createState() => new DashboardScreenRouteState();
+  DashboardScreenRouteState createState() => DashboardScreenRouteState();
 }
 
 class DashboardScreenRouteState extends State<DashboardScreen> {
@@ -183,6 +183,7 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
               child: MediaListView(
                   dashboardModel.latestAudios, t.audiotracks, t.newaudioshint),
             ),
+
             SizedBox(
               height: 05,
             ),

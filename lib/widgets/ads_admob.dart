@@ -5,7 +5,7 @@ class BannerAdmob extends StatelessWidget {
   final BannerAd bannerAd = BannerAd(
     adUnitId: 'ca-app-pub-3598370750657058/8644169363', // Orginal
     // adUnitId: 'ca-app-pub-3940256099942544/6300978111', // Test
-    size: AdSize(width: 468, height: 60),
+    size: AdSize.banner,
     request: AdRequest(),
     listener: BannerAdListener(),
   );

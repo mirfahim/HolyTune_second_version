@@ -1,7 +1,13 @@
+import 'package:HolyTune/providers/DashboardModel.dart';
 import 'package:HolyTune/providers/SliderImageProvider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../audio_player/player_page.dart';
+import '../providers/AudioPlayerModel.dart';
+import '../utils/Alerts.dart';
+import '../utils/Utility.dart';
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
   @override
@@ -23,171 +29,193 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
 
   @override
   Widget build(BuildContext context) {
+    DashboardModel dashboardModel = Provider.of<DashboardModel>(context);
     return Consumer<SliderImageProvider>(
-        builder: (context, sliderImageProvider, _) {
-          return Stack(children: [
-            sliderImageProvider.imageList.length == 0
-                ? CarouselSlider(
-              items: [
-                // 2nd Image of Slider
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/singer01.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //3rd Image of Slider
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  //margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/singer02.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //4th Image of Slider
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  // margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/Archive/Poro.jpg"),
-                        fit: BoxFit.cover),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Archive/Quran.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //3rd Image of Slider
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  //margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Archive/Janaza.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //4th Image of Slider
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  // margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/singer03.jpg"),
-                        fit: BoxFit.cover),
-                  ),
-                ),
-                //5th Image of Slider
-              ],
-              options: CarouselOptions(
-                  height: 580.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 1,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
-            )
-                : CarouselSlider.builder(
-              itemCount: sliderImageProvider.imageList.length,
-              itemBuilder: (_, index, __) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  // margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          sliderImageProvider.imageList[index].thumbnail),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              },
-              options: CarouselOptions(
-                  height: 570.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 1,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  }),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 15,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: sliderImageProvider.imageList.length == 0
-                    ? imgList.map((url) {
-                  int index = imgList.indexOf(url);
-                  return Container(
-                    width: 5.0,
-                    height: 5.0,
-                    margin:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+        builder: (context, sliderImageProvider, child) {
+      return Stack(children: [
+        sliderImageProvider.imageList.isEmpty
+            ? CarouselSlider(
+                items: [
+                  // 2nd Image of Slider
+                  Container(
+                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _current == index
-                          ? Colors.white
-                          : Color.fromRGBO(0, 0, 0, 0.4),
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/singer01.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  );
-                }).toList()
-                    : sliderImageProvider.imageList.map((url) {
-                  int index = sliderImageProvider.imageList.indexOf(url);
-                  return Container(
-                    width: 5.0,
-                    height: 5.0,
-                    margin:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  ),
+
+                  //3rd Image of Slider
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    //margin: EdgeInsets.all(6.0),
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _current == index
-                          ? Colors.white
-                          : Color.fromRGBO(0, 0, 0, 0.4),
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/singer02.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                  ),
+
+                  //4th Image of Slider
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    // margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/Archive/Poro.jpg"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Archive/Quran.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+
+                  //3rd Image of Slider
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    //margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/Archive/Janaza.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+
+                  //4th Image of Slider
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    // margin: EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/singer03.jpg"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  //5th Image of Slider
+                ],
+                options: CarouselOptions(
+                    height: 580.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    }),
+              )
+            : CarouselSlider.builder(
+                itemCount: sliderImageProvider.imageList.length,
+                itemBuilder: (BuildContext context, index, __) {
+                  // print(sliderImageProvider.imageList[index].url);
+                  print(dashboardModel.latestAudios);
+                  var media = dashboardModel.latestAudios[
+                      int.parse(sliderImageProvider.imageList[index].url) - 1];
+                  // print(media.mediaType);
+                  bool isSubscribed = true;
+                  return InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      // margin: EdgeInsets.all(6.0),
+                      decoration: BoxDecoration(
+                        // borderRadius: BorderRadius.circular(8.0),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              sliderImageProvider.imageList[index].thumbnail),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      if (Utility.isMediaRequireUserSubscription(
+                          media, isSubscribed)) {
+                        Alerts.showPlaySubscribeAlertDialog(context);
+                        return;
+                      }
+                      Provider.of<AudioPlayerModel>(context, listen: false)
+                          .preparePlaylist(
+                              Utility.extractMediaByType(
+                                  dashboardModel.latestAudios, media.mediaType),
+                              media);
+                      Navigator.of(context).pushNamed(PlayPage.routeName);
+                    },
                   );
-                }).toList(),
+                },
+                options: CarouselOptions(
+                    height: 570.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    }),
               ),
-            ),
-          ]);
-        });
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 15,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: sliderImageProvider.imageList.isEmpty
+                ? imgList.map((url) {
+                    int index = imgList.indexOf(url);
+                    return Container(
+                      width: 5.0,
+                      height: 5.0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _current == index
+                            ? Colors.white
+                            : Color.fromRGBO(0, 0, 0, 0.4),
+                      ),
+                    );
+                  }).toList()
+                : sliderImageProvider.imageList.map((url) {
+                    int index = sliderImageProvider.imageList.indexOf(url);
+                    return Container(
+                      width: 5.0,
+                      height: 5.0,
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _current == index
+                            ? Colors.white
+                            : Color.fromRGBO(0, 0, 0, 0.4),
+                      ),
+                    );
+                  }).toList(),
+          ),
+        ),
+      ]);
+    });
   }
 }

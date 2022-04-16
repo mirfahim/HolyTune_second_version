@@ -125,6 +125,14 @@ class Share {
     // //   );
     // // }
 
+    // final url = Uri.parse(media.coverPhoto);
+    // final responce = await http.get(url);
+    // final bytes = responce.bodyBytes;
+
+    // final temp = await getTemporaryDirectory();
+    // final path = '${temp.path}/img.jpg';
+    // File(path).writeAsBytes(bytes);
+
     await FlutterShare.share(
       linkUrl: media.coverPhoto,
       title: media.artist,

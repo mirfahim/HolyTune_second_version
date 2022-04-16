@@ -10,6 +10,7 @@ import '../widgets/MarqueeWidget.dart';
 import '../utils/TextStyles.dart';
 import '../providers/AudioPlayerModel.dart';
 import '../widgets/ads_admob.dart';
+import 'player_anim.dart';
 import 'song_list_carousel.dart';
 import 'package:provider/provider.dart';
 import 'player_carousel.dart';
@@ -165,64 +166,64 @@ class BuildPlayerBody extends StatelessWidget {
                   ? Column(
                       children: <Widget>[
                         SizedBox(height: 0),
-                        // RotatePlayer(
-                        //   animation: _commonTween.animate(controllerPlayer),
-                        // ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.45,
-                          color: Color(0xFF2B2B2B),
-                          child: CachedNetworkImage(
-                            imageUrl: audioPlayerModel.currentMedia.coverPhoto,
-                            imageBuilder: (context, imageProvider) => Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 40,
-                                vertical: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                  //colorFilter:
-                                  //   ColorFilter.mode(Colors.black87, BlendMode.darken),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFFA8A8A8),
-                                    blurRadius: 7,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 0),
-                                  )
-                                ],
-                              ),
-                            ),
-                            placeholder: (context, url) =>
-                                Center(child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) => Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 40,
-                                vertical: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/01.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFFA8A8A8),
-                                    blurRadius: 7,
-                                    spreadRadius: 0,
-                                    offset: Offset(0, 0),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                        RotatePlayer(
+                          animation: _commonTween.animate(controllerPlayer),
                         ),
+                        // Container(
+                        //   height: MediaQuery.of(context).size.height * 0.45,
+                        //   color: Color(0xFF2B2B2B),
+                        //   child: CachedNetworkImage(
+                        //     imageUrl: audioPlayerModel.currentMedia.coverPhoto,
+                        //     imageBuilder: (context, imageProvider) => Container(
+                        //       margin: EdgeInsets.symmetric(
+                        //         horizontal: 40,
+                        //         vertical: 20,
+                        //       ),
+                        //       decoration: BoxDecoration(
+                        //         borderRadius: BorderRadius.circular(10),
+                        //         image: DecorationImage(
+                        //           image: imageProvider,
+                        //           fit: BoxFit.cover,
+                        //           //colorFilter:
+                        //           //   ColorFilter.mode(Colors.black87, BlendMode.darken),
+                        //         ),
+                        //         boxShadow: [
+                        //           BoxShadow(
+                        //             color: Color(0xFFA8A8A8),
+                        //             blurRadius: 7,
+                        //             spreadRadius: 0,
+                        //             offset: Offset(0, 0),
+                        //           )
+                        //         ],
+                        //       ),
+                        //     ),
+                        //     placeholder: (context, url) =>
+                        //         Center(child: CircularProgressIndicator()),
+                        //     errorWidget: (context, url, error) => Container(
+                        //       margin: EdgeInsets.symmetric(
+                        //         horizontal: 40,
+                        //         vertical: 20,
+                        //       ),
+                        //       decoration: BoxDecoration(
+                        //         borderRadius: BorderRadius.circular(10),
+                        //         image: DecorationImage(
+                        //           image: AssetImage('assets/images/01.jpg'),
+                        //           fit: BoxFit.cover,
+                        //         ),
+                        //         boxShadow: [
+                        //           BoxShadow(
+                        //             color: Color(0xFFA8A8A8),
+                        //             blurRadius: 7,
+                        //             spreadRadius: 0,
+                        //             offset: Offset(0, 0),
+                        //           )
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03),
+                            height: MediaQuery.of(context).size.height * 0.05),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
                           child: MarqueeWidget(

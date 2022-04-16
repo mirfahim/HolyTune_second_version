@@ -253,9 +253,7 @@ class _HomePageItemState extends State<HomePageItem> {
             child: Center(
               child: AppBar(
                 elevation: 0,
-                backgroundColor: appState.isDarkModeOn != true
-                    ? Colors.black54
-                    : Colors.black54,
+                backgroundColor: Colors.black54,
                 title: Row(
                   children: [
                     const Spacer(),
@@ -316,12 +314,11 @@ class _HomePageItemState extends State<HomePageItem> {
                             Container(
                               height: double.infinity,
                               width: double.infinity,
-                              child: Image.asset(
-                                Img.get(""),
-                                fit: BoxFit.fill,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               //color: Colors.black38,
                               height: double.infinity,
                               width: double.infinity,
@@ -460,7 +457,7 @@ class _HomePageItemState extends State<HomePageItem> {
                         ),
                         decoration: BoxDecoration(
                             color: Colors.lightBlue,
-                            borderRadius: new BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: const Radius.circular(20.0),
                               bottomRight: const Radius.circular(20.0),
                             )),

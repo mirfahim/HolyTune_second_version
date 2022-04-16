@@ -47,7 +47,7 @@ class Player extends StatelessWidget {
             Expanded(
               child: SliderTheme(
                 data: SliderThemeData(
-                  trackHeight: 2,
+                  trackHeight: 3,
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 07),
                 ),
                 child: Slider(

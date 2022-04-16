@@ -47,101 +47,123 @@ class _MyHomePageState extends State<MyTabHomePage> {
             indicatorColor: Colors.transparent,
             //  labelColor: Color.fromARGB(255, 59, 50, 50),
             labelStyle: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 8, 3, 3)),
+              fontSize: 13,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 8, 3, 3),
+            ),
             tabs: [
               selectedIndex == 0
                   ? Tab(
-                      icon: Padding(
+                      icon: Container(
                         padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/homw.png',
                           color: Colors.blue,
                         ),
                       ),
-                      iconMargin: EdgeInsets.only(bottom: 5),
+                      iconMargin: EdgeInsets.only(bottom: 2),
                       text: "Home",
                       //  color: Colors.blue
                     )
                   : Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Image.asset('assets/icon/homw.png'),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
+                        child: Image.asset(
+                          'assets/icon/homw.png',
+                          color: Colors.grey,
+                        ),
                       ),
                       iconMargin: EdgeInsets.only(bottom: 5),
                       text: "Home",
                     ),
               selectedIndex == 1
                   ? Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/mus.png',
                           color: Colors.blue,
                         ),
                       ),
-                      iconMargin: EdgeInsets.only(bottom: 5),
+                      iconMargin: EdgeInsets.only(bottom: 2),
                       text: "Music")
                   : Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Image.asset('assets/icon/mus.png'),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
+                        child: Image.asset(
+                          'assets/icon/mus.png',
+                          color: Colors.grey,
+                        ),
                       ),
+                      iconMargin: EdgeInsets.only(bottom: 5),
                       text: "Music"),
               selectedIndex == 2
                   ? Tab(
-                      icon: Image.asset(
-                        'assets/icon/liv.png',
-                        color: Colors.blue,
-                      ),
-                      iconMargin: EdgeInsets.only(bottom: 5),
-                      text: "Live")
-                  : Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.07,
                         child: Image.asset(
                           'assets/icon/liv.png',
+                          color: Colors.blue,
+                        ),
+                      ),
+                      iconMargin: EdgeInsets.only(bottom: 2),
+                      text: "Live")
+                  : Tab(
+                      icon: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.07,
+                        child: Image.asset(
+                          'assets/icon/liv.png',
+                          color: Colors.grey,
                         ),
                       ),
                       iconMargin: EdgeInsets.only(bottom: 5),
                       text: "Live"),
               selectedIndex == 3
                   ? Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/vid.png',
                           color: Colors.blue,
                         ),
                       ),
-                      iconMargin: EdgeInsets.only(bottom: 5),
+                      iconMargin: EdgeInsets.only(bottom: 2),
                       text: "Video")
                   : Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/vid.png',
+                          color: Colors.grey,
                         ),
                       ),
                       iconMargin: EdgeInsets.only(bottom: 5),
                       text: "Video"),
               selectedIndex == 4
                   ? Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/serr.png',
                           color: Colors.blue,
                         ),
                       ),
-                      iconMargin: EdgeInsets.only(bottom: 5),
+                      iconMargin: EdgeInsets.only(bottom: 2),
                       text: "Search")
                   : Tab(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                      icon: Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: MediaQuery.of(context).size.width * 0.05,
                         child: Image.asset(
                           'assets/icon/serr.png',
+                          color: Colors.grey,
                         ),
                       ),
                       iconMargin: EdgeInsets.only(bottom: 5),

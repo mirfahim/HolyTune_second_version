@@ -29,9 +29,7 @@ class _MediaListViewState extends State<MediaListView> {
   Widget _buildItems(BuildContext context, int index) {
     appState = Provider.of<AppStateNotifier>(context);
     var media = widget.mediaList[index];
-
     bool isSubscribed = true;
-
     return Padding(
       padding: EdgeInsets.only(right: 10.0),
       child: InkWell(
