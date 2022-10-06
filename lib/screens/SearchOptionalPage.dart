@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_version/new_version.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import '../providers/MoodsModel.dart';
 import '../screens/MoodsDrawerScreen.dart';
 import '../screens/Settings.dart';
@@ -154,6 +155,13 @@ class _HomePageItemState extends State<HomePageItem> {
         body: Column(
           children: <Widget>[
             Expanded(child: buildPageBody(currentIndex, userdata)),
+            UnityBannerAd(
+              placementId: "Banner_Android",
+              onLoad: (placementId) => print('Banner loaded: $placementId'),
+              onClick: (placementId) => print('Banner clicked: $placementId'),
+              onFailed: (placementId, error, message) =>
+                  print('Banner Ad $placementId failed: $error $message'),
+            ),
             MiniPlayer(),
             // Banneradmob(),
           ],
@@ -169,6 +177,15 @@ class _HomePageItemState extends State<HomePageItem> {
         child: SearchDashboardScreen(),
       );
     }
+   //  if(currentIndex == 0){
+   // return UnityBannerAd(
+   //      placementId: "Banner_Android",
+   //      onLoad: (placementId) => print('Banner loaded: $placementId'),
+   //      onClick: (placementId) => print('Banner clicked: $placementId'),
+   //      onFailed: (placementId, error, message) =>
+   //          print('Banner Ad $placementId failed: $error $message'),
+   //    );
+   //  }
 
     if (currentIndex == 1) {
       return ChangeNotifierProvider(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../widgets/ads_admob.dart';
+import '../unityAds/unity_ads.dart';
 import 'getData.dart';
 
 class ListViewPage extends StatefulWidget {
@@ -12,6 +14,27 @@ class ListViewPage extends StatefulWidget {
 
 class _ListViewPageState extends State<ListViewPage> {
 // late
+  Map<String, bool> placements = {
+    AdManager.interstitialVideoAdPlacementId: true,
+    AdManager.rewardedVideoAdPlacementId: false,
+  };
+  void _loadAd(String placementId) {
+    UnityAds.load(
+      placementId: placementId,
+      onComplete: (placementId) {
+        print('Load Complete $placementId');
+        setState(() {
+          placements[placementId] = true;
+        });
+      },
+      onFailed: (placementId, error, message) => print('Load Failed $placementId: $error $message'),
+    );
+  }
+  void _loadAds() {
+    for (var placementId in placements.keys) {
+      _loadAd(placementId);
+    }
+  }
   YoutubePlayerController _controller;
   String videoTitle = "Olama Tolaba | ওলামা তলাবা";
   String videoArtist = 'Kalarab Sommilito Gojol';
@@ -19,6 +42,7 @@ class _ListViewPageState extends State<ListViewPage> {
 
   @override
   void initState() {
+    _loadAds();
     print(
         "------------------------------List View Page Ad Section------------------------------");
     interstitialingAd();
@@ -35,6 +59,22 @@ class _ListViewPageState extends State<ListViewPage> {
         isLive: false,
         forceHD: true,
       ),
+    );
+    UnityAds.showVideoAd(
+      placementId: "Rewarded_Android",
+      onComplete: (placementId) {
+        print('Video Ad $placementId completed');
+        _loadAd(placementId);
+      },
+      onFailed: (placementId, error, message) {
+        print('Video Ad $placementId failed: $error $message');_loadAd(placementId);
+      },
+      onStart: (placementId) => print('Video Ad $placementId started'),
+      onClick: (placementId) => print('Video Ad $placementId click'),
+      onSkipped: (placementId) {
+        print('Video Ad $placementId skipped');
+        _loadAd(placementId);
+      },
     );
   }
 
@@ -99,6 +139,13 @@ class _ListViewPageState extends State<ListViewPage> {
               )),
           SizedBox(
             height: 10,
+          ),
+          UnityBannerAd(
+            placementId: "Banner_Android",
+            onLoad: (placementId) => print('Banner loaded: $placementId'),
+            onClick: (placementId) => print('Banner clicked: $placementId'),
+            onFailed: (placementId, error, message) =>
+                print('Banner Ad $placementId failed: $error $message'),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),

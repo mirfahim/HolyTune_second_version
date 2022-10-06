@@ -88,12 +88,15 @@ class GenreMediaScreensModel with ChangeNotifier {
       final response = await http.post(Uri.parse(ApiUrl.GENRE_MEDIA),
           body: jsonEncode({"data": data}));
       if (response.statusCode == 200) {
+
+
         // If the server did return a 200 OK response,
         // then parse the JSON.
 
         List<Media> mediaList = await compute(parseSliderMedia, response.body);
         if (page == 0) {
           setItems(mediaList);
+          print("MY MEDIA DATA IS FROM ApiUrl.GENRE_MEDIA free ${mediaList[0].isFree}");
         } else {
           setMoreItems(mediaList);
         }

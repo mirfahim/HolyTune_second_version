@@ -120,7 +120,8 @@ class _ForYouCarouselState extends State<SongListCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSubscribed = true;
+    bool isSubscribed = false;
+    print("working on song list carosel");
     AudioPlayerModel audioPlayerModel = Provider.of(context);
     return Expanded(
       child: ListView.builder(

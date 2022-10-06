@@ -254,6 +254,7 @@ class _OtpPageState extends State<OtpPageEmailAndPhn> {
                                       const BoxConstraints(maxWidth: 500),
                                   child: ElevatedButton(
                                     onPressed: () {
+                                      print("my otp varification is ${widget.otp}");
                                       if (widget.otpStyle == false) {
                                         varifyOTP();
                                       } else {

@@ -57,12 +57,13 @@ class ArtistsMediaModel with ChangeNotifier {
   }
 
   Future<void> fetchItems() async {
+    print("++++++++++++++++++my all data from fetch_media api ++++++++++++++++++++++++++++++++++++");
     try {
       var data = {
         "email": userdata == null ? "null" : userdata.email,
-        "artist": artists.id.toString(),
+        "artist": artists.id.toString(), //2
         "version": "v2",
-        "page": page.toString()
+        "page": page.toString() //0
       };
       print(data);
       final response = await http.post(Uri.parse(ApiUrl.FETCH_MEDIA),
@@ -70,10 +71,11 @@ class ArtistsMediaModel with ChangeNotifier {
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
         // then parse the JSON.
-
+        print("+++++++++200+++++++++my all data from fetch_media api +++++++++++++++++++++200+++++++++++++++");
         List<Media> mediaList = await compute(parseSliderMedia, response.body);
         if (page == 0) {
           setItems(mediaList);
+          print("my midea list is free ${mediaList[0].isFree}");
         } else {
           setMoreItems(mediaList);
         }

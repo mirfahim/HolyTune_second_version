@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     lintOptions {
         disable 'InvalidPackage'
@@ -45,11 +45,13 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.holytune.app"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 32
+
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
     }
+
 
      signingConfigs {
        release {
@@ -81,6 +83,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.facebook.android:facebook-login:4.30.0'
     implementation 'com.android.support:multidex:1.0.3'
+   // implementation 'com.facebook.android:audience-network-sdk:4.13.0'
+    //implementation 'com.facebook.android:audience-network-sdk:6.11.0'
 // add SDKs for any other desired Firebase products
 // https://firebase.google.com/docs/android/setup#available-libraries
 }

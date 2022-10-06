@@ -1,6 +1,7 @@
 import 'package:HolyTune/utils/my_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import '../i18n/strings.g.dart';
 import '../models/Userdata.dart';
 import '../providers/AppStateNotifier.dart';
@@ -268,6 +269,16 @@ class BuildPlayerBody extends StatelessWidget {
                           ),
                         ),
                         Player(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: UnityBannerAd(
+                            placementId: "Banner_Android",
+                            onLoad: (placementId) => print('Banner loaded: $placementId'),
+                            onClick: (placementId) => print('Banner clicked: $placementId'),
+                            onFailed: (placementId, error, message) =>
+                                print('Banner Ad $placementId failed: $error $message'),
+                          ),
+                        ),
                         MediaCommentsLikesContainer(
                           key: UniqueKey(),
                           context: context,

@@ -41,6 +41,9 @@ class DashboardModel with ChangeNotifier {
   }
 
   Future<void> fetchItems() async {
+
+
+    print("+++++++++++++++++++++++my all data frm discover api +++++++++++++++++++++");
     try {
       final dio = Dio();
       // Adding an interceptor to enable caching.

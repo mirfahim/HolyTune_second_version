@@ -1,6 +1,7 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../screens/musicPageTab.dart';
 import '../utils/TextStyles.dart';
 import '../utils/TimUtil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -38,19 +39,31 @@ class _ItemTileState extends State<ItemTile> {
     bool isSubscribed = true;
     return InkWell(
       onTap: () {
-        // print("${widget.object.coverPhoto}");
-        if (Utility.isMediaRequireUserSubscription(
-            widget.object, isSubscribed)) {
-          Alerts.showPlaySubscribeAlertDialog(context);
-          return;
+        if(widget.object.isFree == true){
+          if (Utility.isMediaRequireUserSubscription(
+              widget.object, isSubscribed)) {
+            Alerts.showPlaySubscribeAlertDialog(context);
+            return;
+          }
+          Provider.of<AudioPlayerModel>(context, listen: false).preparePlaylist(
+              Utility.extractMediaByType(
+                  widget.mediaList, widget.object.mediaType),
+              widget.object);
+          Navigator.of(context).pushNamed(PlayPage.routeName);
+        } else {
+          print("pay for this song");
+          Route route = MaterialPageRoute(
+              builder: (c) => MusicTabPage(
+
+              ));
+          Navigator.pushReplacement(context, route);
         }
-        Provider.of<AudioPlayerModel>(context, listen: false).preparePlaylist(
-            Utility.extractMediaByType(
-                widget.mediaList, widget.object.mediaType),
-            widget.object);
-        Navigator.of(context).pushNamed(PlayPage.routeName);
+        // print("${widget.object.coverPhoto}");
+
       },
       child: Container(
+
+            color:  widget.object.isFree == false ? Colors.white10 : Colors.transparent,
         height: 80,
         width: double.infinity,
         padding: EdgeInsets.fromLTRB(15, 0.2, 10, 0),

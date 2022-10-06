@@ -1,9 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:HolyTune/database/SharedPreference.dart';
+import 'package:HolyTune/screens/unityAds/unity_ads.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:new_version/new_version.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../providers/MoodsModel.dart';
 import '../providers/app_version.dart';
@@ -60,7 +64,7 @@ class HomePageItem extends StatefulWidget {
 
 class _HomePageItemState extends State<HomePageItem> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
+ UnityAds unityAds = UnityAds();
   int currentIndex = 0;
 
   void onDrawerItemClicked(int indx) {
@@ -113,9 +117,30 @@ class _HomePageItemState extends State<HomePageItem> {
     await FlutterWebBrowser.openWebPage(
         url: url, androidToolbarColor: MyColors.primary);
   }
-
+  Map<String, bool> placements = {
+    AdManager.interstitialVideoAdPlacementId: true,
+    AdManager.rewardedVideoAdPlacementId: false,
+  };
+  void _loadAd(String placementId) {
+    UnityAds.load(
+      placementId: placementId,
+      onComplete: (placementId) {
+        print('Load Complete $placementId');
+        setState(() {
+          placements[placementId] = true;
+        });
+      },
+      onFailed: (placementId, error, message) => print('Load Failed $placementId: $error $message'),
+    );
+  }
+  void _loadAds() {
+    for (var placementId in placements.keys) {
+      _loadAd(placementId);
+    }
+  }
   @override
   void initState() {
+    _loadAds();
     AppVersion().checkVersion().then((verResult) async {
       final status = await AppVersion().newVersion.getVersionStatus();
       if (verResult != true) {
@@ -123,6 +148,7 @@ class _HomePageItemState extends State<HomePageItem> {
             context, "Update Now", () => launch(status.appStoreLink), null);
       }
     });
+
     print(
         "------------------------------Home Page Ad Section------------------------------");
     interstitialingAd();
@@ -130,7 +156,24 @@ class _HomePageItemState extends State<HomePageItem> {
         "------------------------------Home Page Ad Section------------------------------");
 
     super.initState();
-
+    bool subscribed = SharedPref.to.prefss.get("subscribed");
+    subscribed == false ?
+    UnityAds.showVideoAd(
+      placementId: "Rewarded_Android",
+      onComplete: (placementId) {
+        print('Video Ad $placementId completed');
+        _loadAd(placementId);
+      },
+      onFailed: (placementId, error, message) {
+        print('Video Ad $placementId failed: $error $message');_loadAd(placementId);
+      },
+      onStart: (placementId) => print('Video Ad $placementId started'),
+      onClick: (placementId) => print('Video Ad $placementId click'),
+      onSkipped: (placementId) {
+        print('Video Ad $placementId skipped');
+        _loadAd(placementId);
+      },
+    ): null;
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
   }
@@ -292,7 +335,13 @@ class _HomePageItemState extends State<HomePageItem> {
           child: Column(
             children: <Widget>[
               Expanded(child: buildPageBody(currentIndex, userdata)),
-              // Banneradmob(),
+              UnityBannerAd(
+                placementId: "Banner_Android",
+                onLoad: (placementId) => print('Banner loaded: $placementId'),
+                onClick: (placementId) => print('Banner clicked: $placementId'),
+                onFailed: (placementId, error, message) =>
+                    print('Banner Ad $placementId failed: $error $message'),
+              ),
               MiniPlayer(),
             ],
           ),
@@ -535,7 +584,8 @@ class _HomePageItemState extends State<HomePageItem> {
             //         height: 400,
             //         child: SliderPage()),
 
-            DashboardScreen(),
+          //
+        DashboardScreen(),
         // ],
 
         //  ),

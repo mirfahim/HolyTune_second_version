@@ -6,6 +6,7 @@ import 'package:HolyTune/widgets/sliderWidget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import '../screens/MoodsListView.dart';
 import '../screens/ArtistsListView.dart';
 import '../screens/AlbumsListView.dart';
@@ -187,6 +188,16 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
             SizedBox(
               height: 05,
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: UnityBannerAd(
+                placementId: "Banner_Android",
+                onLoad: (placementId) => print('Banner loaded: $placementId'),
+                onClick: (placementId) => print('Banner clicked: $placementId'),
+                onFailed: (placementId, error, message) =>
+                    print('Banner Ad $placementId failed: $error $message'),
+              ),
+            ),
             // Container(
             //   color: Colors.transparent,
             //  // height: 100,
@@ -263,7 +274,16 @@ class DashboardScreenRouteState extends State<DashboardScreen> {
                 );
               },
             ),
-
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: UnityBannerAd(
+                placementId: "Banner_Android",
+                onLoad: (placementId) => print('Banner loaded: $placementId'),
+                onClick: (placementId) => print('Banner clicked: $placementId'),
+                onFailed: (placementId, error, message) =>
+                    print('Banner Ad $placementId failed: $error $message'),
+              ),
+            ),
             Consumer<PlaylistsModel>(
               builder: (context, playlistsModel, child) {
                 List<Playlists> playlistsList = playlistsModel.playlistsList;

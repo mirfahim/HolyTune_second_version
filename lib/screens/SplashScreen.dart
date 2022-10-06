@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/providers/AppStateNotifier.dart';
+import 'package:HolyTune/screens/unityAds/unity_ads.dart';
 import 'package:flutter/material.dart';
 
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
 import 'OnboardingPage.dart';
 
@@ -23,11 +25,40 @@ class _SplashScreenState extends State<SplashScreen> {
     packageInfo = await PackageInfo.fromPlatform();
     setState(() {});
   }
-
+  Map<String, bool> placements = {
+    AdManager.interstitialVideoAdPlacementId: true,
+    AdManager.rewardedVideoAdPlacementId: false,
+  };
+  void _loadAd(String placementId) {
+    UnityAds.load(
+      placementId: placementId,
+      onComplete: (placementId) {
+        print('Load Complete $placementId');
+        setState(() {
+          placements[placementId] = true;
+        });
+      },
+      onFailed: (placementId, error, message) => print('Load Failed $placementId: $error $message'),
+    );
+  }
+  void _loadAds() {
+    for (var placementId in placements.keys) {
+      _loadAd(placementId);
+    }
+  }
   @override
   void initState() {
     super.initState();
     getPackageInfo();
+    UnityAds.init(
+      gameId: AdManager.gameId,
+      testMode: false,
+      onComplete: () {
+        print('Initialization Complete');
+        _loadAds();
+      },
+      onFailed: (error, message) => print('Initialization Failed: $error $message'),
+    );
     bool loginState = SharedPref.to.prefss.getBool("loggedin");
     SharedPref.loginState = loginState;
 

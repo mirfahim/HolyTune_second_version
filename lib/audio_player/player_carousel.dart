@@ -1,10 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:HolyTune/utils/TimUtil.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import '../providers/AudioPlayerModel.dart';
 import '../providers/MediaPlayerModel.dart';
+import '../screens/unityAds/unity_ads.dart';
 
-class Player extends StatelessWidget {
+class Player extends StatefulWidget {
+  @override
+  State<Player> createState() => _PlayerState();
+}
+
+class _PlayerState extends State<Player> {
+
+  Map<String, bool> placements = {
+    AdManager.interstitialVideoAdPlacementId: true,
+    AdManager.rewardedVideoAdPlacementId: false,
+  };
+  void _loadAd(String placementId) {
+    UnityAds.load(
+      placementId: placementId,
+      onComplete: (placementId) {
+        print('Load Complete $placementId');
+        setState(() {
+          placements[placementId] = true;
+        });
+      },
+      onFailed: (placementId, error, message) => print('Load Failed $placementId: $error $message'),
+    );
+  }
+
+  void _loadAds() {
+    for (var placementId in placements.keys) {
+      _loadAd(placementId);
+    }
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _loadAds();
+  }
   @override
   Widget build(BuildContext context) {
     AudioPlayerModel audioPlayerModel = Provider.of<AudioPlayerModel>(context);
@@ -95,6 +132,22 @@ class Player extends StatelessWidget {
           children: <Widget>[
             IconButton(
               onPressed: () {
+                UnityAds.showVideoAd(
+                  placementId: "Rewarded_Android",
+                  onComplete: (placementId) {
+                    print('Video Ad $placementId completed');
+                    _loadAd(placementId);
+                  },
+                  onFailed: (placementId, error, message) {
+                    print('Video Ad $placementId failed: $error $message');_loadAd(placementId);
+                  },
+                  onStart: (placementId) => print('Video Ad $placementId started'),
+                  onClick: (placementId) => print('Video Ad $placementId click'),
+                  onSkipped: (placementId) {
+                    print('Video Ad $placementId skipped');
+                    _loadAd(placementId);
+                  },
+                );
                 audioPlayerModel.skipPrevious();
                 Provider.of<MediaPlayerModel>(context, listen: false)
                     .setMediaLikesCommentsCount(audioPlayerModel.currentMedia);
@@ -121,6 +174,22 @@ class Player extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
+                UnityAds.showVideoAd(
+                  placementId: "Rewarded_Android",
+                  onComplete: (placementId) {
+                    print('Video Ad $placementId completed');
+                    _loadAd(placementId);
+                  },
+                  onFailed: (placementId, error, message) {
+                    print('Video Ad $placementId failed: $error $message');_loadAd(placementId);
+                  },
+                  onStart: (placementId) => print('Video Ad $placementId started'),
+                  onClick: (placementId) => print('Video Ad $placementId click'),
+                  onSkipped: (placementId) {
+                    print('Video Ad $placementId skipped');
+                    _loadAd(placementId);
+                  },
+                );
                 audioPlayerModel.skipNext();
                 Provider.of<MediaPlayerModel>(context, listen: false)
                     .setMediaLikesCommentsCount(audioPlayerModel.currentMedia);

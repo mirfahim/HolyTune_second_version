@@ -186,13 +186,13 @@ class LoginScreenRouteState extends State<LoginScreen> {
         loginUser(profile['email'], "", profile['name'], "Facebook");
         break;
       case FacebookLoginStatus.cancelledByUser:
-        Toast.show('Login cancelled by the user.', context);
+        Toast.show('Login cancelled by the user.',);
         break;
       case FacebookLoginStatus.error:
         Toast.show(
             'Something went wrong with the login process.\n'
             'Here\'s the error Facebook gave us: ${result.errorMessage}',
-            context);
+            );
         break;
     }
   }

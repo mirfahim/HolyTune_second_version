@@ -4,11 +4,17 @@ buildscript {
         google()
         jcenter()
     }
-
+//    constraints {
+//        implementation('com.facebook.android:audience-network-sdk') {
+//            version {
+//                strictly '6.8.0'
+//            }
+//        }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath 'com.google.gms:google-services:4.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
 
     }
 }
@@ -17,6 +23,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 }
 

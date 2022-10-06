@@ -148,10 +148,10 @@ class Items extends StatelessWidget {
   addMediaToPlaylist(BuildContext context, bool isAdded) {
     if (!isAdded) {
       playlistsModel.addMediaToPlaylist(media, playlists.id);
-      Toast.show(t.mediaaddedtoplaylist, context);
+      Toast.show(t.mediaaddedtoplaylist,);
     } else {
       playlistsModel.deleteMediaFromPlaylist(media, playlists.id);
-      Toast.show(t.mediaremovedfromplaylist, context);
+      Toast.show(t.mediaremovedfromplaylist,);
     }
     Navigator.of(context).pop();
   }

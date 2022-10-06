@@ -95,6 +95,7 @@ class MediaScreensModel with ChangeNotifier {
         List<Media> mediaList = parseSliderMedia(res);
         if (page == 0) {
           setItems(mediaList);
+          print("MY TRENDING MUSIC LIST ${mediaList[0].isFree}");
         } else {
           setMoreItems(mediaList);
         }

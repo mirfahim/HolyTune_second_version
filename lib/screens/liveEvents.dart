@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../providers/live_events.dart';
@@ -59,6 +60,13 @@ class LivePage extends StatelessWidget {
               },
             ),
             SizedBox(height: 20),
+            UnityBannerAd(
+              placementId: "Banner_Android",
+              onLoad: (placementId) => print('Banner loaded: $placementId'),
+              onClick: (placementId) => print('Banner clicked: $placementId'),
+              onFailed: (placementId, error, message) =>
+                  print('Banner Ad $placementId failed: $error $message'),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, bottom: 20, right: 20),
               child: Row(

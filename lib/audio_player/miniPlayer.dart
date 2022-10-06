@@ -33,7 +33,7 @@ class _AudioPlayout extends State<MiniPlayer> {
             ? Container()
             : Column(children: [
                 // Banneradmob(),
-                BannerAdmob(),
+              //  BannerAdmob(),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(PlayPage.routeName);

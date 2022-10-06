@@ -1,5 +1,6 @@
 class StringsConst {
   //api url
+  //loginUser
   //list of strings used in the app
 static const String BASEURL = "https://adminapplication.com/"; //"https://holytune.aapbd.com/";// "https://adminapplication.com/"; // ////adminapplication.com// //audiobuzz.envisionapps.net
   //static const String BASEURL = "https://holytune.aapbd.com/"; //"https://holytune.aapbd.com/"; //audiobuzz.envisionapps.net

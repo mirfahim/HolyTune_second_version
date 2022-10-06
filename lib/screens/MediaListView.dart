@@ -1,7 +1,9 @@
 import 'package:HolyTune/providers/AppStateNotifier.dart';
+import 'package:HolyTune/screens/unityAds/unity_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import '../screens/AudioListPage.dart';
 import '../screens/TrendingListPage.dart';
 import '../providers/AudioPlayerModel.dart';
@@ -25,11 +27,31 @@ class MediaListView extends StatefulWidget {
 
 class _MediaListViewState extends State<MediaListView> {
   AppStateNotifier appState;
-
+  Map<String, bool> placements = {
+    AdManager.interstitialVideoAdPlacementId: true,
+    AdManager.rewardedVideoAdPlacementId: false,
+  };
+  void _loadAd(String placementId) {
+    UnityAds.load(
+      placementId: placementId,
+      onComplete: (placementId) {
+        print('Load Complete $placementId');
+        setState(() {
+          placements[placementId] = true;
+        });
+      },
+      onFailed: (placementId, error, message) => print('Load Failed $placementId: $error $message'),
+    );
+  }
+  void _loadAds() {
+    for (var placementId in placements.keys) {
+      _loadAd(placementId);
+    }
+  }
   Widget _buildItems(BuildContext context, int index) {
     appState = Provider.of<AppStateNotifier>(context);
     var media = widget.mediaList[index];
-    bool isSubscribed = true;
+    bool isSubscribed = false;
     return Padding(
       padding: EdgeInsets.only(right: 10.0),
       child: InkWell(
@@ -108,6 +130,17 @@ class _MediaListViewState extends State<MediaListView> {
           ),
         ),
         onTap: () {
+
+          print("my music pressed .............>+++++++++++++++++");
+          UnityAds.init(
+            gameId: AdManager.gameId,
+            testMode: true,
+            onComplete: () {
+              print('Initialization Complete');
+              _loadAds();
+            },
+            onFailed: (error, message) => print('Initialization Failed: $error $message'),
+          );
           if (Utility.isMediaRequireUserSubscription(media, isSubscribed)) {
             Alerts.showPlaySubscribeAlertDialog(context);
             return;

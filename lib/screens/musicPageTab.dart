@@ -5,7 +5,9 @@ import 'package:HolyTune/database/SharedPreference.dart';
 import 'package:HolyTune/models/package/packageModel.dart';
 
 import 'package:HolyTune/screens/TabBarPage.dart';
+import 'package:HolyTune/screens/facebook_ads/facebook_ads.dart';
 import 'package:HolyTune/screens/spalshScreenforHome.dart';
+import 'package:HolyTune/screens/unityAds/unity_ads.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -13,6 +15,7 @@ import 'package:new_version/new_version.dart';
 import 'package:provider/provider.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toast/toast.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/payment_system/spCheckoutModel.dart';
 import '../models/payment_system/spTokenModel.dart';
@@ -810,9 +813,9 @@ class _HomePageItemState extends State<HomePageItem> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        // Route route =
-                        // MaterialPageRoute(builder: (c) => HomePage(login: false,));
-                        // Navigator.pushReplacement(context, route);
+                        Route route =
+                        MaterialPageRoute(builder: (c) => UnityAdsExample());
+                        Navigator.pushReplacement(context, route);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -836,9 +839,9 @@ class _HomePageItemState extends State<HomePageItem> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Route route =
-                        // MaterialPageRoute(builder: (c) => MyTabHomePage());
-                        // Navigator.pushReplacement(context, route);
+                        Route route =
+                        MaterialPageRoute(builder: (c) => LoginScreen());
+                        Navigator.pushReplacement(context, route);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -883,6 +886,16 @@ class _HomePageItemState extends State<HomePageItem> {
                   ],
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: UnityBannerAd(
+              placementId: "Banner_Android",
+              onLoad: (placementId) => print('Banner loaded: $placementId'),
+              onClick: (placementId) => print('Banner clicked: $placementId'),
+              onFailed: (placementId, error, message) =>
+                  print('Banner Ad $placementId failed: $error $message'),
             ),
           ),
           Padding(
@@ -1232,6 +1245,8 @@ class _HomePageItemState extends State<HomePageItem> {
       if (response.statusCode == 200) {
         SpCheckoutModel spTokenModel =
             spCheckoutModelFromJson(response.body.toString());
+       SharedPref.to.prefss.setBool("subscribed", true);
+
         // CheckoutSP(
         //   checkoutUrl: spTokenModel.checkoutUrl,
         // );
@@ -1249,10 +1264,12 @@ class _HomePageItemState extends State<HomePageItem> {
         setState(() {
           _isLoading = false;
         });
-        Toast.show("Please Try Again !", context);
+        SharedPref.to.prefss.setBool("subscribed", false);
+        Toast.show("Please Try Again !",);
         print("error from the server");
       }
     } catch (ex) {
+      SharedPref.to.prefss.setBool("subscribed", false);
       print("FROM EXECUTE : " + ex.toString());
     }
   }

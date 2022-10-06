@@ -477,7 +477,7 @@ class Strings {
   String get radio => 'Radio Channels';
   String get hotandtrending => 'Trending';
   String get device => 'Device';
-  String get audiotracks => 'Islamic Audio Music';
+  String get audiotracks => '';
   String get playlist => 'Playlists';
   String get bookmarks => 'Bookmarks';
   String get appinfo => 'App Info';
@@ -495,6 +495,7 @@ class Strings {
   String get livetvchannels => 'Live Channels';
   String get trendingvideos => 'Trending Videos';
   String get trendingaudios => 'Popular Islamic Song';
+  String get islamicMusic => 'Islamic Song';
   String get trending => 'Trending';
   String get popularMusic => 'Popular Music';
   String get trendingVideos => 'Trending Videos';
